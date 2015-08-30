@@ -21,3 +21,6 @@ class GoalENItem(scrapy.Item):
 	time = scrapy.Field()
 	summary = scrapy.Field()
 	tags = scrapy.Field()
+	src = scrapy.Field()
+	lang = scrapy.Field()
+	head_url=scrapy.Field()
