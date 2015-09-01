@@ -28,6 +28,7 @@ class ESPNItem(scrapy.Item):
 	url = scrapy.Field()
 	image = scrapy.Field()
 	datetime = scrapy.Field()
+	summary = scrapy.Field()
 	tags = scrapy.Field()
 	src = scrapy.Field()
 	lang = scrapy.Field()
