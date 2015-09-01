@@ -51,3 +51,11 @@ class FifaENItem(scrapy.Item):
 	summary = scrapy.Field()
 	src = scrapy.Field()
 	lang = scrapy.Field()
+
+class BeinENItem(scrapy.Item):
+	title = scrapy.Field()
+	url = scrapy.Field()
+	image = scrapy.Field()
+	datetime = scrapy.Field()
+	src = scrapy.Field()
+	lang = scrapy.Field()
