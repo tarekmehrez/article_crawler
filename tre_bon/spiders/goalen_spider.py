@@ -8,6 +8,7 @@ from scrapy.http import HtmlResponse
 
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
+# TODO: handle date format
 
 
 class GoalENSpider(scrapy.Spider):
@@ -30,8 +31,8 @@ class GoalENSpider(scrapy.Spider):
 			article_info = sel.xpath(".//div[contains(@class,'articleInfo')]")[0]
 
 			item['title'] = article_info.xpath(".//a/text()")[0].extract()
-
-			item['summary'] = sel.xpath(".//div[contains(@class,'articleSummary')]/text()")[0].extract()
+			if sel.xpath(".//div[contains(@class,'articleSummary')]/text()"):
+				item['summary'] = sel.xpath(".//div[contains(@class,'articleSummary')]/text()")[0].extract()
 			item['datetime'] = str(sel.xpath("../../div[contains(@class,'date')]/text()")[0].extract()) + str(sel.xpath(".//span")[1].xpath(".//text()")[0].extract())
 
 			relative_url = str(article_info.xpath(".//a/@href")[0].extract())
@@ -52,13 +53,13 @@ class GoalENSpider(scrapy.Spider):
 
 		if not response.xpath(".//img[contains(@class,'article-image')]/@src"):
 			yield item
+		else:
+			item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
+			self.logger.debug('in parse article')
+			for sel in response.xpath(".//li[contains(@class,'tags')]/a/text()"):
+				tag = str(sel.extract().encode('utf-8'))
+				tag = re.sub(r'[^\x00-\x7F]+',' ', tag).replace('-','').strip().lower().replace(' ','_')
 
-		item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
-		self.logger.debug('in parse article')
-		for sel in response.xpath(".//li[contains(@class,'tags')]/a/text()"):
-			tag = str(sel.extract().encode('utf-8'))
-			tag = re.sub(r'[^\x00-\x7F]+',' ', tag).replace('-','').strip().lower().replace(' ','_')
+				item['tags'].append(tag)
 
-			item['tags'].append(tag)
-
-		yield item
+			yield item

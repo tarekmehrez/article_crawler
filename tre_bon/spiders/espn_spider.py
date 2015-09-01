@@ -7,6 +7,7 @@ from scrapy.http import HtmlResponse
 
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
+# TODO: handle date format
 
 
 class ESPNSpider(scrapy.Spider):
