@@ -32,3 +32,13 @@ class ESPNItem(scrapy.Item):
 	tags = scrapy.Field()
 	src = scrapy.Field()
 	lang = scrapy.Field()
+
+class TalkSportItem(scrapy.Item):
+	title = scrapy.Field()
+	url = scrapy.Field()
+	image = scrapy.Field()
+	datetime = scrapy.Field()
+	summary = scrapy.Field()
+	tags = scrapy.Field()
+	src = scrapy.Field()
+	lang = scrapy.Field()

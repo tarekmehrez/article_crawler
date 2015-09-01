@@ -6,6 +6,10 @@ import urlparse
 from tre_bon.items import GoalENItem
 from scrapy.http import HtmlResponse
 
+# TODO: handle endoding and format in tags, summary and titles
+# TODO: make sure all tags have similar formats (same tags are grouped)
+
+
 class GoalENSpider(scrapy.Spider):
 	name = 'goal_en'
 	# allowed_domains = ["goal.com/en"]
