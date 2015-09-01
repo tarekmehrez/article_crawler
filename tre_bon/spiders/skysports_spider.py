@@ -1,7 +1,6 @@
 import scrapy
 
-from tre_bon.items import SkySportsItem
-from scrapy.http import HtmlResponse
+from tre_bon.items import TreBonItem
 
 # TODO: handle date format
 # TODO: handle endoding and format in tags, summary and titles
@@ -26,7 +25,7 @@ class SkySportsSpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//div[contains(@class,'news-list__item news-list__item--show-thumb-bp30')]"):
-			item = SkySportsItem()
+			item = TreBonItem()
 
 			url = sel.xpath(".//h4/a/@href")[0].extract()
 

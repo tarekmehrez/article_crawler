@@ -2,8 +2,7 @@ import scrapy
 import json
 import urllib2
 
-from tre_bon.items import ESPNItem
-from scrapy.http import HtmlResponse
+from tre_bon.items import TreBonItem
 
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
@@ -23,7 +22,7 @@ class ESPNSpider(scrapy.Spider):
 
 
 		for article in articles:
-			item = ESPNItem()
+			item = TreBonItem()
 			item['title'] = article['headline']
 			item['url'] = article['linkUrl']
 

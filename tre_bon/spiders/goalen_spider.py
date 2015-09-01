@@ -1,10 +1,8 @@
 import scrapy
 import re
-import urllib
-import urlparse
 
-from tre_bon.items import GoalENItem
-from scrapy.http import HtmlResponse
+
+from tre_bon.items import TreBonItem
 
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
@@ -27,7 +25,7 @@ class GoalENSpider(scrapy.Spider):
 
 	def parse(self,response):
 		for sel in response.xpath("//div[contains(@id,'news-archive')]//ul/li"):
-			item = GoalENItem()
+			item = TreBonItem()
 			article_info = sel.xpath(".//div[contains(@class,'articleInfo')]")[0]
 
 			item['title'] = article_info.xpath(".//a/text()")[0].extract()
@@ -39,7 +37,7 @@ class GoalENSpider(scrapy.Spider):
 			url = response.urljoin(relative_url).replace("/en/news/archive","")
 			item['url'] = url
 
-			item['src'] = 'goal_en'
+			item['src'] = 'goal'
 			item['lang'] = 'en'
 
 			tag = str(sel.xpath(".//strong/text()")[0].extract().encode("utf-8"))

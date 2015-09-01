@@ -9,11 +9,6 @@ import scrapy
 
 
 class TreBonItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
-
-class GoalENItem(scrapy.Item):
 	title = scrapy.Field()
 	url = scrapy.Field()
 	image = scrapy.Field()
@@ -23,67 +18,3 @@ class GoalENItem(scrapy.Item):
 	src = scrapy.Field()
 	lang = scrapy.Field()
 
-class ESPNItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	summary = scrapy.Field()
-	tags = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-
-class TalkSportItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	summary = scrapy.Field()
-	tags = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-
-class FifaENItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	summary = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-
-class BeinENItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-
-
-class GreatGoalsItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-	tags = scrapy.Field()
-
-class BleacherItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-	tags = scrapy.Field()
-
-class SkySportsItem(scrapy.Item):
-	title = scrapy.Field()
-	url = scrapy.Field()
-	image = scrapy.Field()
-	datetime = scrapy.Field()
-	src = scrapy.Field()
-	lang = scrapy.Field()
-	summary = scrapy.Field()

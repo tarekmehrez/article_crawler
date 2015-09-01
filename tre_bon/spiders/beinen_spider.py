@@ -1,10 +1,6 @@
 import scrapy
-import json
-import urllib2
 
-from datetime import datetime
-from tre_bon.items import BeinENItem
-from scrapy.http import HtmlResponse
+from tre_bon.items import TreBonItem
 
 # TODO: handle date format
 # TODO: handle endoding and format in tags, summary and titles
@@ -29,7 +25,7 @@ class BeinENpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//li[contains(@class,'content-gallery__item w50')]"):
-			item = BeinENItem()
+			item = TreBonItem()
 
 			item['datetime'] = sel.xpath(".//time/@datetime")[0].extract()
 

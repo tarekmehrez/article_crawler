@@ -1,10 +1,8 @@
 import scrapy
-import json
-import urllib2
 
 from datetime import datetime
-from tre_bon.items import FifaENItem
-from scrapy.http import HtmlResponse
+from tre_bon.items import TreBonItem
+
 
 # TODO: handle date format
 # TODO: handle endoding and format in tags, summary and titles
@@ -41,7 +39,7 @@ class FifaENSpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//li[contains(@class,'dcm-thumblist-item')]"):
-			item = FifaENItem()
+			item = TreBonItem()
 
 			relative_url = sel.xpath(".//h4/a/@href")[0].extract()
 			url = response.urljoin(relative_url)
