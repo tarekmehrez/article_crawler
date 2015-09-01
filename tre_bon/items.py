@@ -78,3 +78,12 @@ class BleacherItem(scrapy.Item):
 	src = scrapy.Field()
 	lang = scrapy.Field()
 	tags = scrapy.Field()
+
+class SkySportsItem(scrapy.Item):
+	title = scrapy.Field()
+	url = scrapy.Field()
+	image = scrapy.Field()
+	datetime = scrapy.Field()
+	src = scrapy.Field()
+	lang = scrapy.Field()
+	summary = scrapy.Field()

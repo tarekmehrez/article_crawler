@@ -11,7 +11,7 @@ from scrapy.http import HtmlResponse
 # TODO: make sure all tags have similar formats (same tags are grouped)
 
 
-class FifaENpider(scrapy.Spider):
+class FifaENSpider(scrapy.Spider):
 	name = 'fifa_en'
 	allowed_domains = ["fifa.com"]
 	start_urls=["http://www.fifa.com/news/library/all-news/index,page=1.htmx",
