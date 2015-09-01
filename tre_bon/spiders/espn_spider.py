@@ -5,7 +5,7 @@ import urllib2
 from tre_bon.items import ESPNItem
 from scrapy.http import HtmlResponse
 
-class GoalENSpider(scrapy.Spider):
+class ESPNSpider(scrapy.Spider):
 	name = 'espn'
 	allowed_domains = ["espnfc.com"]
 	start_urls=["http://www.espnfc.com/news"]
@@ -39,21 +39,3 @@ class GoalENSpider(scrapy.Spider):
 			item['tags'] = tags
 
 			yield item
-
-		# filename = response.url.split("/")[-2] + '.html'
-		# with open(filename, 'wb') as f:
-		# 	f.write(response.body)
-
-		# for sel in response.xpath(".//article"):
-		# 	item = ESPNItem()
-
-		# 	item['url'] = sel.xpath(".//h1/a/@href")[0].extract()
-		# 	item['title'] = sel.xpath(".//h1/a/text()")[0].extract()
-		# 	item['datetime'] = sel.xpath(".//time/@datetime")[0].extract()
-		# 	item['image'] = sel.xpath(".//img/@src")[0].extract()
-		# 	item['src'] = 'espnfc'
-		# 	item['lang'] = 'en'
-
-		# 	item['tags'] = sel.xpath(".//ul[contains(@class,'tags')]/li/a/text()").extract()
-
-		# 	yield item
