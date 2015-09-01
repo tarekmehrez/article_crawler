@@ -59,3 +59,12 @@ class BeinENItem(scrapy.Item):
 	datetime = scrapy.Field()
 	src = scrapy.Field()
 	lang = scrapy.Field()
+
+class GreatGoalsItem(scrapy.Item):
+	title = scrapy.Field()
+	url = scrapy.Field()
+	image = scrapy.Field()
+	datetime = scrapy.Field()
+	src = scrapy.Field()
+	lang = scrapy.Field()
+	tags = scrapy.Field()
