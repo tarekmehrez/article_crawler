@@ -38,7 +38,7 @@ class GoalARSpider(scrapy.Spider):
 			item['url'] = url
 
 			item['src'] = 'goal'
-			item['lang'] = 'en'
+			item['lang'] = 'ar'
 
 			tag = str(sel.xpath(".//strong/text()")[0].extract().encode("utf-8"))
 			tag = re.sub(r'[^\x00-\x7F]+',' ', tag).replace('-','').strip().lower().replace(' ','_')

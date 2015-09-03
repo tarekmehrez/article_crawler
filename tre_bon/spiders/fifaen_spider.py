@@ -48,7 +48,7 @@ class FifaENSpider(scrapy.Spider):
 			item['title'] = sel.xpath(".//h4/a/text()")[0].extract()
 			item['summary'] = sel.xpath(".//img/@ph-data-picture-comment")[0].extract()
 			item['src'] = 'fifa'
-			item['lang'] = 'en'
+			item['lang'] = 'ar'
 			item['image'] = sel.xpath(".//img/@ph-data-picture-url")[0].extract()
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
