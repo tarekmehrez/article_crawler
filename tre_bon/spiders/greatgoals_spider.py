@@ -42,4 +42,6 @@ class GreatGoalspider(scrapy.Spider):
 			return
 		item['image'] = response.xpath(".//div[contains(@id,'the-content')]/p/a/@href")[0].extract()
 		item['tags'] = response.xpath(".//div[contains(@class,'post-tags')]/a/text()").extract()
+		content = response.xpath(".//div[contains(@id,'the-content')]/p/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

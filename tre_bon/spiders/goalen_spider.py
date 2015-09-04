@@ -49,15 +49,10 @@ class GoalENSpider(scrapy.Spider):
 	def parse_article(self, response):
 		item = response.meta['item']
 
-		if not response.xpath(".//img[contains(@class,'article-image')]/@src"):
-			yield item
-		else:
+		if response.xpath(".//img[contains(@class,'article-image')]/@src"):
 			item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
-			self.logger.debug('in parse article')
-			for sel in response.xpath(".//li[contains(@class,'tags')]/a/text()"):
-				tag = str(sel.extract().encode('utf-8'))
-				tag = re.sub(r'[^\x00-\x7F]+',' ', tag).replace('-','').strip().lower().replace(' ','_')
 
-				item['tags'].append(tag)
-
-			yield item
+		item['tags'] = response.xpath(".//li[contains(@class,'tags')]/a/text()").extract()
+		content = response.xpath(".//div[contains(@class,'article-text')]/p/text()").extract() + response.xpath(".//div[contains(@class,'article-text')]/text()").extract()
+		item['content'] = ' '.join(content)
+		yield item

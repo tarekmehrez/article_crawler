@@ -43,5 +43,7 @@ class TalkSportpider(scrapy.Spider):
 		item['image'] = response.xpath(".//div[contains(@class,'field-item even')]/img/@src")[0].extract()
 		self.logger.debug('in parse article')
 		item['tags'] = response.xpath(".//ul[contains(@class,'links')]/li/a/text()").extract()
-
+		item['datetime'] = response.xpath(".//div[contains(@class,'meta submitted')]/text()")[2].extract().replace('|','').strip()
+		content =  response.xpath(".//div[contains(@class,'field-item even')]/p/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

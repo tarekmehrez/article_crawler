@@ -45,4 +45,6 @@ class FilGoalSpider(scrapy.Spider):
 		else:
 			item['image'] = response.xpath(".//div[contains(@id,'ctl00_cphFilGoalMain_genImgOrGallery')]/img/@src")[0].extract()
 		item['tags'] = response.xpath(".//span[contains(@class,'keywordTag ')]/a/text()").extract()
+		content = response.xpath(".//div[contains(@id,'ctl00_cphFilGoalMain_pnlNewsBody')]/p/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

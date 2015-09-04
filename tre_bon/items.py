@@ -17,4 +17,5 @@ class TreBonItem(scrapy.Item):
 	tags = scrapy.Field()
 	src = scrapy.Field()
 	lang = scrapy.Field()
+	content = scrapy.Field()
 

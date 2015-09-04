@@ -41,6 +41,7 @@ class Hihi2Spider(scrapy.Spider):
 	def parse_article(self, response):
 		item = response.meta['item']
 		item['image'] = response.xpath(".//div[contains(@class,'entry-content')]/p/a/@href")[0].extract()
-
 		item['tags'] = response.xpath(".//div[contains(@class,'entry-tags')]/a/text()").extract()
+		content = response.xpath(".//div[contains(@class,'entry-content')]/p/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

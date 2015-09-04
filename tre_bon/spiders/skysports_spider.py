@@ -31,7 +31,7 @@ class SkySportsSpider(scrapy.Spider):
 
 			item['url'] = url
 			item['title'] = sel.xpath(".//h4/a/text()")[0].extract().strip()
-			item['summary'] = sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()")[0].extract()
+			if sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()"): item['summary'] = sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()")[0].extract()
 			item['src'] = 'skysports'
 			item['lang'] = 'en'
 			item['datetime'] =  sel.xpath(".//span[contains(@class,'label__timestamp')]/text()")[0].extract()
@@ -45,4 +45,8 @@ class SkySportsSpider(scrapy.Spider):
 			item['image'] = response.xpath(".//figure/div/div/div/img/@data-src")[0].extract()
 		else:
 			return
+
+		if response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract():
+			content = response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract()
+			item['content'] = ' '.join(content)
 		yield item

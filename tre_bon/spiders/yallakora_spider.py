@@ -54,4 +54,6 @@ class YallaKoraSpider(scrapy.Spider):
 		if response.xpath(".//span[contains(@class,'PortfolioDate')]/text()"):
 			item['datetime'] = response.xpath(".//span[contains(@class,'PortfolioDate')]/text()")[0].extract().strip()
 		item['tags'] = response.xpath(".//ul[contains(@class,'TourTabs floatRight')]/li/a/span/text()").extract()
+		content=   response.xpath(".//div[contains(@class,'articleBody')]/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

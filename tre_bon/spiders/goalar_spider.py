@@ -49,9 +49,11 @@ class GoalARSpider(scrapy.Spider):
 	def parse_article(self, response):
 		item = response.meta['item']
 
-		if not response.xpath(".//img[contains(@class,'article-image')]/@src"):
+		if response.xpath(".//img[contains(@class,'article-image')]/@src"):
 			item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
 
 		item['tags'] = response.xpath(".//li[contains(@class,'tags')]/a/text()").extract()
+		content =  response.xpath(".//div[contains(@class,'article-text')]/span/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item
 

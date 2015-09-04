@@ -24,6 +24,9 @@ class BleacherSpider(scrapy.Spider):
 		for article in articles:
 			item = TreBonItem()
 			item['title'] = article['title']
+
+			url = article['permalink']
+
 			item['url'] = article['permalink']
 
 			item['image'] = article["primary_image_650x440"]
@@ -33,4 +36,11 @@ class BleacherSpider(scrapy.Spider):
 			item['src'] = 'bleacher_report'
 			item['lang'] = 'en'
 			item['tags'] = article['tags']
-			yield item
+			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
+
+
+	def parse_article(self,response):
+		item = response.meta['item']
+		content = response.xpath(".//div[contains(@class,'article_body cf')]/p/text()").extract()
+		item['content'] = ' '.join(content)
+		yield item

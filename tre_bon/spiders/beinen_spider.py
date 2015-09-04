@@ -41,4 +41,6 @@ class BeinENpider(scrapy.Spider):
 	def parse_article(self, response):
 		item = response.meta['item']
 		item['image'] = response.xpath(".//div[contains(@class,'visuel-article_hero')]/img/@src")[0].extract()
+		content = response.xpath(".//main/p/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

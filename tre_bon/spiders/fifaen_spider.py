@@ -63,4 +63,6 @@ class FifaENSpider(scrapy.Spider):
 				item['datetime'] = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
 			else:
 				item['datetime'] = self.datetime
+		content = response.xpath(".//div[contains(@class,'article-body')]/p/text()").extract()
+		item['content'] = ' '.join(content)
 		yield item

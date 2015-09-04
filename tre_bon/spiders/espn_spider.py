@@ -2,6 +2,7 @@ import scrapy
 import json
 import urllib2
 
+from lxml import etree
 from tre_bon.items import TreBonItem
 
 # TODO: handle endoding and format in tags, summary and titles
@@ -34,11 +35,16 @@ class ESPNSpider(scrapy.Spider):
 			item['datetime'] = article["source"]["createDate"]
 			item['src'] = 'espnfc'
 			item['lang'] = 'en'
-			item['summary'] = article["summary"]
+			if 'summary' in article.keys():
+				item['summary'] = article["summary"]
 			tags = []
 			for tag in article["contentCategory"]:
 				tags.append(tag['name'])
 
 			item['tags'] = tags
+
+			tree = etree.HTML(article['body'])
+			content = tree.xpath(".//p/text()")
+			item['content'] = ' '.join(content)
 
 			yield item
