@@ -83,3 +83,16 @@ NEWSPIDER_MODULE = 'tre_bon.spiders'
 #HTTPCACHE_DIR='httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+
+ITEM_PIPELINES = {'tre_bon.pipelines.MongoDBPipeline': 300}
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "tre_bon"
+MONGODB_COLLECTION = "articles"
+
+
+
+
+
