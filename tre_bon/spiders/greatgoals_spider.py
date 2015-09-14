@@ -10,16 +10,7 @@ from tre_bon.items import TreBonItem
 class GreatGoalspider(scrapy.Spider):
 	name = 'greatgoals'
 	allowed_domains = ["101greatgoals.com"]
-	start_urls=["http://www.101greatgoals.com/blog/",
-				"http://www.101greatgoals.com/blog/page/2/",
-				"http://www.101greatgoals.com/blog/page/3/",
-				"http://www.101greatgoals.com/blog/page/4/",
-				"http://www.101greatgoals.com/blog/page/5/",
-				"http://www.101greatgoals.com/blog/page/6/",
-				"http://www.101greatgoals.com/blog/page/7/",
-				"http://www.101greatgoals.com/blog/page/8/",
-				"http://www.101greatgoals.com/blog/page/9/",
-				"http://www.101greatgoals.com/blog/page/10/"]
+	start_urls=["http://www.101greatgoals.com/blog/" + str(i+1) for i in range(10)]
 
 
 	def parse(self,response):

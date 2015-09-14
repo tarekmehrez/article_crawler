@@ -61,9 +61,16 @@ NEWSPIDER_MODULE = 'tre_bon.spiders'
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tre_bon.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'tre_bon.pipelines.ArticlePipeline': 300,
+}
+
+# ITEM_PIPELINES = {'tre_bon.pipelines.MongoDBPipeline': 300}
+
+# MONGODB_SERVER = "localhost"
+# MONGODB_PORT = 27017
+# MONGODB_DB = "tre_bon"
+# MONGODB_COLLECTION = "articles"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -84,13 +91,6 @@ NEWSPIDER_MODULE = 'tre_bon.spiders'
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-
-ITEM_PIPELINES = {'tre_bon.pipelines.MongoDBPipeline': 300}
-
-MONGODB_SERVER = "localhost"
-MONGODB_PORT = 27017
-MONGODB_DB = "tre_bon"
-MONGODB_COLLECTION = "articles"
 
 
 

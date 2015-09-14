@@ -18,4 +18,4 @@ class TreBonItem(scrapy.Item):
 	src = scrapy.Field()
 	lang = scrapy.Field()
 	content = scrapy.Field()
-
+	type = scrapy.Field()

@@ -11,16 +11,7 @@ from tre_bon.items import TreBonItem
 class Hihi2Spider(scrapy.Spider):
 	name = 'hihi2'
 	allowed_domains = ["hihi2.com"]
-	start_urls=["http://hihi2.com/category/football-news",
-				"http://hihi2.com/category/football-news/page/2",
-				"http://hihi2.com/category/football-news/page/3",
-				"http://hihi2.com/category/football-news/page/4",
-				"http://hihi2.com/category/football-news/page/5",
-				"http://hihi2.com/category/football-news/page/6",
-				"http://hihi2.com/category/football-news/page/7",
-				"http://hihi2.com/category/football-news/page/8",
-				"http://hihi2.com/category/football-news/page/9",
-				"http://hihi2.com/category/football-news/page/10",]
+	start_urls=["http://hihi2.com/category/football-news/page/" + str(i+1) for i in range(10)]
 
 
 	def parse(self,response):
@@ -35,7 +26,7 @@ class Hihi2Spider(scrapy.Spider):
 			item['summary'] = sel.xpath(".//div[contains(@class,'entry-excerpt')]/text()")[0].extract()
 			item['src'] = 'hihi2'
 			item['lang'] = 'ar'
-			item['datetime'] = sel.xpath(".//span[contains(@class,'entry-date')]/text()")[0].extract().replace('[','').replace(']','').strip()
+			item['datetime'] = sel.xpath(".//span[contains(@class,'entry-date')]/text()")[0].extract().replace('[','').replace(']','')
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

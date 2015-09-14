@@ -12,16 +12,8 @@ from tre_bon.items import TreBonItem
 class GoalENSpider(scrapy.Spider):
 	name = 'goal_en'
 	# allowed_domains = ["goal.com/en"]
-	start_urls=["http://www.goal.com/en/news/archive/1",
-				"http://www.goal.com/en/news/archive/2",
-				"http://www.goal.com/en/news/archive/3",
-				"http://www.goal.com/en/news/archive/4",
-				"http://www.goal.com/en/news/archive/5",
-				"http://www.goal.com/en/news/archive/6",
-				"http://www.goal.com/en/news/archive/7",
-				"http://www.goal.com/en/news/archive/8",
-				"http://www.goal.com/en/news/archive/9",
-				"http://www.goal.com/en/news/archive/10"]
+	start_urls=["http://www.goal.com/en/news/archive/" + str(i+1) for i in range(10)]
+
 
 	def parse(self,response):
 		for sel in response.xpath("//div[contains(@id,'news-archive')]//ul/li"):
@@ -40,8 +32,7 @@ class GoalENSpider(scrapy.Spider):
 			item['src'] = 'goal'
 			item['lang'] = 'en'
 
-			tag = str(sel.xpath(".//strong/text()")[0].extract().encode("utf-8"))
-			tag = re.sub(r'[^\x00-\x7F]+',' ', tag).replace('-','').strip().lower().replace(' ','_')
+			tag = sel.xpath(".//strong/text()")[0].extract().encode("utf-8")
 			item['tags'] = [tag]
 
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
@@ -53,6 +44,9 @@ class GoalENSpider(scrapy.Spider):
 			item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
 
 		item['tags'] = response.xpath(".//li[contains(@class,'tags')]/a/text()").extract()
-		content = response.xpath(".//div[contains(@class,'article-text')]/p/text()").extract() + response.xpath(".//div[contains(@class,'article-text')]/text()").extract()
+		content = 		response.xpath(".//div[contains(@class,'article-text')]/p/text()").extract() \
+					+ 	response.xpath(".//div[contains(@class,'article-text')]/text()").extract() \
+					+	response.xpath(".//div[@class='article-text']/p/span/text()").extract()
+
 		item['content'] = ' '.join(content)
 		yield item

@@ -11,15 +11,7 @@ from tre_bon.items import TreBonItem
 class FilGoalSpider(scrapy.Spider):
 	name = 'filgoal'
 	allowed_domains = ["filgoal.com"]
-	start_urls=["http://www.filgoal.com/arabic/allnews.aspx?CatID=1",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#3",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#4",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#5",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#6",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#7",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#8",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#9",
-				"http://www.filgoal.com/arabic/allnews.aspx?CatID=1#10"]
+	start_urls=["http://www.filgoal.com/arabic/allnews.aspx?CatID=1#" + str(i+1) for i in range(10)]
 
 
 	def parse(self,response):
@@ -31,11 +23,11 @@ class FilGoalSpider(scrapy.Spider):
 			url = response.urljoin(relative_url)
 
 			item['url'] = url
-			item['title'] = sel.xpath(".//span[contains(@class,'ANT')]/text()")[0].extract().strip()
-			item['summary'] = sel.xpath(".//span[contains(@class,'ANB')]/text()")[0].extract().strip()
+			item['title'] = sel.xpath(".//span[contains(@class,'ANT')]/text()")[0].extract()
+			item['summary'] = sel.xpath(".//span[contains(@class,'ANB')]/text()")[0].extract()
 			item['src'] = 'filgoal'
 			item['lang'] = 'ar'
-			item['datetime'] = sel.xpath(".//div[contains(@class,'ANTInfo')]/span/text()")[0].extract().strip()
+			item['datetime'] = sel.xpath(".//div[contains(@class,'ANTInfo')]/span/text()")[0].extract()
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

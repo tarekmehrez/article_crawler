@@ -10,16 +10,7 @@ from tre_bon.items import TreBonItem
 class SkySportsSpider(scrapy.Spider):
 	name = 'skysports'
 	allowed_domains = ["skysports.com"]
-	start_urls=["http://www.skysports.com/football/news",
-				"http://www.skysports.com/football/news/more/2",
-				"http://www.skysports.com/football/news/more/3",
-				"http://www.skysports.com/football/news/more/4",
-				"http://www.skysports.com/football/news/more/5",
-				"http://www.skysports.com/football/news/more/6",
-				"http://www.skysports.com/football/news/more/7",
-				"http://www.skysports.com/football/news/more/8",
-				"http://www.skysports.com/football/news/more/9",
-				"http://www.skysports.com/football/news/more/10"]
+	start_urls=["http://www.skysports.com/football/news/more/" + str(i+1) for i in range(10)]
 
 
 	def parse(self,response):
@@ -30,7 +21,7 @@ class SkySportsSpider(scrapy.Spider):
 			url = sel.xpath(".//h4/a/@href")[0].extract()
 
 			item['url'] = url
-			item['title'] = sel.xpath(".//h4/a/text()")[0].extract().strip()
+			item['title'] = sel.xpath(".//h4/a/text()")[0].extract()
 			if sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()"): item['summary'] = sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()")[0].extract()
 			item['src'] = 'skysports'
 			item['lang'] = 'en'

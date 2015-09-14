@@ -10,16 +10,7 @@ from tre_bon.items import TreBonItem
 class TalkSportpider(scrapy.Spider):
 	name = 'talksport'
 	allowed_domains = ["talksport.com"]
-	start_urls=["http://talksport.com/football",
-				"http://talksport.com/football?page=1",
-				"http://talksport.com/football?page=2",
-				"http://talksport.com/football?page=3",
-				"http://talksport.com/football?page=4",
-				"http://talksport.com/football?page=5",
-				"http://talksport.com/football?page=7",
-				"http://talksport.com/football?page=8",
-				"http://talksport.com/football?page=9",
-				"http://talksport.com/football?page=10"]
+	start_urls=["http://talksport.com/football?page=" + str(i+1) for i in range(10)]
 
 
 	def parse(self,response):
@@ -41,7 +32,6 @@ class TalkSportpider(scrapy.Spider):
 		item = response.meta['item']
 
 		item['image'] = response.xpath(".//div[contains(@class,'field-item even')]/img/@src")[0].extract()
-		self.logger.debug('in parse article')
 		item['tags'] = response.xpath(".//ul[contains(@class,'links')]/li/a/text()").extract()
 		item['datetime'] = response.xpath(".//div[contains(@class,'meta submitted')]/text()")[2].extract().replace('|','').strip()
 		content =  response.xpath(".//div[contains(@class,'field-item even')]/p/text()").extract()

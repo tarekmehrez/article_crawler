@@ -11,27 +11,8 @@ from tre_bon.items import TreBonItem
 class CairoKoraSpider(scrapy.Spider):
 	name = 'cairokora'
 	allowed_domains = ["cairokora.com"]
-	start_urls=["http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/2",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/3",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/4",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/5",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/6",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/7",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/8",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/9",
-				"http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/10"
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/2",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/3",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/4",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/5",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/6",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/7",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/8",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/9",
-				"http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/10",]
-
+	start_urls=		["http://www.cairokora.com/category/%D9%83%D8%B1%D8%A9-%D9%85%D8%B5%D8%B1%D9%8A%D8%A9/page/" + str(i+1) for i in range(10)] \
+				+	["http://www.cairokora.com/category/%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85/page/" + str(i+1) for i in range(10)]
 
 	def parse(self,response):
 
