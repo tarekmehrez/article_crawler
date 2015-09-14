@@ -25,7 +25,7 @@ class YallaKoraSpider(scrapy.Spider):
 
 			item['url'] = url
 			item['title'] = sel.xpath(".//a[contains(@class,'NewsTitle')]/text()")[0].extract().strip()
-			item['src'] = 'yallkora'
+			item['src'] = 'yallakora'
 			item['lang'] = 'ar'
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
