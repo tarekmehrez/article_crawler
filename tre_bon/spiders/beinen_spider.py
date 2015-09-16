@@ -9,7 +9,7 @@ from tre_bon.items import TreBonItem
 
 class BeinENpider(scrapy.Spider):
 	name = 'bein_en'
-	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(10)]
+	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(2)]
 
 
 	def parse(self,response):

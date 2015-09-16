@@ -1,5 +1,5 @@
 *.pyc
 tre_bon/spiders/*.pyc
 tre_bon/*.pyc
-*.json
+data/*
 *.html

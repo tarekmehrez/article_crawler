@@ -7,12 +7,16 @@
 
 import pymongo
 import re
-
+import logging
+import sys
 
 from scrapy.conf import settings
+from scrapy.exceptions import DropItem
 
 
 class ArticlePipeline(object):
+
+
 	def __init__(self):
 		self.datedict = {	'يناير':	1,
 							'فبراير':	2,
@@ -134,7 +138,7 @@ class ArticlePipeline(object):
 		return item
 
 
-class MongoDBPipeline(object):
+class MongoArticlesPipeline(object):
 
 	def __init__(self):
 		connection = pymongo.MongoClient(
@@ -142,11 +146,11 @@ class MongoDBPipeline(object):
 			settings['MONGODB_PORT']
 		)
 		db = connection[settings['MONGODB_DB']]
-		self.collection = db[settings['MONGODB_COLLECTION']]
+		self.articles = db[settings['MONGODB_COLLECTION']]
+		self.logger = logging.getLogger()
 
 	def process_item(self, item, spider):
-		valid = True
-
-		self.collection.insert(dict(item))
-		# log.msg("Question added to MongoDB database!", level=log.DEBUG, spider=spider)
-		return item
+		if self.articles.find({'url': item['url']}).count() > 0:
+			raise DropItem("Duplicate item found and dropped")
+		else:
+			self.articles.insert(dict(item))
