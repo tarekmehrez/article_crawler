@@ -32,7 +32,7 @@ class BleacherSpider(scrapy.Spider):
 			item['image'] = article["primary_image_650x440"]
 
 
-			item['datetime'] = article["publishedAt"]
+			item['date'] = article["publishedAt"]
 			item['src'] = 'bleacher_report'
 			item['lang'] = 'en'
 			item['tags'] = article['tags']

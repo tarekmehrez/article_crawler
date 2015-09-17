@@ -22,7 +22,7 @@ class GoalARSpider(scrapy.Spider):
 			item['title'] = article_info.xpath(".//a/text()")[0].extract()
 			if sel.xpath(".//div[contains(@class,'articleSummary')]/text()"):
 				item['summary'] = sel.xpath(".//div[contains(@class,'articleSummary')]/text()")[0].extract()
-			item['datetime'] = str(sel.xpath("../../div[contains(@class,'date')]/text()")[0].extract().encode('utf8')) + str(sel.xpath(".//span")[1].xpath(".//text()")[0].extract().encode('utf8'))
+			item['date'] = str(sel.xpath("../../div[contains(@class,'date')]/text()")[0].extract().encode('utf8')) + str(sel.xpath(".//span")[1].xpath(".//text()")[0].extract().encode('utf8'))
 
 			relative_url = str(article_info.xpath(".//a/@href")[0].extract())
 			url = response.urljoin(relative_url).replace("/en/news/archive","")

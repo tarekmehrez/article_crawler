@@ -27,7 +27,7 @@ class FilGoalSpider(scrapy.Spider):
 			item['summary'] = sel.xpath(".//span[contains(@class,'ANB')]/text()")[0].extract()
 			item['src'] = 'filgoal'
 			item['lang'] = 'ar'
-			item['datetime'] = sel.xpath(".//div[contains(@class,'ANTInfo')]/span/text()")[0].extract()
+			item['date'] = sel.xpath(".//div[contains(@class,'ANTInfo')]/span/text()")[0].extract()
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

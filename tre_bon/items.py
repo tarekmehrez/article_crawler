@@ -12,7 +12,7 @@ class TreBonItem(scrapy.Item):
 	title = scrapy.Field()
 	url = scrapy.Field()
 	image = scrapy.Field()
-	datetime = scrapy.Field()
+	date = scrapy.Field()
 	summary = scrapy.Field()
 	tags = scrapy.Field()
 	src = scrapy.Field()

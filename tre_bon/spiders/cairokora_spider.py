@@ -37,7 +37,7 @@ class CairoKoraSpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
-		item['datetime'] =  response.xpath(".//p[contains(@class,'writer')]/text()")[0].extract()
+		item['date'] =  response.xpath(".//p[contains(@class,'writer')]/text()")[0].extract()
 		item['image'] = response.xpath(".//div[contains(@class,'article_img')]/img/@src")[0].extract()
 		item['tags'] = response.xpath(".//div[contains(@class,'tags clearfix')]/ul/a/li/text()").extract()
 

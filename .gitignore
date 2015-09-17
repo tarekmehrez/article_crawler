@@ -3,3 +3,4 @@ tre_bon/spiders/*.pyc
 tre_bon/*.pyc
 data/*
 *.html
+logs/*

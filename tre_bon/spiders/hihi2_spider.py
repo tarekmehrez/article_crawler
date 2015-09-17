@@ -26,7 +26,7 @@ class Hihi2Spider(scrapy.Spider):
 			item['summary'] = sel.xpath(".//div[contains(@class,'entry-excerpt')]/text()")[0].extract()
 			item['src'] = 'hihi2'
 			item['lang'] = 'ar'
-			item['datetime'] = sel.xpath(".//span[contains(@class,'entry-date')]/text()")[0].extract().replace('[','').replace(']','')
+			item['date'] = sel.xpath(".//span[contains(@class,'entry-date')]/text()")[0].extract().replace('[','').replace(']','')
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

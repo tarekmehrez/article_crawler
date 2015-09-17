@@ -1,12 +1,6 @@
 import scrapy
 
-from datetime import datetime
 from tre_bon.items import TreBonItem
-
-
-# TODO: handle date format
-# TODO: handle endoding and format in tags, summary and titles
-# TODO: make sure all tags have similar formats (same tags are grouped)
 
 
 class FifaENSpider(scrapy.Spider):
@@ -14,9 +8,6 @@ class FifaENSpider(scrapy.Spider):
 	allowed_domains = ["fifa.com"]
 	start_urls=["http://www.fifa.com/news/library/all-news/index,page=" + str(i+1) + ".htmx" for i in range(20)]
 
-
-	def __init__(self):
-		self.datetime=''
 
 	def parse(self,response):
 
@@ -37,14 +28,8 @@ class FifaENSpider(scrapy.Spider):
 	def parse_article(self, response):
 		item = response.meta['item']
 
-		if response.xpath(".//time/@datetime"):
-			item['datetime'] = response.xpath(".//time/@datetime")[0].extract()
-			self.datetime = item['datetime']
-		else:
-			if not self.datetime:
-				item['datetime'] = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
-			else:
-				item['datetime'] = self.datetime
+		if response.xpath(".//time/@date"):
+			item['date'] = response.xpath(".//time/@date")[0].extract()
 		content = response.xpath(".//div[contains(@class,'article-body')]/p/text()").extract()
 
 		if not content:

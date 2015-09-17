@@ -24,13 +24,13 @@ NEWSPIDER_MODULE = 'tre_bon.spiders'
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY=3
+# DOWNLOAD_DELAY=3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN=16
 #CONCURRENT_REQUESTS_PER_IP=16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED=False
+# COOKIES_ENABLED=False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED=False
@@ -55,15 +55,15 @@ COOKIES_ENABLED=False
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
-EXTENSIONS = {
-   'scrapy.telnet.TelnetConsole': None,
-}
+# EXTENSIONS = {
+#    'scrapy.telnet.TelnetConsole': None,
+# }
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 	'tre_bon.pipelines.ArticlePipeline': 300,
-	'tre_bon.pipelines.MongoArticlesPipeline': 400
+	# 'tre_bon.pipelines.MongoArticlesPipeline': 400
 }
 
 # ITEM_PIPELINES = {'tre_bon.pipelines.MongoDBPipeline': 300}

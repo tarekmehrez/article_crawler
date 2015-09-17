@@ -1,5 +1,7 @@
 import scrapy
+import re
 
+from datetime import datetime
 from tre_bon.items import TreBonItem
 
 # TODO: handle date format
@@ -9,7 +11,7 @@ from tre_bon.items import TreBonItem
 
 class BeinENpider(scrapy.Spider):
 	name = 'bein_en'
-	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(2)]
+	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(10)]
 
 
 	def parse(self,response):
@@ -17,7 +19,8 @@ class BeinENpider(scrapy.Spider):
 		for sel in response.xpath(".//li[contains(@class,'content-gallery__item w50')]"):
 			item = TreBonItem()
 
-			item['datetime'] = sel.xpath(".//time/@datetime")[0].extract()
+			item['date'] = sel.xpath(".//time/@datetime")[0].extract()
+
 
 			relative_url = sel.xpath(".//figcaption/a/@href")[0].extract()
 			url = response.urljoin(relative_url)

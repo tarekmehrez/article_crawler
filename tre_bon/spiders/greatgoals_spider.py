@@ -28,7 +28,7 @@ class GreatGoalspider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
-		item['datetime'] = response.xpath(".//div[contains(@class,'post-update updated')]/text()")[0].extract()
+		item['date'] = response.xpath(".//div[contains(@class,'post-update updated')]/text()")[0].extract()
 		if not response.xpath(".//div[contains(@id,'the-content')]/p/a/@href"):
 			return
 		item['image'] = response.xpath(".//div[contains(@id,'the-content')]/p/a/@href")[0].extract()

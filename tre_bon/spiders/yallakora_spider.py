@@ -34,7 +34,7 @@ class YallaKoraSpider(scrapy.Spider):
 
 		item['image'] = response.xpath(".//div[contains(@class,'ArticleIMG')]/img/@src")[0].extract()
 		if response.xpath(".//span[contains(@class,'PortfolioDate')]/text()"):
-			item['datetime'] = response.xpath(".//span[contains(@class,'PortfolioDate')]/text()")[0].extract()
+			item['date'] = response.xpath(".//span[contains(@class,'PortfolioDate')]/text()")[0].extract()
 		item['tags'] = response.xpath(".//ul[contains(@class,'TourTabs floatRight')]/li/a/span/text()").extract()
 		content=   response.xpath(".//div[contains(@class,'articleBody')]/text()").extract()
 		item['content'] = ' '.join(content)

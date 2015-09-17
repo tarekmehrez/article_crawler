@@ -12,7 +12,7 @@ import sys
 
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
-
+from datetime import datetime
 
 class ArticlePipeline(object):
 
@@ -57,7 +57,7 @@ class ArticlePipeline(object):
 
 			if isinstance(item[key],str): item[key] = item[key].strip()
 
-			if key in ['title','summary','content','datetime']:
+			if key in ['title','summary','content','date']:
 				try:
 					item[key] = str(item[key].encode('utf8'))
 				except:
@@ -65,78 +65,128 @@ class ArticlePipeline(object):
 
 			item[key] = re.sub( '\s+', ' ', item[key])
 
+		if item['src'] == 'bein':
+			date = item['date'].split('+')[0]
+			date = re.sub('[a-zA-Z]',' ',date)
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
+
+		if item['src'] == 'bleacher_report':
+			date = item['date']
+			date = re.sub('[a-zA-Z]',' ',date).strip()
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
+
 		if item['src'] == "cairokora":
 
-			date = item['datetime'].split(",")[1]
+			date = item['date'].split(",")[1]
 
 			day = date.split(" ")[0]
 			month = self.datedict[date.split(" ")[1]]
 			year = date.split(" ")[2]
 			time = date.split(" ")[4]
-			item['datetime'] = "%s-%s-%s %s" % (year,month,day,time)
+			date = "%s-%s-%s %s" % (year,month,day,time)
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
+		if item['src'] == "espnfc":
+			date = item['date']
+			item['date'] = datetime.fromtimestamp(int(date) / 1e3)
+
+		if item['src'] == "fifa":
+			item['date'] = datetime.now()
 
 		if item['src'] == "goal":
 			if item['lang'] == 'en':
-				date = item['datetime'].split(",")[1].strip()
+				date = item['date'].split(",")[1].strip()
 				day = date.split(" ")[1]
 				month = self.datedict[date.split(" ")[0]]
 
-				date = item['datetime'].split(",")[2].strip()
-
+				date = item['date'].split(",")[2].strip()
 				year = date[:4]
 				time = date[4:]
 			else:
-				date = item['datetime'].split("،")[1].strip()
+				date = item['date'].split("،")[1].strip()
 				day = date.split(" ")[0]
 				month = self.datedict[date.split(" ")[1]]
 
-				date = item['datetime'].split("،")[2].strip()
+				date = item['date'].split("،")[2].strip()
 
 				year = date[:4]
 				time = date[4:].split(" ")[0]
 
-			item['datetime'] = "%s-%s-%s" % (year,month,day,time)
+			date = "%s-%s-%s %s" % (year,month,day,time)
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
 
 		if item['src'] == 'greatgoals':
-			date = item['datetime'].strip()
+			date = item['date'].strip()
 
 			month = self.datedict[date.split(" ")[0]]
 			day = date.split(" ")[1].split(",")[0].strip()
 			year = date.split(",")[1].strip()
-			item['datetime'] = "%s-%s-%s" % (year,month,day)
+			date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M:%S'))
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
 
 		if item['src'] == 'talksport':
 
-			date = item['datetime']
+			date = item['date']
 			day = date.split(",")[1].strip().split(" ")[1]
 			month = self.datedict[date.split(",")[1].strip().split(" ")[0]]
-			year = item['datetime'].split(",")[2].strip()
-			item['datetime'] = "%s-%s-%s" % (year,month,day)
+			year = item['date'].split(",")[2].strip()
+			date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M:%S'))
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
 
 		if item['src'] == 'hihi2':
-			item['datetime'] = item['datetime'].replace('ص','AM').replace('م','PM').strip()
+			date = item['date'].replace('ص','AM').replace('م','PM').strip()
+			if date.split(' ')[3] == 'PM':
+				old = date.split(' ')[2]
+				old_arr = date.split(' ')[2].split(":")
+				new = int(old_arr[0]) + 12
+				result = ':'.join([str(new),old_arr[1]])
+				date = date.replace(old,result)
+			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
+			item['date'] = datetime.strptime(date,  "%Y/%m/%d %H:%M")
 
 		if item['src'] == 'skysports':
-			item['datetime'] = item['datetime'].replace('am',' AM').replace('pm',' PM').strip()
+			date = item['date'].replace('am',' AM').replace('pm',' PM').strip()
+			if date.split(' ')[2] == 'PM':
+				old = date.split(' ')[1]
+				old_arr = date.split(' ')[1].split(":")
+				new = int(old_arr[0]) + 12
+				result = ':'.join([str(new),old_arr[1]])
+				date = date.replace(old,result)
+			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
+			item['date'] = datetime.strptime(date,  "%d/%m/%y %H:%M")
 
+		if item['src'] == 'yallakora':
+			if 'date' in item:
+				date = item['date'].strip()
 
-		if item['src'] == 'yallakora' and 'datetime' in item:
-			date = item['datetime'].strip()
+				day = date.split(" ")[0]
 
-			day = date.split(" ")[0]
+				month = self.datedict[date.split(" ")[1]]
+				year = date.split(" ")[2]
 
-			month = self.datedict[date.split(" ")[1]]
-			year = date.split(" ")[2]
+				time = ' '.join(date.split(" ")[4:]).replace('ص','AM').replace('م','PM').strip()
 
-			time = ' '.join(date.split(" ")[4:]).replace('ص','AM').replace('م','PM').strip()
+				date = "%s-%s-%s %s" % (year,month,day,time)
 
-			item['datetime'] = "%s-%s-%s %s" % (year,month,day,time)
+				if date.split(' ')[2] == 'PM':
+					old = date.split(' ')[1]
+					old_arr = date.split(' ')[1].split(":")
+					new = int(old_arr[0]) + 12
+					result = ':'.join([str(new),old_arr[1]])
+					date = date.replace(old,result)
 
+				date = date.replace("AM","").replace("PM","").strip()
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
+			else:
+				item['date'] = datetime.now()
+
+		if 'date' not in item:
+			item['date'] = datetime.now()
 		return item
-
 
 class MongoArticlesPipeline(object):
 
@@ -150,7 +200,6 @@ class MongoArticlesPipeline(object):
 		self.logger = logging.getLogger()
 
 	def process_item(self, item, spider):
-		if self.articles.find({'url': item['url']}).count() > 0:
-			raise DropItem("Duplicate item found and dropped")
-		else:
+		if self.articles.find({'url': item['url']}).count() == 0:
 			self.articles.insert(dict(item))
+			return item

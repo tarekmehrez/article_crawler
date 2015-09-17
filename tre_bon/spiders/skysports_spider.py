@@ -25,7 +25,7 @@ class SkySportsSpider(scrapy.Spider):
 			if sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()"): item['summary'] = sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()")[0].extract()
 			item['src'] = 'skysports'
 			item['lang'] = 'en'
-			item['datetime'] =  sel.xpath(".//span[contains(@class,'label__timestamp')]/text()")[0].extract()
+			item['date'] =  sel.xpath(".//span[contains(@class,'label__timestamp')]/text()")[0].extract()
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):
