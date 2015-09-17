@@ -50,13 +50,20 @@ class ArticlePipeline(object):
 
 		for key in item:
 
+			# fixing => removing trailing spaces, lowercasing and encoding (for arabic tags)
+
+			# fixing tags
 			if key == 'tags':
 				for count,tag in enumerate(item['tags']):
 					item['tags'][count] = str(tag.strip().lower().encode('utf8'))
 				continue
 
+			# fixing all textual attributes
+
+
 			if isinstance(item[key],str): item[key] = item[key].strip()
 
+			# encoding textual attributes, date again in case of arabic since it contains months and days in alphabets
 			if key in ['title','summary','content','date']:
 				try:
 					item[key] = str(item[key].encode('utf8'))
@@ -65,6 +72,8 @@ class ArticlePipeline(object):
 
 			item[key] = re.sub( '\s+', ' ', item[key])
 
+
+		# converting different (customized) date formats to datetime python format
 		if item['src'] == 'bein':
 			date = item['date'].split('+')[0]
 			date = re.sub('[a-zA-Z]',' ',date)
@@ -184,10 +193,26 @@ class ArticlePipeline(object):
 			else:
 				item['date'] = datetime.now()
 
+		# in case we failed to find any date for the article, save the article with the current datetime
 		if 'date' not in item:
 			item['date'] = datetime.now()
 		return item
 
+# yet another duplicates filer, double safety
+class DuplicatesPipeline(object):
+
+	def __init__(self):
+		self.urls_seen = set()
+
+	def process_item(self, item, spider):
+		if item['url'] in self.urls_seen:
+			raise DropItem("Duplicate item found, ignored by duplicate pipeline")
+		else:
+			self.urls_seen.add(item['url'])
+			return item
+
+
+# read items, check if they are not already in db, then add them.
 class MongoArticlesPipeline(object):
 
 	def __init__(self):
@@ -203,3 +228,5 @@ class MongoArticlesPipeline(object):
 		if self.articles.find({'url': item['url']}).count() == 0:
 			self.articles.insert(dict(item))
 			return item
+		else:
+			spider.close_down = True

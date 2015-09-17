@@ -3,15 +3,20 @@ import re
 
 from datetime import datetime
 from tre_bon.items import TreBonItem
+from scrapy.exceptions import CloseSpider
 
 # TODO: handle date format
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
 
 
+
+
 class BeinENpider(scrapy.Spider):
+
+
 	name = 'bein_en'
-	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(10)]
+	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(2)]
 
 
 	def parse(self,response):
