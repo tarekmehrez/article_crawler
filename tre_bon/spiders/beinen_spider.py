@@ -16,7 +16,7 @@ class BeinENpider(scrapy.Spider):
 
 
 	name = 'bein_en'
-	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(2)]
+	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(5)]
 
 
 	def parse(self,response):

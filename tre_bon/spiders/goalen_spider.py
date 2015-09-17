@@ -12,7 +12,7 @@ from tre_bon.items import TreBonItem
 class GoalENSpider(scrapy.Spider):
 	name = 'goal_en'
 	# allowed_domains = ["goal.com/en"]
-	start_urls=["http://www.goal.com/en/news/archive/" + str(i+1) for i in range(10)]
+	start_urls=["http://www.goal.com/en/news/archive/" + str(i+1) for i in range(5)]
 
 
 	def parse(self,response):

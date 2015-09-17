@@ -11,8 +11,8 @@ from tre_bon.items import TreBonItem
 class YallaKoraSpider(scrapy.Spider):
 	name = 'yallakora'
 	allowed_domains = ["yallakora.com"]
-	start_urls= 	["http://www.yallakora.com/News/LoadMoreCategory.aspx?page=" + str(i+1) + "&newsregion=1&type=26" 	for i in range(10)] \
-				+ 	["http://www.yallakora.com/News/LoadMoreCategory.aspx?page=" + str(i+1) + "&newsregion=1&type=1" 	for i in range(10)]
+	start_urls= 	["http://www.yallakora.com/News/LoadMoreCategory.aspx?page=" + str(i+1) + "&newsregion=1&type=26" 	for i in range(5)] \
+				+ 	["http://www.yallakora.com/News/LoadMoreCategory.aspx?page=" + str(i+1) + "&newsregion=1&type=1" 	for i in range(5)]
 
 
 	def parse(self,response):

@@ -11,7 +11,7 @@ from tre_bon.items import TreBonItem
 class FilGoalSpider(scrapy.Spider):
 	name = 'filgoal'
 	allowed_domains = ["filgoal.com"]
-	start_urls=["http://www.filgoal.com/arabic/allnews.aspx?CatID=1#" + str(i+1) for i in range(10)]
+	start_urls=["http://www.filgoal.com/arabic/allnews.aspx?CatID=1#" + str(i+1) for i in range(20)]
 
 
 	def parse(self,response):

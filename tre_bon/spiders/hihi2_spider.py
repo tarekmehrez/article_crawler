@@ -11,7 +11,7 @@ from tre_bon.items import TreBonItem
 class Hihi2Spider(scrapy.Spider):
 	name = 'hihi2'
 	allowed_domains = ["hihi2.com"]
-	start_urls=["http://hihi2.com/category/football-news/page/" + str(i+1) for i in range(10)]
+	start_urls=["http://hihi2.com/category/football-news/page/" + str(i+1) for i in range(5)]
 
 
 	def parse(self,response):

@@ -6,7 +6,7 @@ from tre_bon.items import TreBonItem
 class FifaENSpider(scrapy.Spider):
 	name = 'fifa_en'
 	allowed_domains = ["fifa.com"]
-	start_urls=["http://www.fifa.com/news/library/all-news/index,page=" + str(i+1) + ".htmx" for i in range(20)]
+	start_urls=["http://www.fifa.com/news/library/all-news/index,page=" + str(i+1) + ".htmx" for i in range(5)]
 
 
 	def parse(self,response):

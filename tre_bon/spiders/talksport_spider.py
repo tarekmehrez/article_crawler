@@ -10,7 +10,7 @@ from tre_bon.items import TreBonItem
 class TalkSportpider(scrapy.Spider):
 	name = 'talksport'
 	allowed_domains = ["talksport.com"]
-	start_urls=["http://talksport.com/football?page=" + str(i+1) for i in range(10)]
+	start_urls=["http://talksport.com/football?page=" + str(i+1) for i in range(5)]
 
 
 	def parse(self,response):

@@ -221,12 +221,12 @@ class MongoArticlesPipeline(object):
 			settings['MONGODB_PORT']
 		)
 		db = connection[settings['MONGODB_DB']]
-		self.articles = db[settings['MONGODB_COLLECTION']]
+		self.feed_items = db[settings['MONGODB_COLLECTION']]
 		self.logger = logging.getLogger()
 
 	def process_item(self, item, spider):
-		if self.articles.find({'url': item['url']}).count() == 0:
-			self.articles.insert(dict(item))
+		if self.feed_items.find({'url': item['url']}).count() == 0:
+			self.feed_items.insert(dict(item))
 			return item
 		else:
 			spider.close_down = True
