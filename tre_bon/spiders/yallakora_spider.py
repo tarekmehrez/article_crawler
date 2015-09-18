@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 
 # TODO: handle date format
@@ -18,7 +18,7 @@ class YallaKoraSpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//li[contains(@class,'ClipItem')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			relative_url = sel.xpath(".//a[contains(@class,'NewsTitle')]/@href")[0].extract()
 			url = response.urljoin(relative_url)

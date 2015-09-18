@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 
 # TODO: handle date format
@@ -17,7 +17,7 @@ class Hihi2Spider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//div[contains(@id,'content-loop')]/div[starts-with(@id,'post-')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			url = sel.xpath(".//h2/a/@href")[0].extract()
 

@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 
 
@@ -14,7 +14,7 @@ class FifaARSpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//li[contains(@class,'dcm-thumblist-item')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			relative_url = sel.xpath(".//h4/a/@href")[0].extract()
 			url = response.urljoin(relative_url)

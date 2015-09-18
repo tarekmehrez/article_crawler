@@ -2,7 +2,7 @@ import scrapy
 import re
 
 from datetime import datetime
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 from scrapy.exceptions import CloseSpider
 
 # TODO: handle date format
@@ -22,7 +22,7 @@ class BeinENpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//li[contains(@class,'content-gallery__item w50')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			item['date'] = sel.xpath(".//time/@datetime")[0].extract()
 

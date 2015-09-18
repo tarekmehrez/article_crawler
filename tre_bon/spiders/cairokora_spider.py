@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 
 # TODO: handle date format
@@ -17,7 +17,7 @@ class CairoKoraSpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//div[contains(@class,'slider_bottom clearfix')]/div[starts-with(@class,'section')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			url = sel.xpath(".//a[contains(@class,'title')]/@href")[0].extract()
 			item['url'] = url

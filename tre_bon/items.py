@@ -8,7 +8,7 @@
 import scrapy
 
 
-class TreBonItem(scrapy.Item):
+class ArticleItem(scrapy.Item):
 	title = scrapy.Field()
 	url = scrapy.Field()
 	image = scrapy.Field()
@@ -18,4 +18,15 @@ class TreBonItem(scrapy.Item):
 	src = scrapy.Field()
 	lang = scrapy.Field()
 	content = scrapy.Field()
+	type = scrapy.Field()
+
+class VideoItem(scrapy.Item):
+	title = scrapy.Field()
+	url = scrapy.Field()
+	date = scrapy.Field()
+	src = scrapy.Field()
+	lang = scrapy.Field()
+	preview_image = scrapy.Field()
+	embed_code = scrapy.Field()
+	embed_url = scrapy.Field()
 	type = scrapy.Field()

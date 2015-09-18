@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 
 # TODO: handle date format
@@ -17,7 +17,7 @@ class FilGoalSpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//div[contains(@class,'AllNews SeeAlso')]/ul/li"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			relative_url = sel.xpath(".//a/@href")[0].extract()
 			url = response.urljoin(relative_url)

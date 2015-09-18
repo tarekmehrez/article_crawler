@@ -2,7 +2,7 @@ import scrapy
 import re
 
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
@@ -16,7 +16,7 @@ class GoalARSpider(scrapy.Spider):
 
 	def parse(self,response):
 		for sel in response.xpath("//div[contains(@id,'news-archive')]//ul/li"):
-			item = TreBonItem()
+			item = ArticleItem()
 			article_info = sel.xpath(".//div[contains(@class,'articleInfo')]")[0]
 
 			item['title'] = article_info.xpath(".//a/text()")[0].extract()

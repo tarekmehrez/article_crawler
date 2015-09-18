@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 # TODO: handle date format
 # TODO: handle endoding and format in tags, summary and titles
@@ -16,7 +16,7 @@ class GreatGoalspider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//li[contains(@class,'cat-blog-container')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			url = sel.xpath(".//div[contains(@class,'cat-blog-inner')]/h3/a/@href")[0].extract()
 

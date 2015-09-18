@@ -1,6 +1,6 @@
 import scrapy
 
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 # TODO: add DOWNLOADER_MIDDLEWARES to bypass blocked requests
 # TODO: handle endoding and format in tags, summary and titles
@@ -16,7 +16,7 @@ class TalkSportpider(scrapy.Spider):
 	def parse(self,response):
 
 		for sel in response.xpath(".//div[contains(@class,'node node-article node-teaser clearfix')]"):
-			item = TreBonItem()
+			item = ArticleItem()
 
 			relative_url = sel.xpath(".//a/@href")[0].extract()
 			url = response.urljoin(relative_url)

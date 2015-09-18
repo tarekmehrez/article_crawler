@@ -3,7 +3,7 @@ import json
 import urllib2
 
 from lxml import etree
-from tre_bon.items import TreBonItem
+from tre_bon.items import ArticleItem
 
 # TODO: handle endoding and format in tags, summary and titles
 # TODO: make sure all tags have similar formats (same tags are grouped)
@@ -23,7 +23,7 @@ class ESPNSpider(scrapy.Spider):
 
 
 		for article in articles:
-			item = TreBonItem()
+			item = ArticleItem()
 			item['title'] = article['headline']
 			item['url'] = article['linkUrl']
 
