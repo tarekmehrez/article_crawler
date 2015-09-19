@@ -17,6 +17,7 @@ class SkySportsSpider(scrapy.Spider):
 
 		for sel in response.xpath(".//div[contains(@class,'news-list__item news-list__item--show-thumb-bp30')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			url = sel.xpath(".//h4/a/@href")[0].extract()
 

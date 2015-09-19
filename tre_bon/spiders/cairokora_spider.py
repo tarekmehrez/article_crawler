@@ -18,6 +18,7 @@ class CairoKoraSpider(scrapy.Spider):
 
 		for sel in response.xpath(".//div[contains(@class,'slider_bottom clearfix')]/div[starts-with(@class,'section')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			url = sel.xpath(".//a[contains(@class,'title')]/@href")[0].extract()
 			item['url'] = url

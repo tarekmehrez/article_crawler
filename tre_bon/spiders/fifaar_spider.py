@@ -15,6 +15,7 @@ class FifaARSpider(scrapy.Spider):
 
 		for sel in response.xpath(".//li[contains(@class,'dcm-thumblist-item')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			relative_url = sel.xpath(".//h4/a/@href")[0].extract()
 			url = response.urljoin(relative_url)

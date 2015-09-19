@@ -24,6 +24,8 @@ class ESPNSpider(scrapy.Spider):
 
 		for article in articles:
 			item = ArticleItem()
+			item['type'] = "article"
+
 			item['title'] = article['headline']
 			item['url'] = article['linkUrl']
 

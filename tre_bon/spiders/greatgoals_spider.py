@@ -17,6 +17,7 @@ class GreatGoalspider(scrapy.Spider):
 
 		for sel in response.xpath(".//li[contains(@class,'cat-blog-container')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			url = sel.xpath(".//div[contains(@class,'cat-blog-inner')]/h3/a/@href")[0].extract()
 

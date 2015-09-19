@@ -17,6 +17,7 @@ class TalkSportpider(scrapy.Spider):
 
 		for sel in response.xpath(".//div[contains(@class,'node node-article node-teaser clearfix')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			relative_url = sel.xpath(".//a/@href")[0].extract()
 			url = response.urljoin(relative_url)

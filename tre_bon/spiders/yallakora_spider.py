@@ -19,6 +19,7 @@ class YallaKoraSpider(scrapy.Spider):
 
 		for sel in response.xpath(".//li[contains(@class,'ClipItem')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			relative_url = sel.xpath(".//a[contains(@class,'NewsTitle')]/@href")[0].extract()
 			url = response.urljoin(relative_url)

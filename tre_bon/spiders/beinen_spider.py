@@ -23,6 +23,7 @@ class BeinENpider(scrapy.Spider):
 
 		for sel in response.xpath(".//li[contains(@class,'content-gallery__item w50')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			item['date'] = sel.xpath(".//time/@datetime")[0].extract()
 

@@ -42,16 +42,28 @@ class ArticlePipeline(object):
 							"October":	10,
 							"November":	11,
 							"December":	12,
+							"Jan":		1,
+							"Feb":		2,
+							"Mar":		3,
+							"Apr":		4,
+							"May":		5,
+							"Jun":		6,
+							"Jul":		7,
+							"Aug":		8,
+							"Sep":		9,
+							"Oct":		10,
+							"Nov":		11,
+							"Dec":		12,
 							}
 
 	def process_item(self, item, spider):
 
-		item['type'] = "article"
+		if item['type'] != 'article':
+			return item
 
 		for key in item:
 
 			# fixing => removing trailing spaces, lowercasing and encoding (for arabic tags)
-
 			# fixing tags
 			if key == 'tags':
 				for count,tag in enumerate(item['tags']):
@@ -79,12 +91,12 @@ class ArticlePipeline(object):
 			date = re.sub('[a-zA-Z]',' ',date)
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
-		if item['src'] == 'bleacher_report':
+		elif item['src'] == 'bleacher_report':
 			date = item['date']
 			date = re.sub('[a-zA-Z]',' ',date).strip()
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
-		if item['src'] == "cairokora":
+		elif item['src'] == "cairokora":
 
 			date = item['date'].split(",")[1]
 
@@ -95,14 +107,14 @@ class ArticlePipeline(object):
 			date = "%s-%s-%s %s" % (year,month,day,time)
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
-		if item['src'] == "espnfc":
+		elif item['src'] == "espnfc":
 			date = item['date']
 			item['date'] = datetime.fromtimestamp(int(date) / 1e3)
 
-		if item['src'] == "fifa":
+		elif item['src'] == "fifa":
 			item['date'] = datetime.now()
 
-		if item['src'] == "goal":
+		elif item['src'] == "goal":
 			if item['lang'] == 'en':
 				date = item['date'].split(",")[1].strip()
 				day = date.split(" ")[1]
@@ -125,7 +137,7 @@ class ArticlePipeline(object):
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
 
-		if item['src'] == 'greatgoals':
+		elif item['src'] == 'greatgoals':
 			date = item['date'].strip()
 
 			month = self.datedict[date.split(" ")[0]]
@@ -135,7 +147,7 @@ class ArticlePipeline(object):
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
 
-		if item['src'] == 'talksport':
+		elif item['src'] == 'talksport':
 
 			date = item['date']
 			day = date.split(",")[1].strip().split(" ")[1]
@@ -145,7 +157,7 @@ class ArticlePipeline(object):
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
 
-		if item['src'] == 'hihi2':
+		elif item['src'] == 'hihi2':
 			date = item['date'].replace('ص','AM').replace('م','PM').strip()
 			if date.split(' ')[3] == 'PM':
 				old = date.split(' ')[2]
@@ -156,7 +168,7 @@ class ArticlePipeline(object):
 			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
 			item['date'] = datetime.strptime(date,  "%Y/%m/%d %H:%M")
 
-		if item['src'] == 'skysports':
+		elif item['src'] == 'skysports':
 			date = item['date'].replace('am',' AM').replace('pm',' PM').strip()
 			if date.split(' ')[2] == 'PM':
 				old = date.split(' ')[1]
@@ -167,7 +179,7 @@ class ArticlePipeline(object):
 			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
 			item['date'] = datetime.strptime(date,  "%d/%m/%y %H:%M")
 
-		if item['src'] == 'yallakora':
+		elif item['src'] == 'yallakora':
 			if 'date' in item:
 				date = item['date'].strip()
 
@@ -197,6 +209,55 @@ class ArticlePipeline(object):
 		if 'date' not in item:
 			item['date'] = datetime.now()
 		return item
+
+
+class VideoPipeline(object):
+
+	def __init__(self):
+		self.datedict = {	"Jan":		1,
+							"Feb":		2,
+							"Mar":		3,
+							"Apr":		4,
+							"May":		5,
+							"Jun":		6,
+							"Jul":		7,
+							"Aug":		8,
+							"Sep":		9,
+							"Oct":		10,
+							"Nov":		11,
+							"Dec":		12,
+							}
+
+	def process_item(self, item, spider):
+
+
+		if item['type'] != 'video':
+			return item
+
+		if 'youtube' in item['src']:
+
+			date = item['date'].strip()
+			date_arr = date.split(' ')
+
+			month = self.datedict[date_arr[0]]
+
+			day = date_arr[1].replace(',','')
+
+			year = date_arr[2]
+
+			date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M'))
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
+
+		elif 'dailymotion' in item['src']:
+
+			date_arr = item['date'].strip().split("/")
+
+			date = "%s-%s-%s %s" % (date_arr[2],date_arr[0],date_arr[1],datetime.now().strftime('%H:%M'))
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
+		return item
+
 
 # yet another duplicates filer, double safety
 class DuplicatesPipeline(object):

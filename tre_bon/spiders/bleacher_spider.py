@@ -23,6 +23,8 @@ class BleacherSpider(scrapy.Spider):
 
 		for article in articles:
 			item = ArticleItem()
+			item['type'] = "article"
+
 			item['title'] = article['title']
 
 			url = article['permalink']

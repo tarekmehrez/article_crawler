@@ -17,6 +17,8 @@ class GoalARSpider(scrapy.Spider):
 	def parse(self,response):
 		for sel in response.xpath("//div[contains(@id,'news-archive')]//ul/li"):
 			item = ArticleItem()
+			item['type'] = "article"
+
 			article_info = sel.xpath(".//div[contains(@class,'articleInfo')]")[0]
 
 			item['title'] = article_info.xpath(".//a/text()")[0].extract()

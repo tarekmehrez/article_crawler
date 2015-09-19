@@ -18,6 +18,7 @@ class Hihi2Spider(scrapy.Spider):
 
 		for sel in response.xpath(".//div[contains(@id,'content-loop')]/div[starts-with(@id,'post-')]"):
 			item = ArticleItem()
+			item['type'] = "article"
 
 			url = sel.xpath(".//h2/a/@href")[0].extract()
 
