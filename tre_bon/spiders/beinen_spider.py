@@ -5,12 +5,6 @@ from datetime import datetime
 from tre_bon.items import ArticleItem
 from scrapy.exceptions import CloseSpider
 
-# TODO: handle date format
-# TODO: handle endoding and format in tags, summary and titles
-# TODO: make sure all tags have similar formats (same tags are grouped)
-
-
-
 
 class BeinENpider(scrapy.Spider):
 

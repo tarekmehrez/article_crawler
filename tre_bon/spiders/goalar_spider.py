@@ -4,11 +4,6 @@ import re
 
 from tre_bon.items import ArticleItem
 
-# TODO: handle endoding and format in tags, summary and titles
-# TODO: make sure all tags have similar formats (same tags are grouped)
-# TODO: handle date format
-
-
 class GoalARSpider(scrapy.Spider):
 	name = 'goal_ar'
 	# allowed_domains = ["goal.com/en"]

@@ -2,12 +2,6 @@ import scrapy
 
 from tre_bon.items import ArticleItem
 
-
-# TODO: handle date format
-# TODO: handle endoding and format in tags, summary and titles
-# TODO: make sure all tags have similar formats (same tags are grouped)
-
-
 class CairoKoraSpider(scrapy.Spider):
 	name = 'cairokora'
 	allowed_domains = ["cairokora.com"]

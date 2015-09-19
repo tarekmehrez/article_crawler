@@ -2,11 +2,6 @@ import scrapy
 
 from tre_bon.items import ArticleItem
 
-# TODO: add DOWNLOADER_MIDDLEWARES to bypass blocked requests
-# TODO: handle endoding and format in tags, summary and titles
-# TODO: make sure all tags have similar formats (same tags are grouped)
-# TODO: handle date format
-
 class TalkSportpider(scrapy.Spider):
 	name = 'talksport'
 	allowed_domains = ["talksport.com"]

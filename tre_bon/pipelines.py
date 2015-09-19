@@ -162,9 +162,13 @@ class ArticlePipeline(object):
 			if date.split(' ')[3] == 'PM':
 				old = date.split(' ')[2]
 				old_arr = date.split(' ')[2].split(":")
-				new = int(old_arr[0]) + 12
-				result = ':'.join([str(new),old_arr[1]])
-				date = date.replace(old,result)
+
+				if old_arr[0] != '12':
+					new = int(old_arr[0]) + 12
+					result = ':'.join([str(new),old_arr[1]])
+					date = date.replace(old,result)
+
+
 			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
 			item['date'] = datetime.strptime(date,  "%Y/%m/%d %H:%M")
 
@@ -173,9 +177,12 @@ class ArticlePipeline(object):
 			if date.split(' ')[2] == 'PM':
 				old = date.split(' ')[1]
 				old_arr = date.split(' ')[1].split(":")
-				new = int(old_arr[0]) + 12
-				result = ':'.join([str(new),old_arr[1]])
-				date = date.replace(old,result)
+
+				if old_arr[0] != '12':
+					new = int(old_arr[0]) + 12
+					result = ':'.join([str(new),old_arr[1]])
+					date = date.replace(old,result)
+
 			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
 			item['date'] = datetime.strptime(date,  "%d/%m/%y %H:%M")
 
@@ -195,15 +202,33 @@ class ArticlePipeline(object):
 				if date.split(' ')[2] == 'PM':
 					old = date.split(' ')[1]
 					old_arr = date.split(' ')[1].split(":")
-					new = int(old_arr[0]) + 12
-					result = ':'.join([str(new),old_arr[1]])
-					date = date.replace(old,result)
+					if old_arr[0] != '12':
+						new = int(old_arr[0]) + 12
+						result = ':'.join([str(new),old_arr[1]])
+						date = date.replace(old,result)
 
 				date = date.replace("AM","").replace("PM","").strip()
 				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
 			else:
 				item['date'] = datetime.now()
+		elif item['src'] == 'korabia':
+
+			date_arr = item['date'].strip().split(" ")
+			day = date_arr[1]
+			month = self.datedict[date_arr[2]]
+			year = date_arr[3]
+
+			time = date_arr[5]
+			if date_arr[6] == 'PM':
+				time_arr = time.split(":")
+				if time_arr[0] != '12':
+
+					new_time = str(12 + int(time_arr[0])) + ":" + time_arr[1]
+					time = new_time
+
+			date = "%s-%s-%s %s" % (year,month,day,time)
+			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
 		# in case we failed to find any date for the article, save the article with the current datetime
 		if 'date' not in item:

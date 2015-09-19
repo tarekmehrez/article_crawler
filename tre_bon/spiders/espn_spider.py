@@ -5,11 +5,6 @@ import urllib2
 from lxml import etree
 from tre_bon.items import ArticleItem
 
-# TODO: handle endoding and format in tags, summary and titles
-# TODO: make sure all tags have similar formats (same tags are grouped)
-# TODO: handle date format
-
-
 class ESPNSpider(scrapy.Spider):
 	name = 'espn'
 	allowed_domains = ["espnfc.com"]
