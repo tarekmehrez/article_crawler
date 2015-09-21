@@ -62,8 +62,8 @@ NEWSPIDER_MODULE = 'tre_bon.spiders'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-	'tre_bon.pipelines.ArticlePipeline': 300,
-	'tre_bon.pipelines.VideoPipeline': 300
+	# 'tre_bon.pipelines.ArticlePipeline': 300,
+	# 'tre_bon.pipelines.VideoPipeline': 300
 	# 'tre_bon.pipelines.DuplicatesPipeline': 400,
 	# 'tre_bon.pipelines.MongoArticlesPipeline': 500
 }

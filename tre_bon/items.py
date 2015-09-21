@@ -25,8 +25,20 @@ class VideoItem(scrapy.Item):
 	url = scrapy.Field()
 	date = scrapy.Field()
 	src = scrapy.Field()
+	channel = scrapy.Field()
 	lang = scrapy.Field()
 	preview_image = scrapy.Field()
 	embed_code = scrapy.Field()
 	embed_url = scrapy.Field()
 	type = scrapy.Field()
+
+class InstagramItem(scrapy.Item):
+	caption = scrapy.Field()
+	date = scrapy.Field()
+	src = scrapy.Field()
+	account = scrapy.Field()
+	tags = scrapy.Field()
+	url = scrapy.Field()
+	type = scrapy.Field()
+	img_vid_src = scrapy.Field()
+

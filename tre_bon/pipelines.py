@@ -7,8 +7,6 @@
 
 import pymongo
 import re
-import logging
-import sys
 
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
@@ -308,7 +306,6 @@ class MongoArticlesPipeline(object):
 		)
 		db = connection[settings['MONGODB_DB']]
 		self.feed_items = db[settings['MONGODB_COLLECTION']]
-		self.logger = logging.getLogger()
 
 	def process_item(self, item, spider):
 		if self.feed_items.find({'url': item['url']}).count() == 0:

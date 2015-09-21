@@ -1,0 +1,7 @@
+scrapy
+json
+urllib2
+pymongo
+numpy
+tweepy
+python-instagram

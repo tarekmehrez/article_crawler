@@ -17,7 +17,8 @@ class YoutubeSpider(scrapy.Spider):
 					"https://www.youtube.com/user/fcbarcelona/videos",
 					"https://www.youtube.com/user/realmadridcf/videos",
 					"https://www.youtube.com/channel/UCmBkHgDND20HOYvV0iaAO7g/videos",
-					"https://www.youtube.com/user/mcfcofficial/videos"
+					"https://www.youtube.com/user/mcfcofficial/videos",
+					"https://www.youtube.com/user/101greatgoalsYT/videos"
 					]
 
 	def parse(self,response):
@@ -33,46 +34,47 @@ class YoutubeSpider(scrapy.Spider):
 			item['title'] = sel.xpath(".//h3/a/@title")[0].extract()
 
 			item['preview_image'] = sel.xpath(".//img/@src")[0].extract().replace("//","")
+			item['src'] = 'youtube'
 
 			if 'ScoutNationHD' in str(response):
-				item['src'] = 'youtube:ScoutNationHD'
+				item['channel']='ScoutNationHD'
 				item['lang'] = 'en'
 
 			if 'TheFootballDaily' in str(response):
-				item['src'] = 'youtube:TheFootballDaily'
+				item['channel']='TheFootballDaily'
 				item['lang'] = 'en'
 
 			if 'UC62kbVE2NKaSyF2nRd1KElw' in str(response):
-				item['src'] = 'youtube:ArsenalGunner TV'
+				item['channel'] ='ArsenalGunner TV'
 				item['lang'] = 'en'
 
 			if 'UCNAf1k0yIjyGu3k9BwAg3lg' in str(response):
-				item['src'] = 'youtube:Sky Sports Football'
+				item['channel'] = 'Sky Sports Football'
 				item['lang'] = 'en'
 
 			if 'HeilRJ03' in str(response):
-				item['src'] = 'youtube:HeilRJ'
+				item['channel'] = 'HeilRJ'
 				item['lang'] = 'en'
 
 			if 'NikeFootball' in str(response):
-				item['src'] = 'youtube:Nike Football'
+				item['channel'] = 'Nike Football'
 				item['lang'] = 'en'
 
 			if 'fcbarcelona' in str(response):
-				item['src'] = 'youtube:FC Barcelona'
+				item['channel'] = 'FC Barcelona'
 				item['lang'] = 'en'
 
 
 			if 'realmadridcf' in str(response):
-				item['src'] = 'youtube:Real Madrid C.F.'
+				item['channel'] = 'Real Madrid C.F.'
 				item['lang'] = 'en'
 
 			if 'UCmBkHgDND20HOYvV0iaAO7g' in str(response):
-				item['src'] = 'youtube:Footy MOTD 4'
+				item['channel'] ='Footy MOTD 4'
 				item['lang'] = 'en'
 
 			if 'mcfcofficial' in str(response):
-				item['src'] = 'youtube:Manchester City FC'
+				item['channel'] = 'Manchester City FC'
 				item['lang'] = 'en'
 
 
