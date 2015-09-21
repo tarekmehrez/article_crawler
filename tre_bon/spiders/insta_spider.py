@@ -57,26 +57,29 @@ class InstagramSpider(scrapy.Spider):
 		for user in self.user_ids:
 			self.logger.debug("Retrieving data for " + str(user))
 			recent_media, next_ = self.api.user_recent_media(user_id=self.user_ids[user])
-			for photo in recent_media:
+			for media in recent_media:
 				item = InstagramItem()
 
-				if photo.caption:
-					item['caption'] = photo.caption.text
+				if media.caption:
+					item['caption'] = media.caption.text
 
-				item['date'] = photo.created_time
+				item['date'] = media.created_time
 				item['src'] = 'instagram'
 				item['account'] = user
 
 				item['tags'] = []
-				for tag in photo.tags:
+				for tag in media.tags:
 					item['tags'].append(str(tag).split(' ')[1])
 
-				item['url'] = photo.link
-				item['type'] = photo.type
+				item['url'] = media.link
+				item['type'] = media.type
 
-				if photo.type == 'image':
-					item['img_vid_src'] = photo.images['standard_resolution'].url
+				if media.type == 'image':
+					item['img_vid_src'] = media.images['standard_resolution'].url
 				else:
-					item['img_vid_src'] = photo.videos['standard_resolution'].url
+					item['img_vid_src'] = media.videos['standard_resolution'].url
+
+				item['likes'] = media.like_count
+				item['media_id'] = media.id
 
 				yield item
