@@ -1,3 +1,5 @@
+# Author: Tarek
+
 import scrapy
 
 from tre_bon.items import ArticleItem

@@ -1,0 +1,60 @@
+DOCUMENTATION:
+
+Git refused to name the repo '3bont' for naming conventions issues.
+So, in a parallel universe, tre_bon stands for 3bont (time to unleash the geek within).
+
+
+0- Misc:
+
+- dependencies.txt contains all python deps. to run the app
+- insta_user_ids.pickle is a temp way of storing instagram user ids (which takes ages to perform), so we don't repeat the same process everytime the instagram crawler is executed. For the first run, make sure it's created and saved.
+- run.sh is a quick demonstration on how to run the app automatically
+- pipelines are currently disabled in settings.py for testing purposes, renable them if you want to.
+- whenever you edit any file, please add your name in the Authors comment at the top.
+
+
+1- Crawling Details:
+
+- Runs in the background, each X seconds. X could depend on the source or could be generalized for all sources to be crawled within the same X seconds. Could be scheduled as cronjobs.
+- Sources are available in the tre_bon/spiders dir.
+- Each crawler depends on the html represenation of its source. The only universal crawlers are youtube/dailymotion/instagram and twitter.
+- You can run each crawler by typing the command scrapy crawler <name of the crawler>
+- You can add accounts to social media crawlers, or video channels by checking the existing code, and adding to the channels/accounts list
+
+2-[GEN] Important notes/hints/must-knows:
+
+- Current DB is mongodb, I am using pymongo to ease the whole process. Could be changed or edited of course when necessary, as the db implemenation within the app is messy and dirty.
+- Video channels and social media accounts are checked each time the crawler is executed. This has to be changed, by adding accounts to the DB initially, and crawl for accounts available in the DB. In case one wanted to add new accounts/channels, he/she will have to deal directly with the DB.
+- Crawlers could fail in case websites changed their html represenation or pagination of news
+- Number of pages being crawled per source must be checked and edited as the number of returned articles per source are not the same and could vary dramatically. (we need to balance the no. of articles/source).
+- Cleaning the returned data and adding them to the database is currently handled by the pipelines, I guess that's working fine for now.
+- To run the crawlers, check run.sh it runs the scrapy command for all crawlers. It saves logs and json files.
+
+
+3- Timeline:
+
+- The timeline should be designed to do the following:
+	a. sort data from DB by time (desc.), with a threshold as we probably need the data for the last X days.
+	b. split data per hour, so we have the content of 3pm, 4pm, 5pm, .. etc. in separate lists
+	c. randomize each list/hour, to make sure data from the same source are scattered all around the timeline and not ordered in some way (i.e. we don't want the user to see 5 consecutive articles for goal.com)
+	d. handle json requests and responses with threshold (for pagination) and filters (sources and language)
+	e. further timeline tricks are more than welcome (randomization, repeating posts after a while, prioritizing posts).
+
+- timeline.py contains a very basic demonstration, which should/will be changed anyway.
+
+
+4- TODO:
+
+1- FACEBOOK crawler (should be easy, just follow instagram and twitter crawlers as well as the facebook api doc.)
+
+2- Proper DB manipulation and design (we need to save sources, channels/accounts and articles in an organized way)
+
+3- Design db to handle filteration: by language, by source
+
+4- HAVE ALL OF THIS SERVED ON A WEB SERVER TO START COMMUNICATION WITH FRONTEND (PREFFERABLY USING RESTFUL APIs)
+
+4- Search using elastic search and/or lucene for indexing. I beleive there's a proper pythonic way of doing that. We should be indexing articles' titles, summaries and content.
+
+5- Timeline logic, as mentioned previously.
+
+6- Celebrate and drink champagne ma nigga.

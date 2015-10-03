@@ -1,3 +1,5 @@
+# Author: Tarek
+
 now=$(date +%Y-%m-%d:%H:%M:%S)
 for spider in $(scrapy list); do
 	echo Running crawler: $spider, saving logs to logs/crawlers-logs/${spider}.${now}.log

@@ -1,3 +1,5 @@
+# Author: Tarek
+
 import tweepy
 import scrapy
 
