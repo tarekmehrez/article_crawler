@@ -27,5 +27,4 @@ class FacebookSpider(scrapy.Spider):
 				item['content'] = post["description"] +" <a href='"+post["link"]+"'>"+post["link"]+"</a>"
 			else:
 				item['content'] = item['description']
-			print item
 			yield item
