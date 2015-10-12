@@ -62,10 +62,11 @@ NEWSPIDER_MODULE = 'tre_bon.spiders'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-	# 'tre_bon.pipelines.ArticlePipeline': 300,
-	# 'tre_bon.pipelines.VideoPipeline': 300
-	# 'tre_bon.pipelines.DuplicatesPipeline': 400,
-	# 'tre_bon.pipelines.MongoArticlesPipeline': 500
+	 'tre_bon.pipelines.ArticlePipeline': 300,
+	 'tre_bon.pipelines.VideoPipeline': 300,
+	 'tre_bon.pipelines.DuplicatesPipeline': 400,
+	 'tre_bon.pipelines.MySQLArticlesPipeline': 500,
+	 #'tre_bon.pipelines.MongoArticlesPipeline': 500
 }
 
 # ITEM_PIPELINES = {'tre_bon.pipelines.MongoDBPipeline': 300}
@@ -74,6 +75,11 @@ MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "tre_bon"
 MONGODB_COLLECTION = "feed_items"
+
+MYSQLDB_SERVER = "localhost"
+MYSQLDB_DB = "threebond"
+MYSQLDB_USER = "root"
+MYSQLDB_PWD = ""
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

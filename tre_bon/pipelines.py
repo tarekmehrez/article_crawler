@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 # Author: Tarek
 
 # -*- coding: utf-8 -*-
@@ -7,13 +9,17 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-import pymongo
+#import pymongo
 import re
+import pymysql
 
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 from datetime import datetime
+import sys  
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
 class ArticlePipeline(object):
 
 
@@ -65,7 +71,7 @@ class ArticlePipeline(object):
 
 			# fixing => removing trailing spaces, lowercasing and encoding (for arabic tags)
 			# fixing tags
-			if key == 'tags':
+			if key == 'tags' and item['tags']!=' ' and not item['tags']:
 				for count,tag in enumerate(item['tags']):
 					item['tags'][count] = str(tag.strip().lower().encode('utf8'))
 				continue
@@ -296,7 +302,34 @@ class DuplicatesPipeline(object):
 		else:
 			self.urls_seen.add(item['url'])
 			return item
+# read items, check if they are not already in db, then add them.
+class MySQLArticlesPipeline(object):
 
+	def __init__(self):
+		self.db =  pymysql.connect(host=settings['MYSQLDB_SERVER'], # your host, usually localhost
+                     user=settings["MYSQLDB_USER"], # your username
+                      passwd=settings["MYSQLDB_PWD"], # your password
+                      db=settings["MYSQLDB_DB"]) # name of the data base
+		self.db.set_charset('utf8')
+		# you must create a Cursor object. It will let
+		#  you execute all the queries you need
+		self.cur = self.db.cursor() 
+
+	def process_item(self, item, spider):
+		f = '%Y-%m-%d %H:%M:%S'
+		item['date'] = item['date'].strftime(f)
+		for key in item:
+			item[key] = item[key].replace('"','').replace("'","")
+		if  item['src']=='twitter':
+			self.cur.execute('INSERT INTO twitter (text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
+		elif item['src']=='instagram':
+			self.cur.execute('INSERT INTO instagram (caption,account,tags,url,img_vid_src,likes,lang,media_id,date) VALUES("'+item['caption']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['img_vid_src']+'","'+item['likes']+'","'+item['lang']+'","'+item['media_id']+'","'+item['date']+'")')
+		elif item['src']=='youtube':
+			self.cur.execute('INSERT INTO videos (title,url,lang,preview_image,embed_code,embed_url,channel,date) VALUES("'+item['title']+'","'+item['url']+'","'+item['lang']+'","'+item['preview_image']+'","'+item['embed_code']+'","'+item['embed_url']+'","'+item['channel']+'","'+item['date']+'")')
+		else:
+			self.cur.execute('INSERT INTO articles (title,url,image,summary,tags,lang,content,date) VALUES("'+item['title']+'","'+item['url']+'","'+item['image']+'","'+item['summary']+'","'+item['tags']+'","'+item['lang']+'","'+item['content']+'","'+item['date']+'")')
+		self.db.commit()
+		return item
 
 # read items, check if they are not already in db, then add them.
 class MongoArticlesPipeline(object):

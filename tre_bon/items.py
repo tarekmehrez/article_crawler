@@ -59,3 +59,4 @@ class TwitterItem(scrapy.Item):
 	lang = scrapy.Field()
 	favs = scrapy.Field()
 	tweet_id = scrapy.Field()
+	

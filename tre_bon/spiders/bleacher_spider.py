@@ -43,4 +43,5 @@ class BleacherSpider(scrapy.Spider):
 		item = response.meta['item']
 		content = response.xpath(".//div[contains(@class,'article_body cf')]/p/text()").extract()
 		item['content'] = ' '.join(content)
+		item['summary'] = ' '
 		yield item

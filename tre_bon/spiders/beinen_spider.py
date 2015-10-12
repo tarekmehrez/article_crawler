@@ -38,4 +38,6 @@ class BeinENpider(scrapy.Spider):
 		item['image'] = response.xpath(".//div[contains(@class,'visuel-article_hero')]/img/@src")[0].extract()
 		content = response.xpath(".//main/p/text()").extract()
 		item['content'] = ' '.join(content)
+		item['summary'] = ' '
+		item['tags'] = ' '
 		yield item
