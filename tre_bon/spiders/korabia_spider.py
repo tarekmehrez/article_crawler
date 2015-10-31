@@ -10,9 +10,8 @@ class KorabiaSpider(scrapy.Spider):
 	allowed_domains = ["korabia.com"]
 	start_urls = ["http://www.korabia.com/News?page=" + str(i+1) for i in range(10)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//div[starts-with(@class,'news_box')]"):
 			item = ArticleItem()
 			item['type'] = "article"
@@ -27,7 +26,8 @@ class KorabiaSpider(scrapy.Spider):
 			item['src'] = 'korabia'
 			item['lang'] = 'ar'
 			item['date'] = sel.xpath(".//h4/text()")[0].extract()
-
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 
@@ -37,6 +37,7 @@ class KorabiaSpider(scrapy.Spider):
 
 		content = response.xpath(".//div[@class='fontt']/p/text()").extract()
 		item['content'] = ' '.join(content)
+		item['tags'] = ' '
 
 
 		yield item

@@ -22,9 +22,8 @@ class YoutubeSpider(scrapy.Spider):
 					"https://www.youtube.com/user/mcfcofficial/videos",
 					"https://www.youtube.com/user/101greatgoalsYT/videos"
 					]
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//li[@class='channels-content-item yt-shelf-grid-item']"):
 			item = VideoItem()
 
@@ -35,9 +34,10 @@ class YoutubeSpider(scrapy.Spider):
 			item['url'] = url
 			item['title'] = sel.xpath(".//h3/a/@title")[0].extract()
 
-			item['preview_image'] = sel.xpath(".//img/@src")[0].extract().replace("//","")
+			item['preview_image'] = 'http://'+sel.xpath(".//img/@src")[0].extract().replace("//","")
 			item['src'] = 'youtube'
-
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			if 'ScoutNationHD' in str(response):
 				item['channel']='ScoutNationHD'
 				item['lang'] = 'en'
@@ -88,5 +88,6 @@ class YoutubeSpider(scrapy.Spider):
 		item = response.meta['item']
 		item['date'] = response.xpath(".//strong[@class='watch-time-text']/text()")[0].extract().replace("Published on","")
 		item['embed_url'] = item['url'].replace('/watch?v=','/embed/')
+		item['embed_code'] = '<iframe width="560" height="315" src="'+item['embed_url']+'" frameborder="0" allowfullscreen></iframe>'
 
 		yield item

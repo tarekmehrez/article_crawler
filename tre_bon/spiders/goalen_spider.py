@@ -12,7 +12,7 @@ class GoalENSpider(scrapy.Spider):
 	# allowed_domains = ["goal.com/en"]
 	start_urls=["http://www.goal.com/en/news/archive/" + str(i+1) for i in range(5)]
 
-
+	itemCount = 1
 	def parse(self,response):
 		for sel in response.xpath("//div[contains(@id,'news-archive')]//ul/li"):
 			item = ArticleItem()
@@ -34,12 +34,13 @@ class GoalENSpider(scrapy.Spider):
 
 			tag = sel.xpath(".//strong/text()")[0].extract().encode("utf-8")
 			item['tags'] = [tag]
-
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):
 		item = response.meta['item']
-
+		item['image'] = ''
 		if response.xpath(".//img[contains(@class,'article-image')]/@src"):
 			item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
 

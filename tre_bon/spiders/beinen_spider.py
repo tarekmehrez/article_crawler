@@ -14,10 +14,9 @@ class BeinENpider(scrapy.Spider):
 	name = 'bein_en'
 	start_urls=["http://www.beinsports.com/en/football/news/" + str(i+1) for i in range(5)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
-		for sel in response.xpath(".//li[contains(@class,'content-gallery__item w50')]"):
+		for index,sel in enumerate(response.xpath(".//li[contains(@class,'content-gallery__item w50')]")):
 			item = ArticleItem()
 			item['type'] = "article"
 
@@ -31,6 +30,8 @@ class BeinENpider(scrapy.Spider):
 
 			item['src'] = 'bein'
 			item['lang'] = 'en'
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):
@@ -38,6 +39,6 @@ class BeinENpider(scrapy.Spider):
 		item['image'] = response.xpath(".//div[contains(@class,'visuel-article_hero')]/img/@src")[0].extract()
 		content = response.xpath(".//main/p/text()").extract()
 		item['content'] = ' '.join(content)
-		item['summary'] = ' '
+		item['summary'] =  ' '.join(response.xpath('/html/head/meta[@property="og:description"]/@content').extract())
 		item['tags'] = ' '
 		yield item

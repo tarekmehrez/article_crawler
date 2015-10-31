@@ -57,7 +57,7 @@ class InstagramSpider(scrapy.Spider):
 		self.user_ids = pickle.load(f)
 
 	def parse(self,response):
-
+		itemCount  = 1
 		for user in self.user_ids:
 			self.logger.debug("Retrieving data for " + str(user))
 			recent_media, next_ = self.api.user_recent_media(user_id=self.user_ids[user])
@@ -66,7 +66,7 @@ class InstagramSpider(scrapy.Spider):
 
 				if media.caption:
 					item['caption'] = media.caption.text
-
+				item['lang'] = 'en'
 				item['date'] = media.created_time
 				item['src'] = 'instagram'
 				item['account'] = user
@@ -85,5 +85,7 @@ class InstagramSpider(scrapy.Spider):
 
 				item['likes'] = media.like_count
 				item['media_id'] = media.id
+				item['itemIndex'] = itemCount
+				itemCount = itemCount+1
 
 				yield item

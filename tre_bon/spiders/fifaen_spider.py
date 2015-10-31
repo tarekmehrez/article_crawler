@@ -10,9 +10,8 @@ class FifaENSpider(scrapy.Spider):
 	allowed_domains = ["fifa.com"]
 	start_urls=["http://www.fifa.com/news/library/all-news/index,page=" + str(i+1) + ".htmx" for i in range(5)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//li[contains(@class,'dcm-thumblist-item')]"):
 			item = ArticleItem()
 			item['type'] = "article"
@@ -26,6 +25,8 @@ class FifaENSpider(scrapy.Spider):
 			item['src'] = 'fifa'
 			item['lang'] = 'en'
 			item['image'] = sel.xpath(".//img/@ph-data-picture-url")[0].extract()
+			item['itemIndex'] = self.itemCount
+			itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):
@@ -38,6 +39,6 @@ class FifaENSpider(scrapy.Spider):
 		if not content:
 			content = response.xpath(".//div[@class=' articleBody  landscapePh ']/p/text()").extract()
 
-
+		item['tags'] = ''
 		item['content'] = ' '.join(content)
 		yield item

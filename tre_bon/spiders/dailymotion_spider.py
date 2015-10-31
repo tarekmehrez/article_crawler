@@ -16,9 +16,8 @@ class DailyMotionSpider(scrapy.Spider):
 				+	["http://www.dailymotion.com/user/rubin7190/"	+ str(i) for i in range(5)] \
 				+	["http://www.dailymotion.com/user/onlyfootball/"+ str(i) for i in range(5)] \
 				+	["http://www.dailymotion.com/user/funnyno1/"	+ str(i) for i in range(5)]
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//div[@class='sd_video_griditem media media-stacked col-4 js-item']"):
 			item = VideoItem()
 
@@ -27,8 +26,10 @@ class DailyMotionSpider(scrapy.Spider):
 			url = response.urljoin(relative_url)
 			item['type'] = 'video'
 			item['url'] = url
+			item['embed_url'] = url
 			item['title'] = sel.xpath(".//img/@title")[0].extract()
-
+			item['itemIndex'] = self.itemCount
+			itemCount = self.itemCount+1
 			item['preview_image'] = sel.xpath(".//div/@data-spr")[0].extract()
 
 			if 'abuomar' in str(response):
@@ -61,9 +62,10 @@ class DailyMotionSpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
-		item['date'] =  response.xpath(".//li[@class='mrg-btm-xs']/text()")[1].extract()
+		item['date'] =  response.xpath(".//li[@class='mrg-btm-xs']/text()")[0].extract()
 
 		data = json.load(urllib2.urlopen("http://www.dailymotion.com/api/oembed?url="+item['url']))
 		item['embed_code'] = data['html']
+		item['channel'] = ''
 
 		yield item

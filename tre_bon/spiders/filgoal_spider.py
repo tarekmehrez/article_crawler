@@ -9,9 +9,8 @@ class FilGoalSpider(scrapy.Spider):
 	allowed_domains = ["filgoal.com"]
 	start_urls=["http://www.filgoal.com/arabic/allnews.aspx?CatID=1#" + str(i+1) for i in range(20)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//div[contains(@class,'AllNews SeeAlso')]/ul/li"):
 			item = ArticleItem()
 			item['type'] = "article"
@@ -25,6 +24,8 @@ class FilGoalSpider(scrapy.Spider):
 			item['src'] = 'filgoal'
 			item['lang'] = 'ar'
 			item['date'] = sel.xpath(".//div[contains(@class,'ANTInfo')]/span/text()")[0].extract()
+			item['itemIndex'] = self.itemCount
+			itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

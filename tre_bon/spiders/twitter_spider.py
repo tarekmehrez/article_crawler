@@ -33,7 +33,7 @@ class TwitterSpider(scrapy.Spider):
 
 
 	def parse(self,response):
-
+		itemCount = 1
 		for account in self.accounts:
 			self.logger.debug("Retrieving data for " + str(account))
 			tweets = self.api.user_timeline(account)
@@ -41,20 +41,22 @@ class TwitterSpider(scrapy.Spider):
 			for tweet in tweets:
 
 				item = TwitterItem()
-
+				item['itemIndex'] = itemCount
+				itemCount = itemCount+1
 				item['lang'] = tweet.lang
 				item['text'] = tweet.text
-				item['tags'] = []
+				item['tags'] = ''
 				item['src'] = 'twitter'
 				item['account'] = tweet.user.name
 
 				if len(tweet.entities['hashtags']) > 0:
+					item['tags'] = []
 					for tag in tweet.entities['hashtags']:
 						item['tags'].append(tag['text'])
 
 				item['date'] =  tweet.created_at
 				item['url'] =  "twitter.com/" + str(tweet.user.screen_name) + "/status/" + str(tweet.id)
-
+				item['media_url'] = ''
 				if 'media' in tweet.entities:
 					item['media_url'] = tweet.entities['media'][0]['media_url_https']
 

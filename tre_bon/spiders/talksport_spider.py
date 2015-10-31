@@ -9,9 +9,8 @@ class TalkSportpider(scrapy.Spider):
 	allowed_domains = ["talksport.com"]
 	start_urls=["http://talksport.com/football?page=" + str(i+1) for i in range(5)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//div[contains(@class,'node node-article node-teaser clearfix')]"):
 			item = ArticleItem()
 			item['type'] = "article"
@@ -24,6 +23,8 @@ class TalkSportpider(scrapy.Spider):
 			item['summary'] = sel.xpath(".//div[contains(@class,'field field-name-field-intro field-type-text-long field-label-hidden')]/div/div/text()")[0].extract()
 			item['src'] = 'talksport'
 			item['lang'] = 'en'
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

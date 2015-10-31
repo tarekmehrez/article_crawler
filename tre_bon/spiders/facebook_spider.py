@@ -12,19 +12,24 @@ class FacebookSpider(scrapy.Spider):
 	start_urls=[apiLink+page_id+"/posts?limit="+str(post_limit)+"&access_token=" + access_token for page_id in pages]
 	def parse(self,response):
 		posts = json.loads(response.body)
+		itemCount = 1
 		for post in posts["data"]:
 			item = ArticleItem()
 			item['type'] ="article" #needs to be checked
 			url = post["actions"][0]['link']
 			item['url'] = url
-			item['title'] = post["name"]
-			item['summary'] = post["description"]
+			item['tags'] = url
+			item['title'] = post['from']["name"]
+			item['summary'] = post["message"]
 			item['src'] = 'facebook'
 			item['lang'] = 'en'
 			item['image'] = post["picture"]
 			item['date'] = post["created_time"]
+
 			if post["type"]=="link":
-				item['content'] = post["description"] +" <a href='"+post["link"]+"'>"+post["link"]+"</a>"
+				item['content'] = post["message"] +" <a href='"+post["link"]+"'>"+post["link"]+"</a>"
 			else:
-				item['content'] = item['description']
+				item['content'] = item['summary']
+			item['itemIndex'] = itemCount
+			itemCount = itemCount+1
 			yield item

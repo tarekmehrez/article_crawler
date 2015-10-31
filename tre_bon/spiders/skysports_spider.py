@@ -11,9 +11,9 @@ class SkySportsSpider(scrapy.Spider):
 	allowed_domains = ["skysports.com"]
 	start_urls=["http://www.skysports.com/football/news/more/" + str(i+1) for i in range(5)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
+		itemCount = 1
 		for sel in response.xpath(".//div[contains(@class,'news-list__item news-list__item--show-thumb-bp30')]"):
 			item = ArticleItem()
 			item['type'] = "article"
@@ -26,6 +26,8 @@ class SkySportsSpider(scrapy.Spider):
 			item['src'] = 'skysports'
 			item['lang'] = 'en'
 			item['date'] =  sel.xpath(".//span[contains(@class,'label__timestamp')]/text()")[0].extract()
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):
@@ -40,4 +42,5 @@ class SkySportsSpider(scrapy.Spider):
 		if response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract():
 			content = response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract()
 			item['content'] = ' '.join(content)
+			item['tags'] = ' '.join(content)
 		yield item

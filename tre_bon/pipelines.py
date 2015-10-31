@@ -20,6 +20,7 @@ import sys
 
 reload(sys)  
 sys.setdefaultencoding('utf8')
+
 class ArticlePipeline(object):
 
 
@@ -61,10 +62,12 @@ class ArticlePipeline(object):
 							"Nov":		11,
 							"Dec":		12,
 							}
+		self.datedict.setdefault(10)
 
+		
 	def process_item(self, item, spider):
 
-		if item['type'] != 'article':
+		if item['src']!='twitter' and item['type'] != 'article':
 			return item
 
 		for key in item:
@@ -88,7 +91,7 @@ class ArticlePipeline(object):
 				except:
 					item[key] = str(item[key])
 
-			item[key] = re.sub( '\s+', ' ', item[key])
+			#item[key] = re.sub( '\s+', ' ', item[key])
 
 
 		# converting different (customized) date formats to datetime python format
@@ -262,14 +265,14 @@ class VideoPipeline(object):
 	def process_item(self, item, spider):
 
 
-		if item['type'] != 'video':
+		if item['src']!='twitter' and item['type'] != 'video':
 			return item
 
 		if 'youtube' in item['src']:
 
 			date = item['date'].strip()
 			date_arr = date.split(' ')
-
+		
 			month = self.datedict[date_arr[0]]
 
 			day = date_arr[1].replace(',','')
@@ -283,7 +286,6 @@ class VideoPipeline(object):
 		elif 'dailymotion' in item['src']:
 
 			date_arr = item['date'].strip().split("/")
-
 			date = "%s-%s-%s %s" % (date_arr[2],date_arr[0],date_arr[1],datetime.now().strftime('%H:%M'))
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
@@ -316,18 +318,29 @@ class MySQLArticlesPipeline(object):
 		self.cur = self.db.cursor() 
 
 	def process_item(self, item, spider):
-		f = '%Y-%m-%d %H:%M:%S'
-		item['date'] = item['date'].strftime(f)
+		try:
+			f = '%Y-%m-%d %H:%M:%S'
+			item['date'] = item['date'].strftime(f)
+		except:
+			print 'error'
 		for key in item:
-			item[key] = item[key].replace('"','').replace("'","")
+			try:
+				item[key] = str(item[key])
+				item[key] = item[key].replace('"','').replace("'","")
+			except :
+				try:
+					item[key] = ' '.join(item[key])
+				except:
+					print key
+			
 		if  item['src']=='twitter':
-			self.cur.execute('INSERT INTO twitter (text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
+			self.cur.execute('INSERT INTO twitter (itemIndex,text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['itemIndex']+'","'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
 		elif item['src']=='instagram':
-			self.cur.execute('INSERT INTO instagram (caption,account,tags,url,img_vid_src,likes,lang,media_id,date) VALUES("'+item['caption']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['img_vid_src']+'","'+item['likes']+'","'+item['lang']+'","'+item['media_id']+'","'+item['date']+'")')
-		elif item['src']=='youtube':
-			self.cur.execute('INSERT INTO videos (title,url,lang,preview_image,embed_code,embed_url,channel,date) VALUES("'+item['title']+'","'+item['url']+'","'+item['lang']+'","'+item['preview_image']+'","'+item['embed_code']+'","'+item['embed_url']+'","'+item['channel']+'","'+item['date']+'")')
+			self.cur.execute('INSERT INTO instagram (itemIndex,caption,account,tags,url,img_vid_src,likes,lang,media_id,date) VALUES("'+item['itemIndex']+'","'+item['caption']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['img_vid_src']+'","'+item['likes']+'","'+item['lang']+'","'+item['media_id']+'","'+item['date']+'")')
+		elif item['type']=='video':
+			self.cur.execute('INSERT INTO videos (itemIndex,title,url,lang,preview_image,embed_code,embed_url,channel,date) VALUES("'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['lang']+'","'+item['preview_image']+'","'+item['embed_code']+'","'+item['embed_url']+'","'+item['channel']+'","'+item['date']+'")')
 		else:
-			self.cur.execute('INSERT INTO articles (title,url,image,summary,tags,lang,content,date) VALUES("'+item['title']+'","'+item['url']+'","'+item['image']+'","'+item['summary']+'","'+item['tags']+'","'+item['lang']+'","'+item['content']+'","'+item['date']+'")')
+			self.cur.execute('INSERT INTO articles (src,itemIndex,title,url,image,summary,tags,lang,content,date) VALUES("'+item['src']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['image']+'","'+item['summary']+'","'+item['tags']+'","'+item['lang']+'","'+item['content']+'","'+item['date']+'")')
 		self.db.commit()
 		return item
 

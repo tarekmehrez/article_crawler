@@ -11,20 +11,21 @@ class YallaKoraSpider(scrapy.Spider):
 	start_urls= 	["http://www.yallakora.com/News/LoadMoreCategory.aspx?page=" + str(i+1) + "&newsregion=1&type=26" 	for i in range(5)] \
 				+ 	["http://www.yallakora.com/News/LoadMoreCategory.aspx?page=" + str(i+1) + "&newsregion=1&type=1" 	for i in range(5)]
 
-
+	itemCount = 1
 	def parse(self,response):
-
 		for sel in response.xpath(".//li[contains(@class,'ClipItem')]"):
 			item = ArticleItem()
 			item['type'] = "article"
 
 			relative_url = sel.xpath(".//a[contains(@class,'NewsTitle')]/@href")[0].extract()
 			url = response.urljoin(relative_url)
-
+			item['summary'] = sel.xpath(".//a[contains(@class,'NewsTitle')]/text()")[0].extract()
 			item['url'] = url
 			item['title'] = sel.xpath(".//a[contains(@class,'NewsTitle')]/text()")[0].extract().strip()
 			item['src'] = 'yallakora'
 			item['lang'] = 'ar'
+			item['itemIndex'] = self.itemCount
+			itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 
 	def parse_article(self, response):

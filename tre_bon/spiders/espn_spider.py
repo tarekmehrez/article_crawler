@@ -11,14 +11,12 @@ class ESPNSpider(scrapy.Spider):
 	name = 'espn'
 	allowed_domains = ["espnfc.com"]
 	start_urls=["http://www.espnfc.com/news"]
-
+	itemCount = 1
 	def parse(self, response):
 
 
 		data = json.load(urllib2.urlopen("http://www.espnfc.com/api/feed?xhr=1&t=54&device=pc&limit=100&content=story&offset=0&key=espnfc-en-www-index-news-600"))
 		articles = data['data']['features']
-
-
 		for article in articles:
 			item = ArticleItem()
 			item['type'] = "article"
@@ -45,5 +43,6 @@ class ESPNSpider(scrapy.Spider):
 			tree = etree.HTML(article['body'])
 			content = tree.xpath(".//p/text()")
 			item['content'] = ' '.join(content)
-
+			item['itemIndex'] = self.itemCount
+			self.itemCount = self.itemCount+1
 			yield item

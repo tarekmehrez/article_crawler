@@ -20,6 +20,7 @@ class ArticleItem(scrapy.Item):
 	src = scrapy.Field()
 	lang = scrapy.Field()
 	content = scrapy.Field()
+	itemIndex = scrapy.Field()
 	type = scrapy.Field()
 
 class VideoItem(scrapy.Item):
@@ -32,6 +33,7 @@ class VideoItem(scrapy.Item):
 	preview_image = scrapy.Field()
 	embed_code = scrapy.Field()
 	embed_url = scrapy.Field()
+	itemIndex = scrapy.Field()
 	type = scrapy.Field()
 
 class InstagramItem(scrapy.Item):
@@ -45,6 +47,7 @@ class InstagramItem(scrapy.Item):
 	img_vid_src = scrapy.Field()
 	likes = scrapy.Field()
 	lang = scrapy.Field()
+	itemIndex = scrapy.Field()
 	media_id = scrapy.Field()
 
 class TwitterItem(scrapy.Item):
@@ -58,5 +61,6 @@ class TwitterItem(scrapy.Item):
 	retweets = scrapy.Field()
 	lang = scrapy.Field()
 	favs = scrapy.Field()
+	itemIndex = scrapy.Field()
 	tweet_id = scrapy.Field()
 	
