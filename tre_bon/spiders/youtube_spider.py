@@ -78,7 +78,8 @@ class YoutubeSpider(scrapy.Spider):
 			if 'mcfcofficial' in str(response):
 				item['channel'] = 'Manchester City FC'
 				item['lang'] = 'en'
-
+			if 'lang' not in item:
+				item['lang'] = 'ar'
 
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
 

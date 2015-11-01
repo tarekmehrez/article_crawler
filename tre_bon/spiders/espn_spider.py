@@ -6,6 +6,7 @@ import urllib2
 
 from lxml import etree
 from tre_bon.items import ArticleItem
+from datetime import datetime
 
 class ESPNSpider(scrapy.Spider):
 	name = 'espn'
@@ -30,6 +31,7 @@ class ESPNSpider(scrapy.Spider):
 				item['image'] = article["thumbnail"]["URL"]
 
 			item['date'] = article["source"]["createDate"]
+			print datetime.fromtimestamp(int(item['date']) / 1e3)
 			item['src'] = 'espnfc'
 			item['lang'] = 'en'
 			if 'summary' in article.keys():

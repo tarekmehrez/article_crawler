@@ -48,6 +48,7 @@ class TwitterSpider(scrapy.Spider):
 				item['tags'] = ''
 				item['src'] = 'twitter'
 				item['account'] = tweet.user.name
+				item['account_image'] = tweet.user.profile_image_url
 
 				if len(tweet.entities['hashtags']) > 0:
 					item['tags'] = []
@@ -55,10 +56,10 @@ class TwitterSpider(scrapy.Spider):
 						item['tags'].append(tag['text'])
 
 				item['date'] =  tweet.created_at
-				item['url'] =  "twitter.com/" + str(tweet.user.screen_name) + "/status/" + str(tweet.id)
+				item['url'] =  "https://twitter.com/" + str(tweet.user.screen_name) + "/status/" + str(tweet.id)
 				item['media_url'] = ''
 				if 'media' in tweet.entities:
-					item['media_url'] = tweet.entities['media'][0]['media_url_https']
+					item['media_url'] = 'https://'+tweet.entities['media'][0]['media_url_https']
 
 				item['retweets'] = tweet.retweet_count
 				item['favs'] = tweet.favorite_count

@@ -63,4 +63,5 @@ class TwitterItem(scrapy.Item):
 	favs = scrapy.Field()
 	itemIndex = scrapy.Field()
 	tweet_id = scrapy.Field()
+	account_image = scrapy.Field()
 	

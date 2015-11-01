@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 # Author: Tarek
 
@@ -334,7 +334,7 @@ class MySQLArticlesPipeline(object):
 					print key
 			
 		if  item['src']=='twitter':
-			self.cur.execute('INSERT INTO twitter (itemIndex,text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['itemIndex']+'","'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
+			self.cur.execute('INSERT INTO twitter (account_img,itemIndex,text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['media_url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
 		elif item['src']=='instagram':
 			self.cur.execute('INSERT INTO instagram (itemIndex,caption,account,tags,url,img_vid_src,likes,lang,media_id,date) VALUES("'+item['itemIndex']+'","'+item['caption']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['img_vid_src']+'","'+item['likes']+'","'+item['lang']+'","'+item['media_id']+'","'+item['date']+'")')
 		elif item['type']=='video':
