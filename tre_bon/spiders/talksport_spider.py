@@ -8,7 +8,7 @@ import re
 class TalkSportpider(scrapy.Spider):
 	name = 'talksport'
 	allowed_domains = ["talksport.com"]
-	start_urls=["http://talksport.com/football?page=" + str(i+1) for i in range(5)]
+	start_urls=["http://talksport.com/football?page=" + str(i) for i in range(10)]
 
 	itemCount = 1
 	def parse(self,response):
