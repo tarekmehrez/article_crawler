@@ -3,6 +3,7 @@
 import scrapy
 import json
 import urllib2
+import re
 
 from tre_bon.items import VideoItem
 
@@ -18,12 +19,18 @@ class DailyMotionSpider(scrapy.Spider):
 				+	["http://www.dailymotion.com/user/funnyno1/"	+ str(i) for i in range(5)]
 	itemCount = 1
 	def parse(self,response):
+		channel = re.match( r'http://www.dailymotion.com/user/([a-zA-Z0-9]+)/[0-9]*', response.url, re.M|re.I)
+
 		for sel in response.xpath(".//div[@class='sd_video_griditem media media-stacked col-4 js-item']"):
 			item = VideoItem()
 
-
+			if channel:
+				item['channel'] = channel.group(1)
+			else:
+				item['channel'] = ' '
 			relative_url =sel.xpath(".//a/@href")[0].extract()
 			url = response.urljoin(relative_url)
+			item['account_image'] = response.xpath(".//a[@class='nav-image']/img/@src").extract()[0]
 			item['type'] = 'video'
 			item['url'] = url
 			item['embed_url'] = url
@@ -66,6 +73,6 @@ class DailyMotionSpider(scrapy.Spider):
 
 		data = json.load(urllib2.urlopen("http://www.dailymotion.com/api/oembed?url="+item['url']))
 		item['embed_code'] = data['html']
-		item['channel'] = ''
+		
 
 		yield item

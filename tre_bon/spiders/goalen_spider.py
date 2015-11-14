@@ -44,10 +44,16 @@ class GoalENSpider(scrapy.Spider):
 		if response.xpath(".//img[contains(@class,'article-image')]/@src"):
 			item['image'] = response.xpath(".//img[contains(@class,'article-image')]/@src")[0].extract()
 
-		item['tags'] = response.xpath(".//li[contains(@class,'tags')]/a/text()").extract()
+		item['tags'] = ','.join(response.xpath(".//li[contains(@class,'tags')]/a/text()").extract())
 		content = 		response.xpath(".//div[contains(@class,'article-text')]/p/text()").extract() \
 					+ 	response.xpath(".//div[contains(@class,'article-text')]/text()").extract() \
 					+	response.xpath(".//div[@class='article-text']/p/span/text()").extract()
 
 		item['content'] = ' '.join(content)
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/([0-9]*)/.*', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)
+		else:
+			item['postId'] = item['title']
 		yield item

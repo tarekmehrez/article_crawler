@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 
 
@@ -42,5 +43,11 @@ class SkySportsSpider(scrapy.Spider):
 		if response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract():
 			content = response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract()
 			item['content'] = ' '.join(content)
-			item['tags'] = ' '.join(content)
+			item['tags'] = ','.join(content)
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/([0-9]*)/([0-9]*)/.*', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)+postId.group(2)
+		else:
+			item['postId'] = item['title']
 		yield item

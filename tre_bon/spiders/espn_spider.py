@@ -21,6 +21,7 @@ class ESPNSpider(scrapy.Spider):
 		for article in articles:
 			item = ArticleItem()
 			item['type'] = "article"
+			item['postId'] = self.name+article['id']
 
 			item['title'] = article['headline']
 			item['url'] = article['linkUrl']
@@ -47,4 +48,5 @@ class ESPNSpider(scrapy.Spider):
 			item['content'] = ' '.join(content)
 			item['itemIndex'] = self.itemCount
 			self.itemCount = self.itemCount+1
+			item['account_image'] = ' '
 			yield item

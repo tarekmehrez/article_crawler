@@ -31,7 +31,11 @@ class FifaENSpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
-
+		item['postId'] = response.xpath("//meta[@name='resourceid']/@content").extract()
+		if len(item['postId'])==0:
+			item['postId'] = item['title']
+		else:
+			item['postId'] = self.name+item['postId'][0]
 		if response.xpath(".//time/@date"):
 			item['date'] = response.xpath(".//time/@date")[0].extract()
 		content = response.xpath(".//div[contains(@class,'article-body')]/p/text()").extract()
@@ -41,4 +45,5 @@ class FifaENSpider(scrapy.Spider):
 
 		item['tags'] = ''
 		item['content'] = ' '.join(content)
+		item['account_image'] = ' '
 		yield item

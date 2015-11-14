@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 
 class YallaKoraSpider(scrapy.Spider):
@@ -34,7 +35,13 @@ class YallaKoraSpider(scrapy.Spider):
 		item['image'] = response.xpath(".//div[contains(@class,'ArticleIMG')]/img/@src")[0].extract()
 		if response.xpath(".//span[contains(@class,'PortfolioDate')]/text()"):
 			item['date'] = response.xpath(".//span[contains(@class,'PortfolioDate')]/text()")[0].extract()
-		item['tags'] = response.xpath(".//ul[contains(@class,'TourTabs floatRight')]/li/a/span/text()").extract()
+		item['tags'] = ','.join(response.xpath(".//ul[contains(@class,'TourTabs floatRight')]/li/a/span/text()").extract())
 		content=   response.xpath(".//div[contains(@class,'articleBody')]/text()").extract()
 		item['content'] = ' '.join(content)
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/([0-9]*)/([0-9]*)/.*', response.url, re.M|re.I)
+		if postId:
+			item['postId'] =postId.group(1)+postId.group(2)+ self.name
+		else:
+			item['postId'] = item['title']
 		yield item

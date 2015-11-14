@@ -19,6 +19,7 @@ class BleacherSpider(scrapy.Spider):
 		articles = data['streams'][0]['items']
 		for article in articles:
 			item = ArticleItem()
+			item['postId'] = self.name+article["id"]
 			item['type'] = "article"
 
 			item['title'] = article['title']
@@ -44,4 +45,5 @@ class BleacherSpider(scrapy.Spider):
 		content = response.xpath(".//div[contains(@class,'article_body cf')]/p/text()").extract()
 		item['content'] = ' '.join(content)
 		item['summary'] = ' '.join(response.xpath('/html/head/meta[@name="description"]/@content').extract())
+		item['account_image'] = ' '
 		yield item

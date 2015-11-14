@@ -46,6 +46,10 @@ DOWNLOAD_DELAY=3
 #SPIDER_MIDDLEWARES = {
 #    'tre_bon.middlewares.MyCustomSpiderMiddleware': 543,
 #}
+DOWNLOADER_MIDDLEWARES = {
+    'tre_bon.middlewares.ProxyMiddleware': 110,
+    'tre_bon.middlewares.RandomUserAgentMiddleware': 400
+} 
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
@@ -99,6 +103,20 @@ MYSQLDB_PWD = ""
 #HTTPCACHE_DIR='httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+PROXIES = [{'ip_port': '61.38.252.17:3128', 'user_pass': ''},
+           {'ip_port': '31.15.48.12:80', 'user_pass': ''},
+           {'ip_port': '23.239.11.178:56220', 'user_pass': ''},
+           {'ip_port': '180.73.0.95:81', 'user_pass': ''},
+           {'ip_port': '198.233.177.90:80', 'user_pass': ''},
+           {'ip_port': '192.99.198.229:80', 'user_pass': ''},
+           {'ip_port': '119.235.102.81:80', 'user_pass': ''},
+            {'ip_port': '41.227.136.212:80', 'user_pass': ''},
+             {'ip_port': '217.23.185.106:8080', 'user_pass': ''},]
+
+USER_AGENT_LIST = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.152 Safari/535.19',
+                   'Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/20120403211507 Firefox/12.0',
+                   'Mozilla/5.0 (compatible; Windows; U; Windows NT 6.2; WOW64; en-US; rv:12.0) Gecko/20120403211507 Firefox/12.0']
 
 
 

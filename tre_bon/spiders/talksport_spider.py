@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 class TalkSportpider(scrapy.Spider):
 	name = 'talksport'
@@ -35,4 +36,10 @@ class TalkSportpider(scrapy.Spider):
 		item['date'] = response.xpath(".//div[contains(@class,'meta submitted')]/text()")[2].extract().replace('|','').strip()
 		content =  response.xpath(".//div[contains(@class,'field-item even')]/p/text()").extract()
 		item['content'] = ' '.join(content)
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/(.*)', response.url, re.M|re.I)
+		if postId:
+			item['postId'] =postId.group(1)+ self.name
+		else:
+			item['postId'] = item['title']
 		yield item

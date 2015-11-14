@@ -21,7 +21,8 @@ class InstagramSpider(scrapy.Spider):
 		                    client_secret="85ecfb407c34423c8efcf82af4b38695")
 
 
-		user_ids = {}
+		self.user_ids = {}
+		self.user_imgs = {}
 
 					# players
 		accounts = ['cristiano','leomessi', 'waynerooney','zidane','iamzlatanibrahimovic', 'toni.kr8s','davidluiz_4',
@@ -44,17 +45,20 @@ class InstagramSpider(scrapy.Spider):
 			print account
 			user = self.api.user_search(account)
 			if user:
-				user_ids[account]=user[0].id
+				self.user_ids[account]=user[0].id
+				self.user_imgs[account] = user[0].profile_picture
+				
 
 
-		print user_ids
-
+		#print user_ids
+		'''
 		f = open('insta_user_ids.pickle', 'wb')
 		pickle.dump(user_ids, f)
 		f.close()
 
 		f = open('insta_user_ids.pickle', 'rb')
 		self.user_ids = pickle.load(f)
+		'''
 
 	def parse(self,response):
 		itemCount  = 1
@@ -70,6 +74,7 @@ class InstagramSpider(scrapy.Spider):
 				item['date'] = media.created_time
 				item['src'] = 'instagram'
 				item['account'] = user
+				item['account_image'] = self.user_imgs[user]
 
 				item['tags'] = []
 				for tag in media.tags:

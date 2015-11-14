@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 class FilGoalSpider(scrapy.Spider):
 	name = 'filgoal'
@@ -37,4 +38,10 @@ class FilGoalSpider(scrapy.Spider):
 		item['tags'] = response.xpath(".//span[contains(@class,'keywordTag ')]/a/text()").extract()
 		content = response.xpath(".//div[contains(@id,'ctl00_cphFilGoalMain_pnlNewsBody')]/p/text()").extract()
 		item['content'] = ' '.join(content)
+		item['account_image'] = ' '
+		postId  = re.match(r'.*\?NewsID=([0-9]*)', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)
+		else:
+			item['postId'] = item['title']
 		yield item

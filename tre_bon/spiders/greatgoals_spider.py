@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 
 class GreatGoalspider(scrapy.Spider):
@@ -35,5 +36,10 @@ class GreatGoalspider(scrapy.Spider):
 		item['tags'] = response.xpath(".//div[contains(@class,'post-tags')]/a/text()").extract()
 		content = response.xpath(".//div[contains(@id,'the-content')]/p/text()").extract()
 		item['content'] = ' '.join(content)
-		
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/(.*)/', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)
+		else:
+			item['postId'] = item['title']
 		yield item

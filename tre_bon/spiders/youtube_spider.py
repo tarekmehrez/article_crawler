@@ -24,6 +24,8 @@ class YoutubeSpider(scrapy.Spider):
 					]
 	itemCount = 1
 	def parse(self,response):
+		account_image = response.xpath("//img[@class='appbar-nav-avatar']/@src").extract()[0]
+		print account_image
 		for sel in response.xpath(".//li[@class='channels-content-item yt-shelf-grid-item']"):
 			item = VideoItem()
 
@@ -32,12 +34,14 @@ class YoutubeSpider(scrapy.Spider):
 			url = response.urljoin(relative_url)
 			item['type'] = 'video'
 			item['url'] = url
+			item['account_image'] = account_image
 			item['title'] = sel.xpath(".//h3/a/@title")[0].extract()
 
 			item['preview_image'] = 'http://'+sel.xpath(".//img/@src")[0].extract().replace("//","")
 			item['src'] = 'youtube'
 			item['itemIndex'] = self.itemCount
 			self.itemCount = self.itemCount+1
+			item['channel'] = ' '
 			if 'ScoutNationHD' in str(response):
 				item['channel']='ScoutNationHD'
 				item['lang'] = 'en'

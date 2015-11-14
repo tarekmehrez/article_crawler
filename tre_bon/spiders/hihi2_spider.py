@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 
 class Hihi2Spider(scrapy.Spider):
@@ -31,7 +32,13 @@ class Hihi2Spider(scrapy.Spider):
 	def parse_article(self, response):
 		item = response.meta['item']
 		item['image'] = response.xpath(".//div[contains(@class,'entry-content')]/p/a/@href")[0].extract()
-		item['tags'] = response.xpath(".//div[contains(@class,'entry-tags')]/a/text()").extract()
+		item['tags'] = ','.join(response.xpath(".//div[contains(@class,'entry-tags')]/a/text()").extract())
 		content = response.xpath(".//div[contains(@class,'entry-content')]/p/text()").extract()
 		item['content'] = ' '.join(content)
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/(.*)\.html', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)
+		else:
+			item['postId'] = item['title']
 		yield item

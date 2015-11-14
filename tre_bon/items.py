@@ -22,6 +22,21 @@ class ArticleItem(scrapy.Item):
 	content = scrapy.Field()
 	itemIndex = scrapy.Field()
 	type = scrapy.Field()
+	account_image = scrapy.Field()
+	postId = scrapy.Field()
+
+class LiveScoreItem(scrapy.Item):
+	src = scrapy.Field()
+	type = scrapy.Field()
+	competition = scrapy.Field()
+	competitionLogo = scrapy.Field()
+	visitorTeam = scrapy.Field()
+	visitorTeamScore = scrapy.Field()
+	visitorTeamLogo = scrapy.Field()
+	localTeam = scrapy.Field()
+	localTeamScore = scrapy.Field()
+	localTeamLogo = scrapy.Field()
+	matchDateTime = scrapy.Field()
 
 class VideoItem(scrapy.Item):
 	title = scrapy.Field()
@@ -35,6 +50,7 @@ class VideoItem(scrapy.Item):
 	embed_url = scrapy.Field()
 	itemIndex = scrapy.Field()
 	type = scrapy.Field()
+	account_image = scrapy.Field()
 
 class InstagramItem(scrapy.Item):
 	caption = scrapy.Field()
@@ -49,6 +65,7 @@ class InstagramItem(scrapy.Item):
 	lang = scrapy.Field()
 	itemIndex = scrapy.Field()
 	media_id = scrapy.Field()
+	account_image = scrapy.Field()
 
 class TwitterItem(scrapy.Item):
 	text = scrapy.Field()

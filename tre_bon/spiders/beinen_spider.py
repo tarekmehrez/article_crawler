@@ -36,9 +36,18 @@ class BeinENpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
+		postId  = re.match(r'.*/([0-9]*)', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)
+		else:
+			item['postId'] = item['title']
 		item['image'] = response.xpath(".//div[contains(@class,'visuel-article_hero')]/img/@src")[0].extract()
 		content = response.xpath(".//main/p/text()").extract()
 		item['content'] = ' '.join(content)
 		item['summary'] =  ' '.join(response.xpath('/html/head/meta[@property="og:description"]/@content').extract())
 		item['tags'] = ' '
+		item['account_image'] = ' '
 		yield item
+
+
+

@@ -3,6 +3,7 @@
 import scrapy
 
 from tre_bon.items import ArticleItem
+import re
 
 
 class KorabiaSpider(scrapy.Spider):
@@ -38,6 +39,11 @@ class KorabiaSpider(scrapy.Spider):
 		content = response.xpath(".//div[@class='fontt']/p/text()").extract()
 		item['content'] = ' '.join(content)
 		item['tags'] = ' '
-
+		item['account_image'] = ' '
+		postId  = re.match(r'.*/([0-9]*)', response.url, re.M|re.I)
+		if postId:
+			item['postId'] = self.name+postId.group(1)
+		else:
+			item['postId'] = item['title']
 
 		yield item
