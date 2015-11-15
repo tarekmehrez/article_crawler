@@ -67,7 +67,6 @@ class ArticlePipeline(object):
 
 
 	def process_item(self, item, spider):
-
 		if item['src']!='twitter' and item['type'] != 'article':
 			return item
 
@@ -99,17 +98,8 @@ class ArticlePipeline(object):
 
 
 		# converting different (customized) date formats to datetime python format
-		print "the source TYPE IS: " + item['src']
-		item['date'] = '123'
-		if item['src'] == 'teamtalk':
-			date = str(item['date']).split(" ")
-			day = re.sub('[a-zA-Z]','',date[0])
-			month = self.datedict[date[1]]
-			year = date[2]
-			dateformatted = "%s-%s-%s %s" % (year,month,day,date[3])
-			item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M:%S")
 
-		elif item['src'] == 'bein':
+		if item['src'] == 'bein':
 			date = item['date'].split('+')[0]
 			date = re.sub('[a-zA-Z]',' ',date)
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
@@ -252,6 +242,20 @@ class ArticlePipeline(object):
 
 			date = "%s-%s-%s %s" % (year,month,day,time)
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
+		elif item['src'] == 'teamtalk':
+			date = str(item['date']).split(" ")
+			day = re.sub('[a-zA-Z]','',date[0])
+			month = self.datedict[date[1]]
+			year = date[2]
+			dateformatted = "%s-%s-%s %s" % (year,month,day,date[3])
+			item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
+
+		elif item['src'] == 'whoscored':
+			date = item['date'].split(' ')
+			month = self.datedict[date[0]]
+			dateformatted = "%s-%s-%s %s" % (date[2],month,date[1],date[3])
+			item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
 
 		# in case we failed to find any date for the article, save the article with the current datetime
 		if 'date' not in item:

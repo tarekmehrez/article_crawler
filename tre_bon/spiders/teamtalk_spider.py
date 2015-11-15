@@ -82,4 +82,4 @@ class TeamTalkSpider(scrapy.Spider):
 		else:
 			item['postId'] = item['title']
 		print item
-		# yield item
+		yield item
