@@ -5,3 +5,10 @@ pymongo
 numpy
 tweepy
 python-instagram
+BeautifulSoup
+pandas
+numpy
+nltk
+sklearn
+pymysql
+matplotlib

@@ -2,30 +2,35 @@ import base64
 import random
 import pprint
 
-from settings import USER_AGENT_LIST
-from settings import PROXIES
 from scrapy import log
+from random import choice
+from scrapy import signals
+from scrapy.exceptions import NotConfigured
 
 
-class ProxyMiddleware(object):
+class RotateUserAgentMiddleware(object):
+    """Rotate user-agent for each request."""
+    def __init__(self, user_agents):
+        self.enabled = False
+        self.user_agents = user_agents
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        user_agents = crawler.settings.get('USER_AGENT_CHOICES', [])
+
+        if not user_agents:
+            raise NotConfigured("USER_AGENT_CHOICES not set or empty")
+
+        o = cls(user_agents)
+        crawler.signals.connect(o.spider_opened, signal=signals.spider_opened)
+
+        return o
+
+    def spider_opened(self, spider):
+        self.enabled = getattr(spider, 'rotate_user_agent', self.enabled)
+
     def process_request(self, request, spider):
-        proxy = random.choice(PROXIES)
-        #pprint.pprint(proxy)
-        if proxy['user_pass'] is not None:
-            request.meta['proxy'] = "http://%s" % proxy['ip_port']
-            encoded_user_pass = base64.encodestring(proxy['user_pass'])
-            request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
-            #pprint.pprint(request)            
-        else:
-            request.meta['proxy'] = "http://%s" % proxy['ip_port']
-            #print " no user pass " + request
-        # uncommeitnng return, keeps in infinte loop
-        # return request
+        if not self.enabled or not self.user_agents:
+            return
 
-
-class RandomUserAgentMiddleware(object):    
-    def process_request(self, request, spider):
-        ua = random.choice(USER_AGENT_LIST)
-        if ua:
-            request.headers.setdefault('User-Agent', ua)
-        #log.msg('>>>> UA %s'%request.headers)
+        request.headers['user-agent'] = choice(self.user_agents)
