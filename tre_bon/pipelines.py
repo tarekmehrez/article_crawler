@@ -16,10 +16,10 @@ import pymysql
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 from datetime import datetime
-import sys  
+import sys
 from bs4 import BeautifulSoup
 
-reload(sys)  
+reload(sys)
 sys.setdefaultencoding('utf8')
 
 class ArticlePipeline(object):
@@ -65,7 +65,7 @@ class ArticlePipeline(object):
 							}
 		self.datedict.setdefault(10)
 
-		
+
 	def process_item(self, item, spider):
 
 		if item['src']!='twitter' and item['type'] != 'article':
@@ -99,7 +99,17 @@ class ArticlePipeline(object):
 
 
 		# converting different (customized) date formats to datetime python format
-		if item['src'] == 'bein':
+		print "the source TYPE IS: " + item['src']
+		item['date'] = '123'
+		if item['src'] == 'teamtalk':
+			date = str(item['date']).split(" ")
+			day = re.sub('[a-zA-Z]','',date[0])
+			month = self.datedict[date[1]]
+			year = date[2]
+			dateformatted = "%s-%s-%s %s" % (year,month,day,date[3])
+			item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M:%S")
+
+		elif item['src'] == 'bein':
 			date = item['date'].split('+')[0]
 			date = re.sub('[a-zA-Z]',' ',date)
 			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
@@ -276,7 +286,7 @@ class VideoPipeline(object):
 
 			date = item['date'].strip()
 			date_arr = date.split(' ')
-		
+
 			month = self.datedict[date_arr[0]]
 
 			day = date_arr[1].replace(',','')
@@ -321,7 +331,7 @@ class MySQLArticlesPipeline(object):
 		self.db.set_charset('utf8')
 		# you must create a Cursor object. It will let
 		#  you execute all the queries you need
-		self.cur = self.db.cursor() 
+		self.cur = self.db.cursor()
 
 	def process_item(self, item, spider):
 		try:
@@ -339,7 +349,7 @@ class MySQLArticlesPipeline(object):
 				except:
 					print key
 
-		if item['src']=='livescore':	
+		if item['src']=='livescore':
 			if item['localTeamScore']=='?':
 				item['localTeamScore'] = 0
 			if item['visitorTeamScore']== '?':

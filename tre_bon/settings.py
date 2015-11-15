@@ -24,13 +24,13 @@ CONCURRENT_REQUESTS=1
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY=3
+# DOWNLOAD_DELAY=3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN=16
 #CONCURRENT_REQUESTS_PER_IP=16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED=False
+# COOKIES_ENABLED=False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED=False
@@ -46,10 +46,10 @@ COOKIES_ENABLED=False
 #SPIDER_MIDDLEWARES = {
 #    'tre_bon.middlewares.MyCustomSpiderMiddleware': 543,
 #}
-DOWNLOADER_MIDDLEWARES = {
-    'tre_bon.middlewares.ProxyMiddleware': 110,
-    'tre_bon.middlewares.RandomUserAgentMiddleware': 400
-} 
+# DOWNLOADER_MIDDLEWARES = {
+    # 'tre_bon.middlewares.ProxyMiddleware': 110,
+#     'tre_bon.middlewares.RandomUserAgentMiddleware': 400
+# } 
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
@@ -66,10 +66,10 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-	 'tre_bon.pipelines.ArticlePipeline': 300,
-	 'tre_bon.pipelines.VideoPipeline': 300,
-	 'tre_bon.pipelines.DuplicatesPipeline': 400,
-	 'tre_bon.pipelines.MySQLArticlesPipeline': 500,
+     'tre_bon.pipelines.ArticlePipeline': 300
+	 # 'tre_bon.pipelines.VideoPipeline': 300,
+	 # 'tre_bon.pipelines.DuplicatesPipeline': 400,
+	 # 'tre_bon.pipelines.MySQLArticlesPipeline': 500,
 	 #'tre_bon.pipelines.MongoArticlesPipeline': 500
 }
 
