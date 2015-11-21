@@ -18,6 +18,7 @@ from scrapy.exceptions import DropItem
 from datetime import datetime
 import sys
 from bs4 import BeautifulSoup
+import requests
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -67,6 +68,8 @@ class ArticlePipeline(object):
 
 
 	def process_item(self, item, spider):
+
+
 		if item['src']!='twitter' and item['type'] != 'article':
 			return item
 
@@ -97,165 +100,177 @@ class ArticlePipeline(object):
 			#item[key] = re.sub( '\s+', ' ', item[key])
 
 
+		
+		if item['type']=='article' :
+			if item['image']!='':
+				r = requests.post(item['image'].strip())
+		        if r.status_code != 200:
+		        	item['image'] = ''
+		if item['type']!='livescore' and item['account_image']!='':
+		    r = requests.post(item['account_image'].strip())
+		    if r.status_code != 200:
+		        item['account_image'] = ''
 		# converting different (customized) date formats to datetime python format
+		try:
+			if item['src'] == 'bein':
+				date = item['date'].split('+')[0]
+				date = re.sub('[a-zA-Z]',' ',date)
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
-		if item['src'] == 'bein':
-			date = item['date'].split('+')[0]
-			date = re.sub('[a-zA-Z]',' ',date)
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
+			elif item['src'] == 'bleacher_report':
+				date = item['date']
+				date = re.sub('[a-zA-Z]',' ',date).strip()
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
 
-		elif item['src'] == 'bleacher_report':
-			date = item['date']
-			date = re.sub('[a-zA-Z]',' ',date).strip()
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
+			elif item['src'] == "cairokora":
 
-		elif item['src'] == "cairokora":
-
-			date = item['date'].split(",")[1]
-
-			day = date.split(" ")[0]
-			month = self.datedict[date.split(" ")[1]]
-			year = date.split(" ")[2]
-			time = date.split(" ")[4]
-			date = "%s-%s-%s %s" % (year,month,day,time)
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
-
-		elif item['src'] == "espnfc":
-			date = item['date']
-			item['date'] = datetime.fromtimestamp(int(date) / 1e3)
-
-		elif item['src'] == "fifa":
-			item['date'] = datetime.now()
-
-		elif item['src'] == "goal":
-			if item['lang'] == 'en':
-				date = item['date'].split(",")[1].strip()
-				day = date.split(" ")[1]
-				month = self.datedict[date.split(" ")[0]]
-
-				date = item['date'].split(",")[2].strip()
-				year = date[:4]
-				time = date[4:]
-			else:
-				date = item['date'].split("،")[1].strip()
-				day = date.split(" ")[0]
-				month = self.datedict[date.split(" ")[1]]
-
-				date = item['date'].split("،")[2].strip()
-
-				year = date[:4]
-				time = date[4:].split(" ")[0]
-
-			date = "%s-%s-%s %s" % (year,month,day,time)
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
-
-
-		elif item['src'] == 'greatgoals':
-			date = item['date'].strip()
-
-			month = self.datedict[date.split(" ")[0]]
-			day = date.split(" ")[1].split(",")[0].strip()
-			year = date.split(",")[1].strip()
-			date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M:%S'))
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
-
-
-		elif item['src'] == 'talksport':
-
-			date = item['date']
-			day = date.split(",")[1].strip().split(" ")[1]
-			month = self.datedict[date.split(",")[1].strip().split(" ")[0]]
-			year = item['date'].split(",")[2].strip()
-			date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M:%S'))
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
-
-
-		elif item['src'] == 'hihi2':
-			date = item['date'].replace('ص','AM').replace('م','PM').strip()
-			if date.split(' ')[3] == 'PM':
-				old = date.split(' ')[2]
-				old_arr = date.split(' ')[2].split(":")
-
-				if old_arr[0] != '12':
-					new = int(old_arr[0]) + 12
-					result = ':'.join([str(new),old_arr[1]])
-					date = date.replace(old,result)
-
-
-			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
-			item['date'] = datetime.strptime(date,  "%Y/%m/%d %H:%M")
-
-		elif item['src'] == 'skysports':
-			date = item['date'].replace('am',' AM').replace('pm',' PM').strip()
-			if date.split(' ')[2] == 'PM':
-				old = date.split(' ')[1]
-				old_arr = date.split(' ')[1].split(":")
-
-				if old_arr[0] != '12':
-					new = int(old_arr[0]) + 12
-					result = ':'.join([str(new),old_arr[1]])
-					date = date.replace(old,result)
-
-			date = date.replace("AM","").replace("PM","").replace('- ','').strip()
-			item['date'] = datetime.strptime(date,  "%d/%m/%y %H:%M")
-
-		elif item['src'] == 'yallakora':
-			if 'date' in item:
-				date = item['date'].strip()
+				date = item['date'].split(",")[1]
 
 				day = date.split(" ")[0]
-
 				month = self.datedict[date.split(" ")[1]]
 				year = date.split(" ")[2]
+				time = date.split(" ")[4]
+				date = "%s-%s-%s %s" % (year,month,day,time)
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
-				time = ' '.join(date.split(" ")[4:]).replace('ص','AM').replace('م','PM').strip()
+			elif item['src'] == "espnfc":
+				date = item['date']
+				item['date'] = datetime.fromtimestamp(int(date) / 1e3)
+
+			elif item['src'] == "fifa":
+				item['date'] = datetime.now()
+
+			elif item['src'] == "goal":
+				if item['lang'] == 'en':
+					date = item['date'].split(",")[1].strip()
+					day = date.split(" ")[1]
+					month = self.datedict[date.split(" ")[0]]
+
+					date = item['date'].split(",")[2].strip()
+					year = date[:4]
+					time = date[4:]
+				else:
+					date = item['date'].split("،")[1].strip()
+					day = date.split(" ")[0]
+					month = self.datedict[date.split(" ")[1]]
+
+					date = item['date'].split("،")[2].strip()
+
+					year = date[:4]
+					time = date[4:].split(" ")[0]
 
 				date = "%s-%s-%s %s" % (year,month,day,time)
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
-				if date.split(' ')[2] == 'PM':
-					old = date.split(' ')[1]
-					old_arr = date.split(' ')[1].split(":")
+
+			elif item['src'] == 'greatgoals':
+				date = item['date'].strip()
+
+				month = self.datedict[date.split(" ")[0]]
+				day = date.split(" ")[1].split(",")[0].strip()
+				year = date.split(",")[1].strip()
+				date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M:%S'))
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
+
+
+			elif item['src'] == 'talksport':
+
+				date = item['date']
+				day = date.split(",")[1].strip().split(" ")[1]
+				month = self.datedict[date.split(",")[1].strip().split(" ")[0]]
+				year = item['date'].split(",")[2].strip()
+				date = "%s-%s-%s %s" % (year,month,day,datetime.now().strftime('%H:%M:%S'))
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M:%S")
+
+
+			elif item['src'] == 'hihi2':
+				date = item['date'].replace('ص','AM').replace('م','PM').strip()
+				if date.split(' ')[3] == 'PM':
+					old = date.split(' ')[2]
+					old_arr = date.split(' ')[2].split(":")
+
 					if old_arr[0] != '12':
 						new = int(old_arr[0]) + 12
 						result = ':'.join([str(new),old_arr[1]])
 						date = date.replace(old,result)
 
-				date = date.replace("AM","").replace("PM","").strip()
+
+				date = date.replace("AM","").replace("PM","").replace('- ','').strip()
+				item['date'] = datetime.strptime(date,  "%Y/%m/%d %H:%M")
+
+			elif item['src'] == 'skysports':
+				date = item['date'].replace('am',' AM').replace('pm',' PM').strip()
+				if date.split(' ')[2] == 'PM':
+					old = date.split(' ')[1]
+					old_arr = date.split(' ')[1].split(":")
+
+					if old_arr[0] != '12':
+						new = int(old_arr[0]) + 12
+						result = ':'.join([str(new),old_arr[1]])
+						date = date.replace(old,result)
+
+				date = date.replace("AM","").replace("PM","").replace('- ','').strip()
+				item['date'] = datetime.strptime(date,  "%d/%m/%y %H:%M")
+
+			elif item['src'] == 'yallakora':
+				if 'date' in item:
+					date = item['date'].strip()
+
+					day = date.split(" ")[0]
+
+					month = self.datedict[date.split(" ")[1]]
+					year = date.split(" ")[2]
+
+					time = ' '.join(date.split(" ")[4:]).replace('ص','AM').replace('م','PM').strip()
+
+					date = "%s-%s-%s %s" % (year,month,day,time)
+
+					if date.split(' ')[2] == 'PM':
+						old = date.split(' ')[1]
+						old_arr = date.split(' ')[1].split(":")
+						if old_arr[0] != '12':
+							new = int(old_arr[0]) + 12
+							result = ':'.join([str(new),old_arr[1]])
+							date = date.replace(old,result)
+
+					date = date.replace("AM","").replace("PM","").strip()
+					item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
+				else:
+					item['date'] = datetime.now()
+			elif item['src'] == 'korabia':
+
+				date_arr = item['date'].strip().split(" ")
+				day = date_arr[1]
+				month = self.datedict[date_arr[2]]
+				year = date_arr[3]
+
+				time = date_arr[5]
+				if date_arr[6] == 'PM':
+					time_arr = time.split(":")
+					if time_arr[0] != '12':
+
+						new_time = str(12 + int(time_arr[0])) + ":" + time_arr[1]
+						time = new_time
+
+				date = "%s-%s-%s %s" % (year,month,day,time)
 				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
 
-			else:
-				item['date'] = datetime.now()
-		elif item['src'] == 'korabia':
+			elif item['src'] == 'teamtalk':
+				date = str(item['date']).split(" ")
+				day = re.sub('[a-zA-Z]','',date[0])
+				month = self.datedict[date[1]]
+				year = date[2]
+				dateformatted = "%s-%s-%s %s" % (year,month,day,date[3])
+				item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
 
-			date_arr = item['date'].strip().split(" ")
-			day = date_arr[1]
-			month = self.datedict[date_arr[2]]
-			year = date_arr[3]
-
-			time = date_arr[5]
-			if date_arr[6] == 'PM':
-				time_arr = time.split(":")
-				if time_arr[0] != '12':
-
-					new_time = str(12 + int(time_arr[0])) + ":" + time_arr[1]
-					time = new_time
-
-			date = "%s-%s-%s %s" % (year,month,day,time)
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
-
-		elif item['src'] == 'teamtalk':
-			date = str(item['date']).split(" ")
-			day = re.sub('[a-zA-Z]','',date[0])
-			month = self.datedict[date[1]]
-			year = date[2]
-			dateformatted = "%s-%s-%s %s" % (year,month,day,date[3])
-			item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
-
-		elif item['src'] == 'whoscored':
-			date = item['date'].split(' ')
-			month = self.datedict[date[0]]
-			dateformatted = "%s-%s-%s %s" % (date[2],month,date[1],date[3])
-			item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
+			elif item['src'] == 'whoscored':
+				date = item['date'].split(' ')
+				month = self.datedict[date[0]]
+				dateformatted = "%s-%s-%s %s" % (date[2],month,date[1],date[3])
+				item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
+		except:
+			item['date'] = datetime.now()
 
 		# in case we failed to find any date for the article, save the article with the current datetime
 		if 'date' not in item:

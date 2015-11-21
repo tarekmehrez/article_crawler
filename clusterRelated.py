@@ -53,7 +53,7 @@ def initMysql():
 	cur = db.cursor() 
 	return (db,cur)
 def getArticles(cursor):
-	cursor.execute ("select id, title , summary,content from articles;")
+	cursor.execute ("select id, title , summary,content from articles where src!='facebook';")
 	# fetch all of the rows from the query
 	data = cursor.fetchall ()
 	ids = []
