@@ -21,18 +21,17 @@ class ESPNSpider(scrapy.Spider):
 		for article in articles:
 			item = ArticleItem()
 			item['type'] = "article"
-			item['postId'] = self.name+article['id']
+			item['postId'] = self.name+str(article['id'])
 
 			item['title'] = article['headline']
 			item['url'] = article['linkUrl']
 
 			if article["images"]:
-				item['image'] = article["images"][0]["imageLocation"]
+				item['image'] = article["images"][0]["URL"]
 			else:
 				item['image'] = article["thumbnail"]["URL"]
 
 			item['date'] = article["source"]["createDate"]
-			print datetime.fromtimestamp(int(item['date']) / 1e3)
 			item['src'] = 'espnfc'
 			item['lang'] = 'en'
 			if 'summary' in article.keys():

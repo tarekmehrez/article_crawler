@@ -20,7 +20,7 @@ class BeinENpider(scrapy.Spider):
 			item = ArticleItem()
 			item['type'] = "article"
 
-			item['date'] = sel.xpath(".//time/@datetime")[0].extract()
+			
 
 
 			relative_url = sel.xpath(".//figcaption/a/@href")[0].extract()
@@ -47,6 +47,7 @@ class BeinENpider(scrapy.Spider):
 		item['summary'] =  ' '.join(response.xpath('/html/head/meta[@property="og:description"]/@content').extract())
 		item['tags'] = ' '
 		item['account_image'] = ' '
+		item['date'] = response.xpath(".//time/@datetime")[0].extract()
 		yield item
 
 

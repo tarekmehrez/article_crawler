@@ -59,7 +59,7 @@ class TwitterSpider(scrapy.Spider):
 				item['url'] =  "https://twitter.com/" + str(tweet.user.screen_name) + "/status/" + str(tweet.id)
 				item['media_url'] = ''
 				if 'media' in tweet.entities:
-					item['media_url'] = 'https://'+tweet.entities['media'][0]['media_url_https']
+					item['media_url'] = tweet.entities['media'][0]['media_url_https']
 
 				item['retweets'] = tweet.retweet_count
 				item['favs'] = tweet.favorite_count

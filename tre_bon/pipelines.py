@@ -12,7 +12,8 @@
 #import pymongo
 import re
 import pymysql
-
+import scrapy
+from scrapy.pipelines.images import ImagesPipeline
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 from datetime import datetime
@@ -23,6 +24,23 @@ import requests
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+
+
+class MyImagesPipeline(ImagesPipeline):
+
+    def get_media_requests(self, item, info):
+    	for key in item:
+		if (key == 'image'  or key=='preview_image' or key=='media_url') and item[key]!='':
+            		yield scrapy.Request(item[key].strip())
+
+    def item_completed(self, results, item, info):
+        image_path = [x['path'] for ok, x in results if ok]
+        if len(image_path)==0:
+        	return item
+        for key in item:
+        	if(key=='image' or key=='preview_image' or key=='media_url'):
+        		item[key] = image_path[0]
+        return item
 class ArticlePipeline(object):
 
 
@@ -64,7 +82,6 @@ class ArticlePipeline(object):
 							"Nov":		11,
 							"Dec":		12,
 							}
-		self.datedict.setdefault(10)
 
 
 	def process_item(self, item, spider):
@@ -100,7 +117,8 @@ class ArticlePipeline(object):
 			#item[key] = re.sub( '\s+', ' ', item[key])
 
 
-		
+		'''
+		Check for images link before adding the image downloader
 		if item['type']=='article' :
 			if item['image']!='':
 				r = requests.post(item['image'].strip())
@@ -110,6 +128,7 @@ class ArticlePipeline(object):
 		    r = requests.post(item['account_image'].strip())
 		    if r.status_code != 200:
 		        item['account_image'] = ''
+		'''
 		# converting different (customized) date formats to datetime python format
 		try:
 			if item['src'] == 'bein':

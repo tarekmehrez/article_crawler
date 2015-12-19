@@ -6,3 +6,4 @@ for spider in $(scrapy list); do
 
 done
 python clusterRelated.py
+python updateIndex.py

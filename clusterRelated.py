@@ -15,7 +15,7 @@ from sklearn.metrics.pairwise import euclidean_distances
 import math
 
 
-plotData = True
+plotData = False
 def tfIDFeats(ids,data):
 
 
@@ -24,7 +24,6 @@ def tfIDFeats(ids,data):
             strip_accents='unicode', analyzer='word',token_pattern=r'\w{1,}',
             ngram_range=(1, 5), use_idf=1,smooth_idf=1,sublinear_tf=1,
             stop_words = 'english')
-    
     # Fit TFIDF
     tfv.fit(data)
     X =  tfv.transform(data) 
@@ -53,7 +52,7 @@ def initMysql():
 	cur = db.cursor() 
 	return (db,cur)
 def getArticles(cursor):
-	cursor.execute ("select id, title , summary,content from articles where src!='facebook';")
+	cursor.execute ("select articles.id, title , summary,content from articles LEFT outer join relatedarticles on articles.id=articleId where src!='facebook' and distance is NULL ;")
 	# fetch all of the rows from the query
 	data = cursor.fetchall ()
 	ids = []
@@ -105,15 +104,15 @@ def plot_data(reduced_data,kmeans):
     plt.show()
 def insertDataDB(db,cursor,results,centers,ids,feats):
     curIndex = 0
-    cursor.execute('DELETE FROM relatedArticles')
-    database.commit()
+    #cursor.execute('DELETE FROM relatedArticles')
+    #database.commit()
     for result in results:
         distance = euclidean_distances(feats[curIndex],centers[result])
         cursor.execute('INSERT INTO relatedArticles(articleId,clusterId,distance) VALUES('+str(ids[curIndex])+','+str(result)+','+str(distance[0][0])+')')
         curIndex = curIndex+1
-    database.commit()
+    db.commit()
     cursor.close()
-    database.close()
+    db.close()
 
 def clusterArticles(feats,ids,cursor,database):
     articlesClustered = []

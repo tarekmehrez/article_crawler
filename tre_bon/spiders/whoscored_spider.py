@@ -31,6 +31,7 @@ class WhoScoredSpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
+		item['itemIndex'] = 0
 		item['image']= response.xpath(".//span[@class='post-text']/p/img/@src")[0].extract()
 		item['date'] = response.xpath(".//span[@class='post-date']/text()")[0].extract().split(" ",1)[1].split(',',1)[1].strip()
 
@@ -39,7 +40,7 @@ class WhoScoredSpider(scrapy.Spider):
 
 		item['tags'] = response.xpath(".//div[@class='post-tags']/a/text()").extract()
 		item['account_image'] = ' '
-		postId  = re.match(r'.*/([0-9]*)', response.url, re.M|re.I)
+		postId  = re.match(r'.*/([a-zA-Z]*[0-9]+[a-zA-Z0-9]*)/', response.url, re.M|re.I)
 		if postId:
 			item['postId'] = self.name+postId.group(1)
 		else:
