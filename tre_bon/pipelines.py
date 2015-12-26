@@ -1,5 +1,7 @@
-﻿#!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+﻿
+# Author: Tarek/ Araby
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # Author: Tarek
 
 # -*- coding: utf-8 -*-
@@ -96,7 +98,7 @@ class ArticlePipeline(object):
 			# fixing tags
 			if key == 'tags' and item['tags']!=' ' and not item['tags']:
 				for count,tag in enumerate(item['tags']):
-					item['tags'][count] = str(tag.strip().encode('utf8'))
+					item['tags'][count] = str(tag.encode('utf8')).strip()
 				continue
 			if key=='title' or key=='summary':
 				item[key] = BeautifulSoup(item[key]).get_text()
@@ -110,9 +112,9 @@ class ArticlePipeline(object):
 			# encoding textual attributes, date again in case of arabic since it contains months and days in alphabets
 			if key in ['title','summary','content','date']:
 				try:
-					item[key] = str(item[key].encode('utf8'))
+					item[key] = str(item[key].encode('utf8')).strip()
 				except:
-					item[key] = str(item[key])
+					item[key] = str(item[key]).strip()
 
 			#item[key] = re.sub( '\s+', ' ', item[key])
 
@@ -154,10 +156,21 @@ class ArticlePipeline(object):
 
 			elif item['src'] == "espnfc":
 				date = item['date']
-				item['date'] = datetime.fromtimestamp(int(date) / 1e3)
+				item['date'] = datetime.fromtimestamp(int(date))
 
 			elif item['src'] == "fifa":
 				item['date'] = datetime.now()
+
+
+			elif item['src'] == "filgoal":
+				date = str(item['date']).split()
+				day = date[2]
+				month = self.datedict[date[3]]
+				year = date[5]
+				time = date[7]
+				date = "%s-%s-%s %s" % (year,month,day,time)
+				item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+
 
 			elif item['src'] == "goal":
 				if item['lang'] == 'en':

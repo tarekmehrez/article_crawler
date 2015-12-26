@@ -24,7 +24,7 @@ class SkySportsSpider(scrapy.Spider):
 			item['url'] = url
 			item['title'] = sel.xpath(".//h4/a/text()")[0].extract()
 			if sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()"): item['summary'] = sel.xpath(".//p[contains(@class,'news-list__snippet')]/text()")[0].extract()
-			item['src'] = 'skysports'
+			item['src'] = 'SkySports'
 			item['lang'] = 'en'
 			item['date'] =  sel.xpath(".//span[contains(@class,'label__timestamp')]/text()")[0].extract()
 			item['itemIndex'] = self.itemCount
@@ -43,7 +43,7 @@ class SkySportsSpider(scrapy.Spider):
 		if response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract():
 			content = response.xpath(".//div[contains(@class,'article__body article__body--lead')]/p/text()").extract()
 			item['content'] = ' '.join(content)
-			item['tags'] = ','.join(content)
+			# item['tags'] = ','.join(content)
 		item['account_image'] = ' '
 		postId  = re.match(r'.*/([0-9]*)/([0-9]*)/.*', response.url, re.M|re.I)
 		if postId:
