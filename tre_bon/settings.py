@@ -75,7 +75,7 @@ ITEM_PIPELINES = {
      'tre_bon.pipelines.ArticlePipeline': 300,
 	 'tre_bon.pipelines.VideoPipeline': 300,
 	 'tre_bon.pipelines.DuplicatesPipeline': 400,
-	  # 'tre_bon.pipelines.MySQLArticlesPipeline': 500,
+	  'tre_bon.pipelines.MySQLArticlesPipeline': 500,
 	 #'tre_bon.pipelines.MongoArticlesPipeline': 500
 }
 
