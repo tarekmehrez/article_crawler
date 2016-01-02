@@ -53,7 +53,7 @@ DOWNLOADER_MIDDLEWARES = {
     # 'tre_bon.middlewares.ProxyMiddleware': 110,
     # 'tre_bon.middlewares.RandomUserAgentMiddleware': 400,
 
-    'tre_bon.middlewares.RotateUserAgentMiddleware': 100
+    # 'tre_bon.middlewares.RotateUserAgentMiddleware': 100
 }
 
 # Enable or disable downloader middlewares
@@ -71,11 +71,11 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-	  'tre_bon.pipelines.MyImagesPipeline':200,
-     'tre_bon.pipelines.ArticlePipeline': 300,
-	 'tre_bon.pipelines.VideoPipeline': 300,
-	 'tre_bon.pipelines.DuplicatesPipeline': 400,
-	  'tre_bon.pipelines.MySQLArticlesPipeline': 500,
+	  # 'tre_bon.pipelines.MyImagesPipeline':200,
+  #    'tre_bon.pipelines.ArticlePipeline': 300,
+	 # 'tre_bon.pipelines.VideoPipeline': 300,
+	 # 'tre_bon.pipelines.DuplicatesPipeline': 400,
+	 #  'tre_bon.pipelines.MySQLArticlesPipeline': 500,
 	 #'tre_bon.pipelines.MongoArticlesPipeline': 500
 }
 
