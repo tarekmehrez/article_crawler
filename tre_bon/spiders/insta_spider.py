@@ -2,6 +2,7 @@
 
 import pickle
 import scrapy
+import os.path
 
 from instagram.client import InstagramAPI
 from tre_bon.items import InstagramItem
@@ -41,24 +42,22 @@ class InstagramSpider(scrapy.Spider):
 					'101greatgoals','8fact_football','premierleague','laliga','espnfc','beinsports','bestoffootball','golazoweekly','worldgoalz','futbol_evolution','footballtransfersdaily',
 					'we_love_football','footbalita','8factfootball','football.news','footykix','yallakoraofficial','filgoal1','talksport','kooora']
 
-		for account in accounts:
-			print account
-			user = self.api.user_search(account)
-			if user:
-				self.user_ids[account]=user[0].id
-				self.user_imgs[account] = user[0].profile_picture
-				
 
+		if not os.path.exists('../insta_user_ids.pickle'):
 
-		#print user_ids
-		'''
-		f = open('insta_user_ids.pickle', 'wb')
-		pickle.dump(user_ids, f)
-		f.close()
+			for account in accounts:
+				print account
+				user = self.api.user_search(account)
+				if user:
+					self.user_ids[account]=user[0].id
+					self.user_imgs[account] = user[0].profile_picture
 
-		f = open('insta_user_ids.pickle', 'rb')
-		self.user_ids = pickle.load(f)
-		'''
+				f = open('../insta_user_ids.pickle', 'wb')
+				pickle.dump([self.user_ids,self.user_imgs], f)
+				f.close()
+		else:
+			f = open('../insta_user_ids.pickle', 'rb')
+			self.user_ids,self.user_imgs = pickle.load(f)
 
 	def parse(self,response):
 		itemCount  = 1
