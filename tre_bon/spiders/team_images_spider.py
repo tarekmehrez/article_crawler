@@ -8,24 +8,25 @@ from tre_bon.items import TeamImageItem
 class TeamImagesSpider(scrapy.Spider):
 	name = 'team_images'
 	allowed_domains = ["en.wikipedia.org"]
-	start_urls=["https://en.wikipedia.org/wiki/Category:English_football_logos"
-				"https://en.wikipedia.org/wiki/Category:Spanish_football_logos",
-				"https://en.wikipedia.org/wiki/Category:German_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Italian_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Greek_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Egyptian_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Brazilian_football_logos",
-				"https://en.wikipedia.org/wiki/Category:French_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Russian_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Turkish_football_logos",
-				"https://en.wikipedia.org/wiki/Category:Portuguese_football_logos"]
+	leagues=[	'English_football_logos',
+				'Spanish_football_logos',
+				'German_football_logos',
+				'Italian_football_logos',
+				'Greek_football_logos',
+				'Egyptian_football_logos',
+				'Brazilian_football_logos',
+				'French_football_logos',
+				'Russian_football_logos',
+				'Turkish_football_logos',
+				'Portuguese_football_logos']
+	start_urls=["https://en.wikipedia.org/wiki/Category:" + leauge for leauge in leagues ]
 
 
 	def parse(self,response):
 		for sel in response.xpath(".//div[@class='mw-category']/div/ul/li/a/@href"):
 			item = TeamImageItem()
 			item['type']='team_logo'
-			item['src']='hdlogo'
+			item['src']='wikipedia'
 			relative_url = sel.extract()
 			url = response.urljoin(relative_url)
 
