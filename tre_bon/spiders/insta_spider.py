@@ -18,8 +18,7 @@ class InstagramSpider(scrapy.Spider):
 
 	def __init__(self):
 		access_token ="182023789.04c8e57.9e150e8ccd49440d96b7e3b0cf53179f"
-		self.api = InstagramAPI(access_token=access_token,
-		                    client_secret="85ecfb407c34423c8efcf82af4b38695")
+		self.api = InstagramAPI(access_token=access_token,client_secret="85ecfb407c34423c8efcf82af4b38695")
 
 
 		self.user_ids = {}
@@ -43,20 +42,24 @@ class InstagramSpider(scrapy.Spider):
 					'we_love_football','footbalita','8factfootball','football.news','footykix','yallakoraofficial','filgoal1','talksport','kooora']
 
 
-		if not os.path.exists('../insta_user_ids.pickle'):
+		if not os.path.exists('insta_user_ids.pickle'):
 
 			for account in accounts:
-				print account
-				user = self.api.user_search(account)
-				if user:
-					self.user_ids[account]=user[0].id
-					self.user_imgs[account] = user[0].profile_picture
+				print 'looking for: ', account
+				user_list = self.api.user_search(account)
+				if user_list:
+					for user in user_list:
+						if user.username == account:
+							self.user_ids[account] = user.id
+							self.user_imgs[account] = user.profile_picture
+							print 'found: ', user
 
-				f = open('../insta_user_ids.pickle', 'wb')
+
+				f = open('insta_user_ids.pickle', 'wb')
 				pickle.dump([self.user_ids,self.user_imgs], f)
 				f.close()
 		else:
-			f = open('../insta_user_ids.pickle', 'rb')
+			f = open('insta_user_ids.pickle', 'rb')
 			self.user_ids,self.user_imgs = pickle.load(f)
 
 	def parse(self,response):
