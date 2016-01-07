@@ -74,6 +74,7 @@ class InstagramItem(scrapy.Item):
 	account_image = scrapy.Field()
 
 class TwitterItem(scrapy.Item):
+	type = scrapy.Field()
 	text = scrapy.Field()
 	date = scrapy.Field()
 	src = scrapy.Field()
