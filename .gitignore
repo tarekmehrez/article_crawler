@@ -4,4 +4,4 @@ tre_bon/*.pyc
 data/*
 *.html
 logs/*
-
+tre_bon/settings.py
