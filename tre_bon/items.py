@@ -38,6 +38,10 @@ class LiveScoreItem(scrapy.Item):
 	localTeamLogo = scrapy.Field()
 	matchDateTime = scrapy.Field()
 
+class TeamImageItem(scrapy.Item):
+	name = scrapy.Field()
+	url  = scrapy.Field()
+
 class VideoItem(scrapy.Item):
 	title = scrapy.Field()
 	url = scrapy.Field()
