@@ -24,6 +24,8 @@ class TeamImagesSpider(scrapy.Spider):
 	def parse(self,response):
 		for sel in response.xpath(".//div[@class='mw-category']/div/ul/li/a/@href"):
 			item = TeamImageItem()
+			item['type']='team_logo'
+			item['src']='hdlogo'
 			relative_url = sel.extract()
 			url = response.urljoin(relative_url)
 

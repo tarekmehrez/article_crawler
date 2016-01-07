@@ -41,6 +41,8 @@ class LiveScoreItem(scrapy.Item):
 class TeamImageItem(scrapy.Item):
 	name = scrapy.Field()
 	url  = scrapy.Field()
+	type = scrapy.Field()
+	src = scrapy.Field()
 
 class VideoItem(scrapy.Item):
 	title = scrapy.Field()

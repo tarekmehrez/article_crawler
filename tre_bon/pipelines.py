@@ -89,7 +89,10 @@ class ArticlePipeline(object):
 	def process_item(self, item, spider):
 
 
-		if item['src']!='twitter' and item['type'] != 'article':
+		if item['type'] != 'article':
+			return item
+
+		if item['src']!='twitter':
 			return item
 
 		for key in item:
