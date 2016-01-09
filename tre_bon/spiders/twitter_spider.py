@@ -46,6 +46,7 @@ class TwitterSpider(scrapy.Spider):
 				item['lang'] = tweet.lang
 				item['text'] = tweet.text
 				item['tags'] = ''
+				item['type'] = 'social'
 				item['src'] = 'twitter'
 				item['account'] = tweet.user.name
 				item['account_image'] = tweet.user.profile_image_url

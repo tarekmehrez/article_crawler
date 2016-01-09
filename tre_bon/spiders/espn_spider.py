@@ -31,7 +31,7 @@ class ESPNSpider(scrapy.Spider):
 			else:
 				item['image'] = article["thumbnail"]["URL"]
 
-			item['date'] = article["source"]["createDate"]
+			item['date'] = article['date']
 			item['src'] = 'espnfc'
 			item['lang'] = 'en'
 			if 'summary' in article.keys():

@@ -19,7 +19,7 @@ class BleacherSpider(scrapy.Spider):
 		articles = data['streams'][0]['items']
 		for article in articles:
 			item = ArticleItem()
-			item['postId'] = self.name+article["id"]
+			item['postId'] = self.name+str(article["id"])
 			item['type'] = "article"
 
 			item['title'] = article['title']

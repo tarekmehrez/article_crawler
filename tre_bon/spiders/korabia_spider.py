@@ -34,7 +34,7 @@ class KorabiaSpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
-		item['image'] = response.xpath(".//div[@class='item']/img/@src")[0].extract()
+		item['image'] = response.xpath(".//div[@class='img infographic']/img/@src")[0].extract()
 
 		content = response.xpath(".//p[contains(@class,'main-type-text')]/text()").extract()
 		item['content'] = ' '.join(content)

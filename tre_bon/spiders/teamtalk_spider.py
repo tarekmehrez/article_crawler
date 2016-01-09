@@ -64,14 +64,14 @@ class TeamTalkSpider(scrapy.Spider):
 		item = response.meta['item']
 
 		item['date'] = BeautifulSoup(response.xpath(".//header/div/p")[0].extract(),"lxml").string.split(':',1)[1].strip().split(" ",1)[1]
-		if response.xpath(".//span[@class='article__imgWrapper']/img/@data-src")[0].extract():
+		if response.xpath(".//span[@class='article__imgWrapper']/img/@data-src"):
 			item['image'] = response.xpath(".//span[@class='article__imgWrapper']/img/@data-src")[0].extract()
 		else:
 			item['image'] = response.xpath(".//span[@class='article__imgWrapper']/img/@src")[0].extract()
 		content = response.xpath(".//section[@class='article__body']/p").extract()
 		item['content']= ''
 		for sen in content:
-			cleaned = BeautifulSoup(str(sen),"lxml").string
+			cleaned = BeautifulSoup(str(sen.encode("utf-8")),"lxml").string
 			if cleaned:
 				item['content'] += cleaned
 		item['tags'] = ' '
