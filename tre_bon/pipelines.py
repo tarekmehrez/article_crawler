@@ -1,11 +1,7 @@
-
-# Author: Tarek/ Araby
 #!/usr/bin/env python
+# coding=utf-8
 # -*- coding: utf-8 -*-
-# Author: Tarek
-
-# -*- coding: utf-8 -*-
-
+# Author: Tarek/ Araby
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
@@ -32,7 +28,7 @@ class MyImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
     	for key in item:
-		if (key == 'image'  or key=='preview_image' or key=='media_url') and item[key]!='':
+		if (key == 'image'  or key=='preview_image' or key=='media_url' or key=='account_image') and item[key]!='':
             		yield scrapy.Request(item[key].strip())
 
     def item_completed(self, results, item, info):
