@@ -38,7 +38,7 @@ class TeamImagesSpider(scrapy.Spider):
 		url = response.urljoin(relative_url)
 
 		team_name = response.xpath(".//tr/td/p/a/@title").extract()[0]
-		item['url']= url
+		item['image']= url
 		item['name']=team_name
 
 		yield item

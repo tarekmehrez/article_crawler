@@ -40,7 +40,7 @@ class LiveScoreItem(scrapy.Item):
 
 class TeamImageItem(scrapy.Item):
 	name = scrapy.Field()
-	url  = scrapy.Field()
+	image  = scrapy.Field()
 	type = scrapy.Field()
 	src = scrapy.Field()
 
