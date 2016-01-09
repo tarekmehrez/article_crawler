@@ -21,7 +21,10 @@ class FacebookSpider(scrapy.Spider):
 			item['url'] = url
 			item['tags'] = ' '
 			item['title'] = post['from']["name"]
-			item['summary'] = post['message']
+			if 'message' in post:
+				item['summary'] = post['message']
+			else:
+				item['summary'] = ' '
 			item['src'] = 'facebook'
 			item['lang'] = 'en'
 			item['image'] = 'https://graph.facebook.com/'+post['id'].split('_')[-1]+'/picture?type=normal&access_token='+self.access_token #post["picture"]
