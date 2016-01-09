@@ -35,11 +35,9 @@ class MyImagesPipeline(ImagesPipeline):
 
     def item_completed(self, results, item, info):
         image_path = [x['path'] for ok, x in results if ok]
-        if len(image_path)==0:
-        	return item
         for key in item:
         	if(key=='image' or key=='preview_image' or key=='media_url'):
-        		item[key] = image_path[0]
+        		item[key] = 'images/articles/'+image_path[0]
         return item
 class ArticlePipeline(object):
 
@@ -82,6 +80,7 @@ class ArticlePipeline(object):
 							"Nov":		11,
 							"Dec":		12,
 							}
+		self.datedict.setdefault(10)
 
 
 	def process_item(self, item, spider):
@@ -394,14 +393,21 @@ class MySQLArticlesPipeline(object):
 				item['visitorTeamScore'] = 0
 
 			self.cur.execute('INSERT INTO livescores(competition,competitionLogo,visitorTeam,visitorTeamLogo,localTeam,localTeamLogo,visitorTeamScore,localTeamScore,matchDateTime) VALUES("'+item['competition']+'","'+item['competitionLogo']+'","'+item['visitorTeam']+'","'+item['visitorTeamLogo']+'","'+item['localTeam']+'","'+item['localTeamLogo']+'",'+item['visitorTeamScore']+','+item['localTeamScore']+',"'+item['matchDateTime']+'")')
-		elif  item['src']=='twitter':
-			self.cur.execute('INSERT INTO twitter (account_img,itemIndex,text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['media_url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
-		elif item['src']=='instagram':
-			self.cur.execute('INSERT INTO instagram (account_img,itemIndex,caption,account,tags,url,img_vid_src,likes,lang,media_id,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['caption']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['img_vid_src']+'","'+item['likes']+'","'+item['lang']+'","'+item['media_id']+'","'+item['date']+'")')
-		elif item['type']=='video':
-			self.cur.execute('INSERT INTO videos (account_img,itemIndex,title,url,lang,preview_image,embed_code,embed_url,channel,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['lang']+'","'+item['preview_image']+'","'+item['embed_code']+'","'+item['embed_url']+'","'+item['channel']+'","'+item['date']+'")')
 		else:
-			self.cur.execute('INSERT INTO articles (postId,account_img,src,itemIndex,title,url,image,summary,tags,lang,content,date) VALUES("'+item['postId']+'","'+item['account_image']+'","'+item['src']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['image']+'","'+item['summary']+'","'+item['tags']+'","'+item['lang']+'","'+item['content']+'","'+item['date']+'")')
+			self.cur.execute('SELECT itemIndex FROM articles WHERE src=%s order by date desc LIMIT 1;',(item['src']))
+			itemIndex = self.cur.fetchall()
+			if len(itemIndex)>0:
+				item['itemIndex'] = str(int(itemIndex[0][0])+1)
+			else:
+				item['itemIndex'] = "0"
+			if  item['src']=='twitter':
+				self.cur.execute('INSERT INTO twitter (account_img,itemIndex,text,account,tags,url,media_url,retweets,lang,favs,tweet_id,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['text']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['media_url']+'","'+item['retweets']+'","'+item['lang']+'","'+item['favs']+'","'+item['tweet_id']+'","'+item['date']+'")')
+			elif item['src']=='instagram':
+				self.cur.execute('INSERT INTO instagram (account_img,itemIndex,caption,account,tags,url,img_vid_src,likes,lang,media_id,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['caption']+'","'+item['account']+'","'+item['tags']+'","'+item['url']+'","'+item['img_vid_src']+'","'+item['likes']+'","'+item['lang']+'","'+item['media_id']+'","'+item['date']+'")')
+			elif item['type']=='video':
+				self.cur.execute('INSERT INTO videos (account_img,itemIndex,title,url,lang,preview_image,embed_code,embed_url,channel,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['lang']+'","'+item['preview_image']+'","'+item['embed_code']+'","'+item['embed_url']+'","'+item['channel']+'","'+item['date']+'")')
+			else:
+				self.cur.execute('INSERT INTO articles (postId,account_img,src,itemIndex,title,url,image,summary,tags,lang,content,date) VALUES("'+item['postId']+'","'+item['account_image']+'","'+item['src']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['image']+'","'+item['summary']+'","'+item['tags']+'","'+item['lang']+'","'+item['content']+'","'+item['date']+'")')
 		self.db.commit()
 		return item
 

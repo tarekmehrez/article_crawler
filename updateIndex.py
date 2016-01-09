@@ -1,6 +1,7 @@
 # Author: Mostafa ElAraby
 #used to update item index used for the timeline
 import pymysql
+from scrapy.conf import settings
 def updateIndex(tableName):
 	if tableName=='articles':
 		cur.execute('SELECT articles.src as src FROM articles group by articles.src;')
@@ -31,10 +32,10 @@ def updateIndex(tableName):
 		cur.execute(updateQuery)
 	db.commit()
 
-db =  pymysql.connect(host='localhost', # your host, usually localhost
-                     user='root', # your username
-                      passwd='', # your password
-                      db='threebont') # name of the data base
+db =  pymysql.connect(host=settings['MYSQLDB_SERVER'], # your host, usually localhost
+                     user=settings["MYSQLDB_USER"], # your username
+                      passwd=settings["MYSQLDB_PWD"], # your password
+                      db=settings["MYSQLDB_DB"])  # name of the data base
 db.set_charset('utf8')
 cur = db.cursor()
 updateIndex('articles')

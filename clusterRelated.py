@@ -13,6 +13,7 @@ import pymysql
 import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import euclidean_distances
 import math
+from scrapy.conf import settings
 
 
 plotData = False
@@ -28,26 +29,26 @@ def tfIDFeats(ids,data):
     tfv.fit(data)
     X =  tfv.transform(data) 
         # Initialize SVD
+
     svd = TruncatedSVD(n_components=350)
     
     # Initialize the standard scaler 
-    scl = StandardScaler()
+    scl = StandardScaler( with_mean=False)
     
     
     
-    
-    
-    X = svd.fit_transform(X)
+    if X.shape[1]>350:
+        X = svd.fit_transform(X)
     X = scl.fit_transform(X,ids)
     if plotData:
         X = PCA(n_components=2).fit_transform(X)
     return (X,ids)
 
 def initMysql():
-	db =  pymysql.connect(host='localhost', # your host, usually localhost
-                     user='root', # your username
-                      passwd='', # your password
-                      db='threebont') # name of the data base
+	db =  pymysql.connect(host=settings['MYSQLDB_SERVER'], # your host, usually localhost
+                     user=settings["MYSQLDB_USER"], # your username
+                      passwd=settings["MYSQLDB_PWD"], # your password
+                      db=settings["MYSQLDB_DB"])  # name of the data base
 	db.set_charset('utf8')
 	cur = db.cursor() 
 	return (db,cur)
