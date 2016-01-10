@@ -1,6 +1,9 @@
+#author Mostafa
 import json
 import scrapy
 from tre_bon.items import LiveScoreItem
+import pymysql
+from scrapy.conf import settings
 
 
 class LiveScoreSpider(scrapy.Spider):
@@ -10,7 +13,15 @@ class LiveScoreSpider(scrapy.Spider):
 	allowed_domains = ["football-api.com","google.com","ajax.googleapis.com/"]
 	api_key = "16a06f80-781c-b45c-b32623989415"
 	start_urls=["http://football-api.com/api/?Action=competitions&APIKey="+api_key]
-	DOWNLOAD_DELAY = 0.25  
+	DOWNLOAD_DELAY = 0.25 
+	db =  pymysql.connect(host=settings['MYSQLDB_SERVER'], # your host, usually localhost
+                     user=settings["MYSQLDB_USER"], # your username
+                      passwd=settings["MYSQLDB_PWD"], # your password
+                      db=settings["MYSQLDB_DB"]) # name of the data base
+	db.set_charset('utf8')
+		# you must create a Cursor object. It will let
+		#  you execute all the queries you need
+	cur = db.cursor() 
 	def parse(self,response):
 		competitions = json.loads(response.body)
 		item = LiveScoreItem()
@@ -41,6 +52,11 @@ class LiveScoreSpider(scrapy.Spider):
 			item['visitorTeamScore'] = match['match_visitorteam_score']
 			item['localTeam'] = match['match_localteam_name']
 			item['localTeamScore'] = match['match_localteam_score']
+			#in progress
+			self.cur.execute('')
+			visitorLogo = cur.fetchall()
+
+'''
 			item['matchDateTime'] = match['match_formatted_date'].replace('.','-')+' '+match['match_time']
 			url = self.search_api+item['localTeam']+' football club'+self.search_type
 			yield scrapy.Request(url, callback=self.parse_localTeamLogo,meta={'item': item}, dont_filter=True)
@@ -65,6 +81,8 @@ class LiveScoreSpider(scrapy.Spider):
 		item['src'] = 'livescore'
 		item['type'] = 'livescore'
 		yield item
+
+'''
 
 
 

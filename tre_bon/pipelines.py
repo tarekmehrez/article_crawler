@@ -18,6 +18,7 @@ from datetime import datetime
 import sys
 from bs4 import BeautifulSoup
 import requests
+import pickle
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -420,6 +421,9 @@ class MySQLArticlesPipeline(object):
 				self.cur.execute('INSERT INTO videos (account_img,itemIndex,title,url,lang,preview_image,embed_code,embed_url,channel,date) VALUES("'+item['account_image']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['lang']+'","'+item['preview_image']+'","'+item['embed_code']+'","'+item['embed_url']+'","'+item['channel']+'","'+item['date']+'")')
 			elif item['type']=='article':
 				self.cur.execute('INSERT INTO articles (postId,account_img,src,itemIndex,title,url,image,summary,tags,lang,content,date) VALUES("'+item['postId']+'","'+item['account_image']+'","'+item['src']+'","'+item['itemIndex']+'","'+item['title']+'","'+item['url']+'","'+item['image']+'","'+item['summary']+'","'+item['tags']+'","'+item['lang']+'","'+item['content']+'","'+item['date']+'")')
+			elif item['type']=='team_logo':
+				self.cur.execute('INSERT INTO teamlogos(name,image) VALUES("'+item['name']+'","'+item['image']+'")')
+
 		self.db.commit()
 		return item
 
