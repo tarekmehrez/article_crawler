@@ -21,24 +21,23 @@ class LiveScoreSpider(scrapy.Spider):
 	db.set_charset('utf8')
 		# you must create a Cursor object. It will let
 		#  you execute all the queries you need
-	cur = db.cursor() 
+	cur = db.cursor()
+	def getLogo(self,teamName):
+			self.cur.execute('SELECT image from teamlogos where name like %s',(teamName+'%'))
+			visitorLogo = self.cur.fetchall()
+			if len(visitorLogo)==0:
+				resultImage = 'images/ball.png'
+			else:
+				resultImage = visitorLogo[0][0]
+			return resultImage
 	def parse(self,response):
 		competitions = json.loads(response.body)
 		item = LiveScoreItem()
 		for competition in competitions["Competition"]:
 			item['competition']  = competition['name'] + ' '+competition['region']
-			url = self.search_api+item['competition']+' football'+self.search_type
-			yield scrapy.Request(url, callback=self.parse_competitionLogo,meta={'item': item,'competition':competition['name'] + ' '+competition['region'],'compId':competition["id"]}, dont_filter=True)
-
-	def parse_competitionLogo(self,response):
-		images = json.loads(response.body)
-		item = response.meta['item']
-		url = 'http://football-api.com/api/?Action=today&APIKey='+self.api_key+'&comp_id=' + response.meta['compId']
-		if images['queries']['request'][0]['totalResults']==0:
-			item['competitionLogo'] = ''
-		else:
-			item['competitionLogo'] = images['items'][0]['link']
-		yield scrapy.Request(url, callback=self.parse_competition_matches,meta={'item': item,'competition':response.meta['competition']}, dont_filter=True)
+			url = 'http://football-api.com/api/?Action=today&APIKey='+self.api_key+'&comp_id=' + response.meta['compId']
+			item['competitionLogo']  = self.getLogo(competition['name'])
+			yield scrapy.Request(url, callback=self.parse_competition_matches,meta={'item': item,'competition':competition['name'] + ' '+competition['region'],'compId':competition["id"]}, dont_filter=True)
 
 	def parse_competition_matches(self,response):
 		matches = json.loads(response.body)
@@ -53,18 +52,11 @@ class LiveScoreSpider(scrapy.Spider):
 			item['localTeam'] = match['match_localteam_name']
 			item['localTeamScore'] = match['match_localteam_score']
 			#in progress
-			item['visitorTeamLogo'] = getLogo(match['match_visitorteam_name'])
-			item['localTeamLogo'] = getLogo(match['match_localteam_name'])
+			item['visitorTeamLogo'] = self.getLogo(match['match_visitorteam_name'])
+			item['localTeamLogo'] = self.getLogo(match['match_localteam_name'])
 			yield item
 
-		def getLogo(teamName):
-			self.cur.execute('SELECT image from teamlogos where name like %s',(teamName+'%'))
-			visitorLogo = cur.fetchall()
-			if len(visitorLogo)==0:
-				resultImage = 'images/ball.png'
-			else:
-				resultImage = visitorLogo[0][0]
-			return resultImage
+
 
 '''
 			item['matchDateTime'] = match['match_formatted_date'].replace('.','-')+' '+match['match_time']
