@@ -16,7 +16,7 @@ class HDLogo(scrapy.Spider):
 			item['type']='team_logo'
 			item['src']='hdlogo'
 			try:
-				item['name']=str(sel.xpath(".//dd/text()").extract()[0].encode('utf8').strip())
+				item['name']=str(sel.xpath(".//dd/text()").extract()[0].encode('utf8').strip()).lower()
 				yield scrapy.Request(str(sel.xpath(".//dt/a/@href").extract()[0]), callback=self.get_image,meta={'item': item}, dont_filter=True)
 
 			except:

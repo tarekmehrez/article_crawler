@@ -39,6 +39,6 @@ class TeamImagesSpider(scrapy.Spider):
 
 		team_name = response.xpath(".//tr/td/p/a/@title").extract()[0]
 		item['image']= url
-		item['name']=team_name
+		item['name']=team_name.lower()
 
 		yield item
