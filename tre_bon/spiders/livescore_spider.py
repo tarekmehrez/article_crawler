@@ -53,8 +53,18 @@ class LiveScoreSpider(scrapy.Spider):
 			item['localTeam'] = match['match_localteam_name']
 			item['localTeamScore'] = match['match_localteam_score']
 			#in progress
-			self.cur.execute('')
+			item['visitorTeamLogo'] = getLogo(match['match_visitorteam_name'])
+			item['localTeamLogo'] = getLogo(match['match_localteam_name'])
+			yield item
+
+		def getLogo(teamName):
+			self.cur.execute('SELECT image from teamlogos where name like %s',(teamName+'%'))
 			visitorLogo = cur.fetchall()
+			if len(visitorLogo)==0:
+				resultImage = 'images/ball.png'
+			else:
+				resultImage = visitorLogo[0][0]
+			return resultImage
 
 '''
 			item['matchDateTime'] = match['match_formatted_date'].replace('.','-')+' '+match['match_time']

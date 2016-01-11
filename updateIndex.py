@@ -11,7 +11,7 @@ def updateIndex(tableName):
 			articles = cur.fetchall()
 			currentItemIndex = 0
 			updateQuery = '';
-			if len(articles):
+			if len(articles)==0:
 				print 'error '+tableName
 				return
 			for  article in articles:
