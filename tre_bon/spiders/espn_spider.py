@@ -26,10 +26,12 @@ class ESPNSpider(scrapy.Spider):
 			item['title'] = article['headline']
 			item['url'] = article['linkUrl']
 
-			if article["images"]:
+			if 'images' in article and article['images']:
 				item['image'] = article["images"][0]["URL"]
-			else:
+			elif 'thumbnail' in article:
 				item['image'] = article["thumbnail"]["URL"]
+			else:
+				continue
 
 			item['date'] = article['date']
 			item['src'] = 'espnfc'
