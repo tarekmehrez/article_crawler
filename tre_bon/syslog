@@ -1,0 +1,834 @@
+Jan 14 06:26:01 personal CRON[10603]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:26:01 personal CRON[10602]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:27:01 personal CRON[10605]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:27:01 personal CRON[10604]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:28:01 personal CRON[10613]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:28:01 personal CRON[10612]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:29:01 personal CRON[10615]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:29:01 personal CRON[10614]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:30:01 personal CRON[10621]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:30:01 personal CRON[10620]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:31:01 personal CRON[10629]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:31:01 personal CRON[10628]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:32:01 personal CRON[10639]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:32:01 personal CRON[10638]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:33:01 personal CRON[10649]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:33:01 personal CRON[10648]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:34:01 personal CRON[10659]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:34:01 personal CRON[10658]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:35:01 personal CRON[10669]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:35:01 personal CRON[10668]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:36:01 personal CRON[10675]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:36:01 personal CRON[10674]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:37:01 personal CRON[10681]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:37:01 personal CRON[10680]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:38:01 personal CRON[10689]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:38:01 personal CRON[10688]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:39:01 personal CRON[10701]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:39:01 personal CRON[10699]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:39:01 personal CRON[10700]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 06:40:01 personal CRON[10740]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:40:01 personal CRON[10739]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:41:01 personal CRON[10746]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:41:01 personal CRON[10745]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:42:01 personal CRON[10754]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:42:01 personal CRON[10753]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:43:01 personal CRON[10764]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:43:01 personal CRON[10763]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:44:01 personal CRON[10776]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:44:01 personal CRON[10775]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:45:01 personal CRON[10788]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:45:01 personal CRON[10787]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:46:01 personal CRON[10794]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:46:01 personal CRON[10793]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:47:01 personal CRON[10802]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:47:01 personal CRON[10801]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:48:01 personal CRON[10806]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:48:01 personal CRON[10805]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:49:01 personal CRON[10816]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:49:01 personal CRON[10815]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:49:33 personal systemd[1]: Starting Cleanup of Temporary Directories...
+Jan 14 06:49:33 personal systemd-tmpfiles[10821]: [/usr/lib/tmpfiles.d/var.conf:14] Duplicate line for path "/var/log", ignoring.
+Jan 14 06:49:33 personal systemd[1]: Started Cleanup of Temporary Directories.
+Jan 14 06:50:01 personal CRON[10829]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:50:01 personal CRON[10828]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:51:01 personal CRON[10837]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:51:01 personal CRON[10836]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:52:01 personal CRON[10843]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:52:01 personal CRON[10842]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:53:01 personal CRON[10847]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:53:01 personal CRON[10846]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:54:01 personal CRON[10857]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:54:01 personal CRON[10856]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:55:01 personal CRON[10865]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:55:01 personal CRON[10864]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:56:01 personal CRON[10873]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:56:01 personal CRON[10872]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:57:01 personal CRON[10881]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:57:01 personal CRON[10880]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:58:01 personal CRON[10889]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:58:01 personal CRON[10888]: (CRON) info (No MTA installed, discarding output)
+Jan 14 06:59:01 personal CRON[10899]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 06:59:01 personal CRON[10898]: (CRON) info (No MTA installed, discarding output)
+Jan 14 07:00:01 personal CRON[10910]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 07:00:01 personal CRON[10909]: (CRON) info (No MTA installed, discarding output)
+Jan 14 07:09:01 personal CRON[10978]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 07:17:01 personal CRON[11074]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 07:39:01 personal CRON[11152]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 08:00:02 personal CRON[11183]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 08:00:02 personal CRON[11182]: (CRON) info (No MTA installed, discarding output)
+Jan 14 08:09:01 personal CRON[11197]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 08:17:01 personal CRON[11237]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 08:39:01 personal CRON[11240]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 08:57:45 personal systemd[1]: Cannot determine UID from slice user-0.slice
+Jan 14 08:57:45 personal systemd[1]: Started Session 767 of user root.
+Jan 14 08:57:45 personal systemd[1]: Starting Session 767 of user root.
+Jan 14 09:00:01 personal CRON[11314]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 09:00:01 personal CRON[11313]: (CRON) info (No MTA installed, discarding output)
+Jan 14 09:09:01 personal CRON[11320]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 09:17:01 personal CRON[11351]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 09:39:01 personal CRON[11354]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 10:00:01 personal CRON[11387]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 10:00:01 personal CRON[11386]: (CRON) info (No MTA installed, discarding output)
+Jan 14 10:09:01 personal CRON[11394]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 10:17:01 personal CRON[11425]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 10:39:01 personal CRON[11428]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 11:00:01 personal CRON[11459]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 11:00:01 personal CRON[11458]: (CRON) info (No MTA installed, discarding output)
+Jan 14 11:07:21 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:07:21 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:07:21 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:07:21 personal systemd[1]: Started Session 777 of user tarek.
+Jan 14 11:07:21 personal systemd[1]: Starting Session 777 of user tarek.
+Jan 14 11:07:21 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:07:21 personal systemd[11470]: Reached target Paths.
+Jan 14 11:07:21 personal systemd[11470]: Starting Paths.
+Jan 14 11:07:21 personal systemd[11470]: Reached target Sockets.
+Jan 14 11:07:21 personal systemd[11470]: Starting Sockets.
+Jan 14 11:07:21 personal systemd[11470]: Reached target Timers.
+Jan 14 11:07:21 personal systemd[11470]: Starting Timers.
+Jan 14 11:07:21 personal systemd[11470]: Reached target Basic System.
+Jan 14 11:07:21 personal systemd[11470]: Starting Basic System.
+Jan 14 11:07:21 personal systemd[11470]: Reached target Default.
+Jan 14 11:07:21 personal systemd[11470]: Startup finished in 15ms.
+Jan 14 11:07:21 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:07:21 personal systemd[11470]: Starting Default.
+Jan 14 11:07:24 personal systemd[1]: Started Session 778 of user tarek.
+Jan 14 11:07:24 personal systemd[1]: Starting Session 778 of user tarek.
+Jan 14 11:09:01 personal CRON[11513]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 11:09:52 personal systemd[11470]: Reached target Shutdown.
+Jan 14 11:09:52 personal systemd[11470]: Starting Shutdown.
+Jan 14 11:09:52 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:09:52 personal systemd[11470]: Starting Exit the Session...
+Jan 14 11:09:52 personal systemd[11470]: Stopped target Default.
+Jan 14 11:09:52 personal systemd[11470]: Stopping Default.
+Jan 14 11:09:52 personal systemd[11470]: Stopped target Basic System.
+Jan 14 11:09:52 personal systemd[11470]: Stopping Basic System.
+Jan 14 11:09:52 personal systemd[11470]: Stopped target Sockets.
+Jan 14 11:09:52 personal systemd[11470]: Stopping Sockets.
+Jan 14 11:09:52 personal systemd[11470]: Stopped target Timers.
+Jan 14 11:09:52 personal systemd[11470]: Stopping Timers.
+Jan 14 11:09:52 personal systemd[11470]: Stopped target Paths.
+Jan 14 11:09:52 personal systemd[11470]: Stopping Paths.
+Jan 14 11:09:52 personal systemd[11470]: Received SIGRTMIN+24 from PID 11548 (kill).
+Jan 14 11:09:52 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:09:52 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:09:52 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:13:08 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:13:08 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:13:08 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:13:08 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:13:08 personal systemd[1]: Started Session 780 of user tarek.
+Jan 14 11:13:08 personal systemd[1]: Starting Session 780 of user tarek.
+Jan 14 11:13:08 personal systemd[11557]: Reached target Paths.
+Jan 14 11:13:08 personal systemd[11557]: Starting Paths.
+Jan 14 11:13:08 personal systemd[11557]: Reached target Sockets.
+Jan 14 11:13:08 personal systemd[11557]: Starting Sockets.
+Jan 14 11:13:08 personal systemd[11557]: Reached target Timers.
+Jan 14 11:13:08 personal systemd[11557]: Starting Timers.
+Jan 14 11:13:08 personal systemd[11557]: Reached target Basic System.
+Jan 14 11:13:08 personal systemd[11557]: Starting Basic System.
+Jan 14 11:13:08 personal systemd[11557]: Reached target Default.
+Jan 14 11:13:08 personal systemd[11557]: Startup finished in 13ms.
+Jan 14 11:13:08 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:13:08 personal systemd[11557]: Starting Default.
+Jan 14 11:14:38 personal systemd[11557]: Reached target Shutdown.
+Jan 14 11:14:38 personal systemd[11557]: Starting Shutdown.
+Jan 14 11:14:38 personal systemd[11557]: Starting Exit the Session...
+Jan 14 11:14:38 personal systemd[11557]: Stopped target Default.
+Jan 14 11:14:38 personal systemd[11557]: Stopping Default.
+Jan 14 11:14:38 personal systemd[11557]: Stopped target Basic System.
+Jan 14 11:14:38 personal systemd[11557]: Stopping Basic System.
+Jan 14 11:14:38 personal systemd[11557]: Stopped target Paths.
+Jan 14 11:14:38 personal systemd[11557]: Stopping Paths.
+Jan 14 11:14:38 personal systemd[11557]: Stopped target Sockets.
+Jan 14 11:14:38 personal systemd[11557]: Stopping Sockets.
+Jan 14 11:14:38 personal systemd[11557]: Stopped target Timers.
+Jan 14 11:14:38 personal systemd[11557]: Stopping Timers.
+Jan 14 11:14:38 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:14:38 personal systemd[11557]: Received SIGRTMIN+24 from PID 11582 (kill).
+Jan 14 11:14:38 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:14:38 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:14:38 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:16:07 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:16:07 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:16:07 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:16:07 personal systemd[1]: Started Session 781 of user tarek.
+Jan 14 11:16:07 personal systemd[1]: Starting Session 781 of user tarek.
+Jan 14 11:16:07 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:16:07 personal systemd[11589]: Reached target Paths.
+Jan 14 11:16:07 personal systemd[11589]: Starting Paths.
+Jan 14 11:16:07 personal systemd[11589]: Reached target Sockets.
+Jan 14 11:16:07 personal systemd[11589]: Starting Sockets.
+Jan 14 11:16:07 personal systemd[11589]: Reached target Timers.
+Jan 14 11:16:07 personal systemd[11589]: Starting Timers.
+Jan 14 11:16:07 personal systemd[11589]: Reached target Basic System.
+Jan 14 11:16:07 personal systemd[11589]: Starting Basic System.
+Jan 14 11:16:07 personal systemd[11589]: Reached target Default.
+Jan 14 11:16:07 personal systemd[11589]: Startup finished in 15ms.
+Jan 14 11:16:07 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:16:07 personal systemd[11589]: Starting Default.
+Jan 14 11:17:01 personal CRON[11612]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 11:17:53 personal systemd[11589]: Reached target Shutdown.
+Jan 14 11:17:53 personal systemd[11589]: Starting Shutdown.
+Jan 14 11:17:53 personal systemd[11589]: Stopped target Default.
+Jan 14 11:17:53 personal systemd[11589]: Stopping Default.
+Jan 14 11:17:53 personal systemd[11589]: Stopped target Basic System.
+Jan 14 11:17:53 personal systemd[11589]: Stopping Basic System.
+Jan 14 11:17:53 personal systemd[11589]: Stopped target Paths.
+Jan 14 11:17:53 personal systemd[11589]: Stopping Paths.
+Jan 14 11:17:53 personal systemd[11589]: Stopped target Sockets.
+Jan 14 11:17:53 personal systemd[11589]: Stopping Sockets.
+Jan 14 11:17:53 personal systemd[11589]: Stopped target Timers.
+Jan 14 11:17:53 personal systemd[11589]: Stopping Timers.
+Jan 14 11:17:53 personal systemd[11589]: Starting Exit the Session...
+Jan 14 11:17:53 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:17:53 personal systemd[11589]: Received SIGRTMIN+24 from PID 11617 (kill).
+Jan 14 11:17:53 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:17:53 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:17:53 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:21:47 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:21:47 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:21:47 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:21:47 personal systemd[1]: Started Session 783 of user tarek.
+Jan 14 11:21:47 personal systemd[1]: Starting Session 783 of user tarek.
+Jan 14 11:21:47 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:21:47 personal systemd[11623]: Reached target Paths.
+Jan 14 11:21:47 personal systemd[11623]: Starting Paths.
+Jan 14 11:21:47 personal systemd[11623]: Reached target Sockets.
+Jan 14 11:21:47 personal systemd[11623]: Starting Sockets.
+Jan 14 11:21:47 personal systemd[11623]: Reached target Timers.
+Jan 14 11:21:47 personal systemd[11623]: Starting Timers.
+Jan 14 11:21:47 personal systemd[11623]: Reached target Basic System.
+Jan 14 11:21:47 personal systemd[11623]: Starting Basic System.
+Jan 14 11:21:47 personal systemd[11623]: Reached target Default.
+Jan 14 11:21:47 personal systemd[11623]: Startup finished in 9ms.
+Jan 14 11:21:47 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:21:47 personal systemd[11623]: Starting Default.
+Jan 14 11:23:57 personal systemd[11623]: Reached target Shutdown.
+Jan 14 11:23:57 personal systemd[11623]: Starting Shutdown.
+Jan 14 11:23:57 personal systemd[11623]: Stopped target Default.
+Jan 14 11:23:57 personal systemd[11623]: Stopping Default.
+Jan 14 11:23:57 personal systemd[11623]: Stopped target Basic System.
+Jan 14 11:23:57 personal systemd[11623]: Stopping Basic System.
+Jan 14 11:23:57 personal systemd[11623]: Stopped target Paths.
+Jan 14 11:23:57 personal systemd[11623]: Stopping Paths.
+Jan 14 11:23:57 personal systemd[11623]: Stopped target Timers.
+Jan 14 11:23:57 personal systemd[11623]: Stopping Timers.
+Jan 14 11:23:57 personal systemd[11623]: Starting Exit the Session...
+Jan 14 11:23:57 personal systemd[11623]: Stopped target Sockets.
+Jan 14 11:23:57 personal systemd[11623]: Stopping Sockets.
+Jan 14 11:23:57 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:23:57 personal systemd[11623]: Received SIGRTMIN+24 from PID 11648 (kill).
+Jan 14 11:23:57 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:23:57 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:23:57 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:32:22 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:32:22 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:32:22 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:32:22 personal systemd[1]: Started Session 784 of user tarek.
+Jan 14 11:32:22 personal systemd[1]: Starting Session 784 of user tarek.
+Jan 14 11:32:22 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:32:22 personal systemd[11658]: Reached target Paths.
+Jan 14 11:32:22 personal systemd[11658]: Starting Paths.
+Jan 14 11:32:22 personal systemd[11658]: Reached target Timers.
+Jan 14 11:32:22 personal systemd[11658]: Starting Timers.
+Jan 14 11:32:22 personal systemd[11658]: Reached target Sockets.
+Jan 14 11:32:22 personal systemd[11658]: Starting Sockets.
+Jan 14 11:32:22 personal systemd[11658]: Reached target Basic System.
+Jan 14 11:32:22 personal systemd[11658]: Starting Basic System.
+Jan 14 11:32:22 personal systemd[11658]: Reached target Default.
+Jan 14 11:32:22 personal systemd[11658]: Startup finished in 8ms.
+Jan 14 11:32:22 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:32:22 personal systemd[11658]: Starting Default.
+Jan 14 11:33:26 personal systemd[11658]: Stopped target Default.
+Jan 14 11:33:26 personal systemd[11658]: Stopping Default.
+Jan 14 11:33:26 personal systemd[11658]: Stopped target Basic System.
+Jan 14 11:33:26 personal systemd[11658]: Stopping Basic System.
+Jan 14 11:33:26 personal systemd[11658]: Stopped target Timers.
+Jan 14 11:33:26 personal systemd[11658]: Stopping Timers.
+Jan 14 11:33:26 personal systemd[11658]: Stopped target Sockets.
+Jan 14 11:33:26 personal systemd[11658]: Stopping Sockets.
+Jan 14 11:33:26 personal systemd[11658]: Stopped target Paths.
+Jan 14 11:33:26 personal systemd[11658]: Stopping Paths.
+Jan 14 11:33:26 personal systemd[11658]: Reached target Shutdown.
+Jan 14 11:33:26 personal systemd[11658]: Starting Shutdown.
+Jan 14 11:33:26 personal systemd[11658]: Starting Exit the Session...
+Jan 14 11:33:26 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:33:26 personal systemd[11658]: Received SIGRTMIN+24 from PID 11681 (kill).
+Jan 14 11:33:26 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:33:26 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:33:26 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:34:29 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:34:29 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:34:29 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:34:29 personal systemd[1]: Started Session 785 of user tarek.
+Jan 14 11:34:29 personal systemd[1]: Starting Session 785 of user tarek.
+Jan 14 11:34:29 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:34:29 personal systemd[11690]: Reached target Sockets.
+Jan 14 11:34:29 personal systemd[11690]: Starting Sockets.
+Jan 14 11:34:29 personal systemd[11690]: Reached target Timers.
+Jan 14 11:34:29 personal systemd[11690]: Starting Timers.
+Jan 14 11:34:29 personal systemd[11690]: Reached target Paths.
+Jan 14 11:34:29 personal systemd[11690]: Starting Paths.
+Jan 14 11:34:29 personal systemd[11690]: Reached target Basic System.
+Jan 14 11:34:29 personal systemd[11690]: Starting Basic System.
+Jan 14 11:34:29 personal systemd[11690]: Reached target Default.
+Jan 14 11:34:29 personal systemd[11690]: Startup finished in 13ms.
+Jan 14 11:34:29 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:34:29 personal systemd[11690]: Starting Default.
+Jan 14 11:35:34 personal systemd[11690]: Reached target Shutdown.
+Jan 14 11:35:34 personal systemd[11690]: Starting Shutdown.
+Jan 14 11:35:34 personal systemd[11690]: Starting Exit the Session...
+Jan 14 11:35:34 personal systemd[11690]: Stopped target Default.
+Jan 14 11:35:34 personal systemd[11690]: Stopping Default.
+Jan 14 11:35:34 personal systemd[11690]: Stopped target Basic System.
+Jan 14 11:35:34 personal systemd[11690]: Stopping Basic System.
+Jan 14 11:35:34 personal systemd[11690]: Stopped target Timers.
+Jan 14 11:35:34 personal systemd[11690]: Stopping Timers.
+Jan 14 11:35:34 personal systemd[11690]: Stopped target Sockets.
+Jan 14 11:35:34 personal systemd[11690]: Stopping Sockets.
+Jan 14 11:35:34 personal systemd[11690]: Stopped target Paths.
+Jan 14 11:35:34 personal systemd[11690]: Stopping Paths.
+Jan 14 11:35:34 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:35:34 personal systemd[11690]: Received SIGRTMIN+24 from PID 11713 (kill).
+Jan 14 11:35:34 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:35:34 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:35:34 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:37:44 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:37:44 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:37:44 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:37:44 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:37:44 personal systemd[1]: Started Session 786 of user tarek.
+Jan 14 11:37:44 personal systemd[1]: Starting Session 786 of user tarek.
+Jan 14 11:37:44 personal systemd[11719]: Reached target Paths.
+Jan 14 11:37:44 personal systemd[11719]: Starting Paths.
+Jan 14 11:37:44 personal systemd[11719]: Reached target Timers.
+Jan 14 11:37:44 personal systemd[11719]: Starting Timers.
+Jan 14 11:37:44 personal systemd[11719]: Reached target Sockets.
+Jan 14 11:37:44 personal systemd[11719]: Starting Sockets.
+Jan 14 11:37:44 personal systemd[11719]: Reached target Basic System.
+Jan 14 11:37:44 personal systemd[11719]: Starting Basic System.
+Jan 14 11:37:44 personal systemd[11719]: Reached target Default.
+Jan 14 11:37:44 personal systemd[11719]: Startup finished in 19ms.
+Jan 14 11:37:44 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:37:44 personal systemd[11719]: Starting Default.
+Jan 14 11:38:50 personal systemd[11719]: Reached target Shutdown.
+Jan 14 11:38:50 personal systemd[11719]: Starting Shutdown.
+Jan 14 11:38:50 personal systemd[11719]: Starting Exit the Session...
+Jan 14 11:38:50 personal systemd[11719]: Stopped target Default.
+Jan 14 11:38:50 personal systemd[11719]: Stopping Default.
+Jan 14 11:38:50 personal systemd[11719]: Stopped target Basic System.
+Jan 14 11:38:50 personal systemd[11719]: Stopping Basic System.
+Jan 14 11:38:50 personal systemd[11719]: Stopped target Paths.
+Jan 14 11:38:50 personal systemd[11719]: Stopping Paths.
+Jan 14 11:38:50 personal systemd[11719]: Stopped target Timers.
+Jan 14 11:38:50 personal systemd[11719]: Stopping Timers.
+Jan 14 11:38:50 personal systemd[11719]: Stopped target Sockets.
+Jan 14 11:38:50 personal systemd[11719]: Stopping Sockets.
+Jan 14 11:38:50 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:38:50 personal systemd[11719]: Received SIGRTMIN+24 from PID 11744 (kill).
+Jan 14 11:38:50 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:38:50 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:38:50 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:39:01 personal CRON[11750]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 11:39:16 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:39:16 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:39:16 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:39:16 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:39:16 personal systemd[1]: Started Session 788 of user tarek.
+Jan 14 11:39:16 personal systemd[1]: Starting Session 788 of user tarek.
+Jan 14 11:39:16 personal systemd[11782]: Reached target Timers.
+Jan 14 11:39:16 personal systemd[11782]: Starting Timers.
+Jan 14 11:39:16 personal systemd[11782]: Reached target Sockets.
+Jan 14 11:39:16 personal systemd[11782]: Starting Sockets.
+Jan 14 11:39:16 personal systemd[11782]: Reached target Paths.
+Jan 14 11:39:16 personal systemd[11782]: Starting Paths.
+Jan 14 11:39:16 personal systemd[11782]: Reached target Basic System.
+Jan 14 11:39:16 personal systemd[11782]: Starting Basic System.
+Jan 14 11:39:16 personal systemd[11782]: Reached target Default.
+Jan 14 11:39:16 personal systemd[11782]: Startup finished in 12ms.
+Jan 14 11:39:16 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:39:16 personal systemd[11782]: Starting Default.
+Jan 14 11:40:20 personal systemd[11782]: Stopped target Default.
+Jan 14 11:40:20 personal systemd[11782]: Stopping Default.
+Jan 14 11:40:20 personal systemd[11782]: Stopped target Basic System.
+Jan 14 11:40:20 personal systemd[11782]: Stopping Basic System.
+Jan 14 11:40:20 personal systemd[11782]: Stopped target Sockets.
+Jan 14 11:40:20 personal systemd[11782]: Stopping Sockets.
+Jan 14 11:40:20 personal systemd[11782]: Stopped target Paths.
+Jan 14 11:40:20 personal systemd[11782]: Stopping Paths.
+Jan 14 11:40:20 personal systemd[11782]: Stopped target Timers.
+Jan 14 11:40:20 personal systemd[11782]: Stopping Timers.
+Jan 14 11:40:20 personal systemd[11782]: Reached target Shutdown.
+Jan 14 11:40:20 personal systemd[11782]: Starting Shutdown.
+Jan 14 11:40:20 personal systemd[11782]: Starting Exit the Session...
+Jan 14 11:40:20 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:40:20 personal systemd[11782]: Received SIGRTMIN+24 from PID 11806 (kill).
+Jan 14 11:40:20 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:40:20 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:40:20 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:41:29 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:41:29 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:41:29 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:41:29 personal systemd[1]: Started Session 789 of user tarek.
+Jan 14 11:41:29 personal systemd[1]: Starting Session 789 of user tarek.
+Jan 14 11:41:29 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:41:29 personal systemd[11813]: Reached target Sockets.
+Jan 14 11:41:29 personal systemd[11813]: Starting Sockets.
+Jan 14 11:41:29 personal systemd[11813]: Reached target Timers.
+Jan 14 11:41:29 personal systemd[11813]: Starting Timers.
+Jan 14 11:41:29 personal systemd[11813]: Reached target Paths.
+Jan 14 11:41:29 personal systemd[11813]: Starting Paths.
+Jan 14 11:41:29 personal systemd[11813]: Reached target Basic System.
+Jan 14 11:41:29 personal systemd[11813]: Starting Basic System.
+Jan 14 11:41:29 personal systemd[11813]: Reached target Default.
+Jan 14 11:41:29 personal systemd[11813]: Startup finished in 14ms.
+Jan 14 11:41:29 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:41:29 personal systemd[11813]: Starting Default.
+Jan 14 11:42:35 personal systemd[11813]: Reached target Shutdown.
+Jan 14 11:42:35 personal systemd[11813]: Starting Shutdown.
+Jan 14 11:42:35 personal systemd[11813]: Stopped target Default.
+Jan 14 11:42:35 personal systemd[11813]: Stopping Default.
+Jan 14 11:42:35 personal systemd[11813]: Stopped target Basic System.
+Jan 14 11:42:35 personal systemd[11813]: Stopping Basic System.
+Jan 14 11:42:35 personal systemd[11813]: Stopped target Timers.
+Jan 14 11:42:35 personal systemd[11813]: Stopping Timers.
+Jan 14 11:42:35 personal systemd[11813]: Stopped target Sockets.
+Jan 14 11:42:35 personal systemd[11813]: Stopping Sockets.
+Jan 14 11:42:35 personal systemd[11813]: Starting Exit the Session...
+Jan 14 11:42:35 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:42:35 personal systemd[11813]: Stopped target Paths.
+Jan 14 11:42:35 personal systemd[11813]: Stopping Paths.
+Jan 14 11:42:35 personal systemd[11813]: Received SIGRTMIN+24 from PID 11837 (kill).
+Jan 14 11:42:35 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:42:35 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:42:35 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:44:13 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:44:13 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:44:13 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:44:13 personal systemd[1]: Started Session 790 of user tarek.
+Jan 14 11:44:13 personal systemd[1]: Starting Session 790 of user tarek.
+Jan 14 11:44:13 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:44:13 personal systemd[11843]: Reached target Sockets.
+Jan 14 11:44:13 personal systemd[11843]: Starting Sockets.
+Jan 14 11:44:13 personal systemd[11843]: Reached target Timers.
+Jan 14 11:44:13 personal systemd[11843]: Starting Timers.
+Jan 14 11:44:13 personal systemd[11843]: Reached target Paths.
+Jan 14 11:44:13 personal systemd[11843]: Starting Paths.
+Jan 14 11:44:13 personal systemd[11843]: Reached target Basic System.
+Jan 14 11:44:13 personal systemd[11843]: Starting Basic System.
+Jan 14 11:44:13 personal systemd[11843]: Reached target Default.
+Jan 14 11:44:13 personal systemd[11843]: Startup finished in 8ms.
+Jan 14 11:44:13 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:44:13 personal systemd[11843]: Starting Default.
+Jan 14 11:45:17 personal systemd[11843]: Reached target Shutdown.
+Jan 14 11:45:17 personal systemd[11843]: Starting Shutdown.
+Jan 14 11:45:17 personal systemd[11843]: Starting Exit the Session...
+Jan 14 11:45:17 personal systemd[11843]: Stopped target Default.
+Jan 14 11:45:17 personal systemd[11843]: Stopping Default.
+Jan 14 11:45:17 personal systemd[11843]: Stopped target Basic System.
+Jan 14 11:45:17 personal systemd[11843]: Stopping Basic System.
+Jan 14 11:45:17 personal systemd[11843]: Stopped target Paths.
+Jan 14 11:45:17 personal systemd[11843]: Stopping Paths.
+Jan 14 11:45:17 personal systemd[11843]: Stopped target Timers.
+Jan 14 11:45:17 personal systemd[11843]: Stopping Timers.
+Jan 14 11:45:17 personal systemd[11843]: Stopped target Sockets.
+Jan 14 11:45:17 personal systemd[11843]: Stopping Sockets.
+Jan 14 11:45:17 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:45:17 personal systemd[11843]: Received SIGRTMIN+24 from PID 11867 (kill).
+Jan 14 11:45:17 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:45:17 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:45:17 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:46:58 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:46:58 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:46:58 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:46:58 personal systemd[1]: Started Session 791 of user tarek.
+Jan 14 11:46:58 personal systemd[1]: Starting Session 791 of user tarek.
+Jan 14 11:46:58 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:46:58 personal systemd[11873]: Reached target Paths.
+Jan 14 11:46:58 personal systemd[11873]: Starting Paths.
+Jan 14 11:46:58 personal systemd[11873]: Reached target Timers.
+Jan 14 11:46:58 personal systemd[11873]: Starting Timers.
+Jan 14 11:46:58 personal systemd[11873]: Reached target Sockets.
+Jan 14 11:46:58 personal systemd[11873]: Starting Sockets.
+Jan 14 11:46:58 personal systemd[11873]: Reached target Basic System.
+Jan 14 11:46:58 personal systemd[11873]: Starting Basic System.
+Jan 14 11:46:58 personal systemd[11873]: Reached target Default.
+Jan 14 11:46:58 personal systemd[11873]: Startup finished in 11ms.
+Jan 14 11:46:58 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:46:58 personal systemd[11873]: Starting Default.
+Jan 14 11:48:02 personal systemd[11873]: Stopped target Default.
+Jan 14 11:48:02 personal systemd[11873]: Stopping Default.
+Jan 14 11:48:02 personal systemd[11873]: Stopped target Basic System.
+Jan 14 11:48:02 personal systemd[11873]: Stopping Basic System.
+Jan 14 11:48:02 personal systemd[11873]: Stopped target Timers.
+Jan 14 11:48:02 personal systemd[11873]: Stopping Timers.
+Jan 14 11:48:02 personal systemd[11873]: Stopped target Sockets.
+Jan 14 11:48:02 personal systemd[11873]: Stopping Sockets.
+Jan 14 11:48:02 personal systemd[11873]: Stopped target Paths.
+Jan 14 11:48:02 personal systemd[11873]: Stopping Paths.
+Jan 14 11:48:02 personal systemd[11873]: Reached target Shutdown.
+Jan 14 11:48:02 personal systemd[11873]: Starting Shutdown.
+Jan 14 11:48:02 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:48:02 personal systemd[11873]: Starting Exit the Session...
+Jan 14 11:48:02 personal systemd[11873]: Received SIGRTMIN+24 from PID 11896 (kill).
+Jan 14 11:48:02 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:48:02 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:48:02 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 11:49:51 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 11:49:51 personal systemd[1]: Starting user-1000.slice.
+Jan 14 11:49:51 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 11:49:51 personal systemd[1]: Started Session 792 of user tarek.
+Jan 14 11:49:51 personal systemd[1]: Starting Session 792 of user tarek.
+Jan 14 11:49:51 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 11:49:51 personal systemd[11902]: Reached target Paths.
+Jan 14 11:49:51 personal systemd[11902]: Starting Paths.
+Jan 14 11:49:51 personal systemd[11902]: Reached target Sockets.
+Jan 14 11:49:51 personal systemd[11902]: Starting Sockets.
+Jan 14 11:49:51 personal systemd[11902]: Reached target Timers.
+Jan 14 11:49:51 personal systemd[11902]: Starting Timers.
+Jan 14 11:49:51 personal systemd[11902]: Reached target Basic System.
+Jan 14 11:49:51 personal systemd[11902]: Starting Basic System.
+Jan 14 11:49:51 personal systemd[11902]: Reached target Default.
+Jan 14 11:49:51 personal systemd[11902]: Startup finished in 11ms.
+Jan 14 11:49:52 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 11:49:52 personal systemd[11902]: Starting Default.
+Jan 14 11:50:57 personal systemd[11902]: Stopped target Default.
+Jan 14 11:50:57 personal systemd[11902]: Stopping Default.
+Jan 14 11:50:57 personal systemd[11902]: Stopped target Basic System.
+Jan 14 11:50:57 personal systemd[11902]: Stopping Basic System.
+Jan 14 11:50:57 personal systemd[11902]: Stopped target Paths.
+Jan 14 11:50:57 personal systemd[11902]: Stopping Paths.
+Jan 14 11:50:57 personal systemd[11902]: Stopped target Sockets.
+Jan 14 11:50:57 personal systemd[11902]: Stopping Sockets.
+Jan 14 11:50:57 personal systemd[11902]: Stopped target Timers.
+Jan 14 11:50:57 personal systemd[11902]: Stopping Timers.
+Jan 14 11:50:57 personal systemd[11902]: Reached target Shutdown.
+Jan 14 11:50:57 personal systemd[11902]: Starting Shutdown.
+Jan 14 11:50:57 personal systemd[11902]: Starting Exit the Session...
+Jan 14 11:50:57 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 11:50:57 personal systemd[11902]: Received SIGRTMIN+24 from PID 11926 (kill).
+Jan 14 11:50:57 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 11:50:57 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 11:50:57 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 12:00:01 personal CRON[11936]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:00:01 personal CRON[11937]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 12:00:01 personal CRON[11934]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:00:01 personal CRON[11935]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:01:01 personal CRON[11943]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:01:01 personal CRON[11942]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:02:01 personal CRON[11945]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:02:01 personal CRON[11944]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:03:01 personal CRON[11950]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:03:01 personal CRON[11949]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:03:02 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 12:03:02 personal systemd[1]: Starting user-1000.slice.
+Jan 14 12:03:02 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 12:03:02 personal systemd[1]: Started Session 798 of user tarek.
+Jan 14 12:03:02 personal systemd[1]: Starting Session 798 of user tarek.
+Jan 14 12:03:02 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 12:03:02 personal systemd[11951]: Reached target Paths.
+Jan 14 12:03:02 personal systemd[11951]: Starting Paths.
+Jan 14 12:03:02 personal systemd[11951]: Reached target Timers.
+Jan 14 12:03:02 personal systemd[11951]: Starting Timers.
+Jan 14 12:03:02 personal systemd[11951]: Reached target Sockets.
+Jan 14 12:03:02 personal systemd[11951]: Starting Sockets.
+Jan 14 12:03:02 personal systemd[11951]: Reached target Basic System.
+Jan 14 12:03:02 personal systemd[11951]: Starting Basic System.
+Jan 14 12:03:02 personal systemd[11951]: Reached target Default.
+Jan 14 12:03:02 personal systemd[11951]: Startup finished in 12ms.
+Jan 14 12:03:02 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 12:03:02 personal systemd[11951]: Starting Default.
+Jan 14 12:04:01 personal CRON[11975]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:04:01 personal CRON[11974]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:05:02 personal CRON[11977]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:05:02 personal CRON[11976]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:06:01 personal CRON[11979]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:06:01 personal CRON[11978]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:07:01 personal CRON[11981]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:07:01 personal CRON[11980]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:08:01 personal CRON[11983]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:08:01 personal CRON[11982]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:09:01 personal CRON[11986]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:09:01 personal CRON[11985]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:09:01 personal CRON[11987]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 12:10:01 personal CRON[12018]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:10:01 personal CRON[12017]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:11:01 personal CRON[12020]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:11:01 personal CRON[12019]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:12:01 personal CRON[12022]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:12:01 personal CRON[12021]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:13:01 personal CRON[12024]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:13:01 personal CRON[12023]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:14:01 personal CRON[12026]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:14:01 personal CRON[12025]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:15:01 personal CRON[12028]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:15:01 personal CRON[12027]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:16:01 personal CRON[12030]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:16:01 personal CRON[12029]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:17:01 personal CRON[12033]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:17:01 personal CRON[12032]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:17:01 personal CRON[12034]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 12:18:01 personal CRON[12037]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:18:01 personal CRON[12036]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:19:01 personal CRON[12040]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:19:01 personal CRON[12039]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:20:01 personal CRON[12042]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:20:01 personal CRON[12041]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:21:01 personal CRON[12044]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:21:01 personal CRON[12043]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:22:01 personal CRON[12046]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:22:01 personal CRON[12045]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:23:01 personal CRON[12048]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:23:01 personal CRON[12047]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:24:01 personal CRON[12050]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:24:01 personal CRON[12049]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:25:01 personal CRON[12052]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:25:01 personal CRON[12051]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:26:01 personal CRON[12055]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:26:01 personal CRON[12054]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:27:01 personal CRON[12057]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:27:01 personal CRON[12056]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:28:01 personal CRON[12059]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:28:01 personal CRON[12058]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:29:01 personal CRON[12061]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:29:01 personal CRON[12060]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:30:01 personal CRON[12063]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:30:01 personal CRON[12062]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:31:01 personal CRON[12065]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:31:01 personal CRON[12064]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:32:01 personal CRON[12067]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:32:01 personal CRON[12066]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:33:01 personal CRON[12069]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:33:01 personal CRON[12068]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:34:01 personal CRON[12071]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:34:01 personal CRON[12070]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:35:01 personal CRON[12073]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:35:01 personal CRON[12072]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:36:01 personal CRON[12075]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:36:01 personal CRON[12074]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:37:01 personal CRON[12077]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:37:01 personal CRON[12076]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:38:01 personal CRON[12079]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:38:01 personal CRON[12078]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:39:01 personal CRON[12082]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 12:39:01 personal CRON[12083]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:39:01 personal CRON[12081]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:40:01 personal CRON[12114]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:40:01 personal CRON[12113]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:41:01 personal CRON[12116]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:41:01 personal CRON[12115]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:42:01 personal CRON[12118]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:42:01 personal CRON[12117]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:43:01 personal CRON[12120]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:43:01 personal CRON[12119]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:44:01 personal CRON[12122]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:44:01 personal CRON[12121]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:45:01 personal CRON[12124]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:45:01 personal CRON[12123]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:46:02 personal CRON[12126]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:46:02 personal CRON[12125]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:47:01 personal CRON[12128]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:47:01 personal CRON[12127]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:48:01 personal CRON[12130]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:48:01 personal CRON[12129]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:49:01 personal CRON[12132]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:49:01 personal CRON[12131]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:50:01 personal CRON[12135]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:50:01 personal CRON[12134]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:51:01 personal CRON[12137]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:51:01 personal CRON[12136]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:52:01 personal CRON[12139]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:52:01 personal CRON[12138]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:53:01 personal CRON[12141]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:53:01 personal CRON[12140]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:54:01 personal CRON[12143]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:54:01 personal CRON[12142]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:55:01 personal CRON[12145]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:55:01 personal CRON[12144]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:56:01 personal CRON[12147]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:56:01 personal CRON[12146]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:57:01 personal CRON[12151]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:57:01 personal CRON[12150]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:58:01 personal CRON[12153]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:58:01 personal CRON[12152]: (CRON) info (No MTA installed, discarding output)
+Jan 14 12:59:01 personal CRON[12155]: (root) CMD (curl localhost/php/system.php/featured/update)
+Jan 14 12:59:01 personal CRON[12154]: (CRON) info (No MTA installed, discarding output)
+Jan 14 13:00:01 personal CRON[12157]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 13:00:01 personal CRON[12156]: (CRON) info (No MTA installed, discarding output)
+Jan 14 13:09:01 personal CRON[12163]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 13:17:01 personal CRON[12196]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 13:39:01 personal CRON[12201]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 14:00:01 personal CRON[12253]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 14:00:01 personal CRON[12252]: (CRON) info (No MTA installed, discarding output)
+Jan 14 14:05:59 personal systemd[1]: Started Session 863 of user tarek.
+Jan 14 14:05:59 personal systemd[1]: Starting Session 863 of user tarek.
+Jan 14 14:07:21 personal systemd[1]: Started Session 864 of user tarek.
+Jan 14 14:07:21 personal systemd[1]: Starting Session 864 of user tarek.
+Jan 14 14:07:23 personal systemd[1]: Started Session 865 of user tarek.
+Jan 14 14:07:23 personal systemd[1]: Starting Session 865 of user tarek.
+Jan 14 14:08:54 personal systemd[1]: Started Session 866 of user tarek.
+Jan 14 14:08:54 personal systemd[1]: Starting Session 866 of user tarek.
+Jan 14 14:09:01 personal CRON[12360]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 14:10:01 personal systemd[11951]: Reached target Shutdown.
+Jan 14 14:10:01 personal systemd[11951]: Starting Shutdown.
+Jan 14 14:10:01 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 14:10:01 personal systemd[11951]: Starting Exit the Session...
+Jan 14 14:10:01 personal systemd[11951]: Stopped target Default.
+Jan 14 14:10:01 personal systemd[11951]: Stopping Default.
+Jan 14 14:10:01 personal systemd[11951]: Stopped target Basic System.
+Jan 14 14:10:01 personal systemd[11951]: Stopping Basic System.
+Jan 14 14:10:01 personal systemd[11951]: Stopped target Paths.
+Jan 14 14:10:01 personal systemd[11951]: Stopping Paths.
+Jan 14 14:10:01 personal systemd[11951]: Stopped target Timers.
+Jan 14 14:10:01 personal systemd[11951]: Stopping Timers.
+Jan 14 14:10:01 personal systemd[11951]: Stopped target Sockets.
+Jan 14 14:10:01 personal systemd[11951]: Stopping Sockets.
+Jan 14 14:10:01 personal systemd[11951]: Received SIGRTMIN+24 from PID 12394 (kill).
+Jan 14 14:10:01 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 14:10:01 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 14:10:01 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 14:11:07 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 14:11:07 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 14:11:07 personal systemd[1]: Starting user-1000.slice.
+Jan 14 14:11:07 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 14:11:07 personal systemd[1]: Started Session 868 of user tarek.
+Jan 14 14:11:07 personal systemd[1]: Starting Session 868 of user tarek.
+Jan 14 14:11:07 personal systemd[12402]: Reached target Sockets.
+Jan 14 14:11:07 personal systemd[12402]: Starting Sockets.
+Jan 14 14:11:07 personal systemd[12402]: Reached target Paths.
+Jan 14 14:11:07 personal systemd[12402]: Starting Paths.
+Jan 14 14:11:07 personal systemd[12402]: Reached target Timers.
+Jan 14 14:11:07 personal systemd[12402]: Starting Timers.
+Jan 14 14:11:07 personal systemd[12402]: Reached target Basic System.
+Jan 14 14:11:07 personal systemd[12402]: Starting Basic System.
+Jan 14 14:11:07 personal systemd[12402]: Reached target Default.
+Jan 14 14:11:07 personal systemd[12402]: Startup finished in 10ms.
+Jan 14 14:11:07 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 14:11:07 personal systemd[12402]: Starting Default.
+Jan 14 14:12:14 personal systemd[12402]: Reached target Shutdown.
+Jan 14 14:12:14 personal systemd[12402]: Starting Shutdown.
+Jan 14 14:12:14 personal systemd[12402]: Starting Exit the Session...
+Jan 14 14:12:14 personal systemd[12402]: Stopped target Default.
+Jan 14 14:12:14 personal systemd[12402]: Stopping Default.
+Jan 14 14:12:14 personal systemd[12402]: Stopped target Basic System.
+Jan 14 14:12:14 personal systemd[12402]: Stopping Basic System.
+Jan 14 14:12:14 personal systemd[12402]: Stopped target Sockets.
+Jan 14 14:12:14 personal systemd[12402]: Stopping Sockets.
+Jan 14 14:12:14 personal systemd[12402]: Stopped target Paths.
+Jan 14 14:12:14 personal systemd[12402]: Stopping Paths.
+Jan 14 14:12:14 personal systemd[12402]: Stopped target Timers.
+Jan 14 14:12:14 personal systemd[12402]: Stopping Timers.
+Jan 14 14:12:14 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 14:12:14 personal systemd[12402]: Received SIGRTMIN+24 from PID 12428 (kill).
+Jan 14 14:12:14 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 14:12:14 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 14:12:14 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 14:12:27 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 14:12:27 personal systemd[1]: Starting user-1000.slice.
+Jan 14 14:12:27 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 14:12:27 personal systemd[1]: Started Session 869 of user tarek.
+Jan 14 14:12:27 personal systemd[1]: Starting Session 869 of user tarek.
+Jan 14 14:12:27 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 14:12:27 personal systemd[12434]: Reached target Paths.
+Jan 14 14:12:27 personal systemd[12434]: Starting Paths.
+Jan 14 14:12:27 personal systemd[12434]: Reached target Timers.
+Jan 14 14:12:27 personal systemd[12434]: Starting Timers.
+Jan 14 14:12:27 personal systemd[12434]: Reached target Sockets.
+Jan 14 14:12:27 personal systemd[12434]: Starting Sockets.
+Jan 14 14:12:27 personal systemd[12434]: Reached target Basic System.
+Jan 14 14:12:27 personal systemd[12434]: Starting Basic System.
+Jan 14 14:12:27 personal systemd[12434]: Reached target Default.
+Jan 14 14:12:27 personal systemd[12434]: Startup finished in 11ms.
+Jan 14 14:12:27 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 14:12:27 personal systemd[12434]: Starting Default.
+Jan 14 14:13:43 personal systemd[12434]: Reached target Shutdown.
+Jan 14 14:13:43 personal systemd[12434]: Starting Shutdown.
+Jan 14 14:13:43 personal systemd[12434]: Starting Exit the Session...
+Jan 14 14:13:43 personal systemd[12434]: Stopped target Default.
+Jan 14 14:13:43 personal systemd[12434]: Stopping Default.
+Jan 14 14:13:43 personal systemd[12434]: Stopped target Basic System.
+Jan 14 14:13:43 personal systemd[12434]: Stopping Basic System.
+Jan 14 14:13:43 personal systemd[12434]: Stopped target Paths.
+Jan 14 14:13:43 personal systemd[12434]: Stopping Paths.
+Jan 14 14:13:43 personal systemd[12434]: Stopped target Timers.
+Jan 14 14:13:43 personal systemd[12434]: Stopping Timers.
+Jan 14 14:13:43 personal systemd[12434]: Stopped target Sockets.
+Jan 14 14:13:43 personal systemd[12434]: Stopping Sockets.
+Jan 14 14:13:43 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 14:13:43 personal systemd[12434]: Received SIGRTMIN+24 from PID 12459 (kill).
+Jan 14 14:13:43 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 14:13:43 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 14:13:43 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 14:17:01 personal CRON[12466]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 14:38:00 personal systemd[1]: Created slice user-1000.slice.
+Jan 14 14:38:00 personal systemd[1]: Starting user-1000.slice.
+Jan 14 14:38:00 personal systemd[1]: Cannot add dependency job for unit udev-finish.service, ignoring: Unit udev-finish.service is masked.
+Jan 14 14:38:00 personal systemd[1]: Started Session 871 of user tarek.
+Jan 14 14:38:00 personal systemd[1]: Starting Session 871 of user tarek.
+Jan 14 14:38:00 personal systemd[1]: Starting User Manager for UID 1000...
+Jan 14 14:38:00 personal systemd[12507]: Reached target Timers.
+Jan 14 14:38:00 personal systemd[12507]: Starting Timers.
+Jan 14 14:38:00 personal systemd[12507]: Reached target Sockets.
+Jan 14 14:38:00 personal systemd[12507]: Starting Sockets.
+Jan 14 14:38:00 personal systemd[12507]: Reached target Paths.
+Jan 14 14:38:00 personal systemd[12507]: Starting Paths.
+Jan 14 14:38:00 personal systemd[12507]: Reached target Basic System.
+Jan 14 14:38:00 personal systemd[12507]: Starting Basic System.
+Jan 14 14:38:00 personal systemd[12507]: Reached target Default.
+Jan 14 14:38:00 personal systemd[12507]: Startup finished in 12ms.
+Jan 14 14:38:00 personal systemd[1]: Started User Manager for UID 1000.
+Jan 14 14:38:00 personal systemd[12507]: Starting Default.
+Jan 14 14:39:01 personal CRON[12531]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 14:39:03 personal systemd[1]: Stopping User Manager for UID 1000...
+Jan 14 14:39:03 personal systemd[12507]: Stopped target Default.
+Jan 14 14:39:03 personal systemd[12507]: Stopping Default.
+Jan 14 14:39:03 personal systemd[12507]: Stopped target Basic System.
+Jan 14 14:39:03 personal systemd[12507]: Stopping Basic System.
+Jan 14 14:39:03 personal systemd[12507]: Stopped target Paths.
+Jan 14 14:39:03 personal systemd[12507]: Stopping Paths.
+Jan 14 14:39:03 personal systemd[12507]: Stopped target Sockets.
+Jan 14 14:39:03 personal systemd[12507]: Stopping Sockets.
+Jan 14 14:39:03 personal systemd[12507]: Reached target Shutdown.
+Jan 14 14:39:03 personal systemd[12507]: Starting Shutdown.
+Jan 14 14:39:03 personal systemd[12507]: Stopped target Timers.
+Jan 14 14:39:03 personal systemd[12507]: Stopping Timers.
+Jan 14 14:39:03 personal systemd[12507]: Starting Exit the Session...
+Jan 14 14:39:03 personal systemd[12507]: Received SIGRTMIN+24 from PID 12565 (kill).
+Jan 14 14:39:03 personal systemd[1]: Stopped User Manager for UID 1000.
+Jan 14 14:39:03 personal systemd[1]: Removed slice user-1000.slice.
+Jan 14 14:39:03 personal systemd[1]: Stopping user-1000.slice.
+Jan 14 15:00:01 personal CRON[12592]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 15:00:01 personal CRON[12591]: (CRON) info (No MTA installed, discarding output)
+Jan 14 15:09:01 personal CRON[12609]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 15:17:01 personal CRON[12646]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 15:39:01 personal CRON[12659]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 15:57:15 personal systemd[1]: Cannot determine UID from slice user-0.slice
+Jan 14 15:57:15 personal systemd[1]: Started Session 877 of user root.
+Jan 14 15:57:15 personal systemd[1]: Starting Session 877 of user root.
+Jan 14 16:00:01 personal CRON[12766]: (root) CMD (bash /var/crawlers/article_crawler/run.sh 6)
+Jan 14 16:00:01 personal CRON[12765]: (CRON) info (No MTA installed, discarding output)
+Jan 14 16:09:01 personal CRON[12806]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)
+Jan 14 16:17:01 personal CRON[12851]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Jan 14 16:39:01 personal CRON[12876]: (root) CMD (  [ -x /usr/lib/php5/sessionclean ] && /usr/lib/php5/sessionclean)

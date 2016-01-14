@@ -19,6 +19,7 @@ import sys
 from bs4 import BeautifulSoup
 import requests
 import pickle
+import re
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -29,14 +30,23 @@ class MyImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
     	for key in item:
-		if (key == 'image'  or key=='preview_image' or key=='media_url' or key=='account_image') and item[key]!='':
+		if (key == 'image'  or key=='preview_image' or key=='media_url' ) and item[key]!='':
             		yield scrapy.Request(item[key].strip())
 
     def item_completed(self, results, item, info):
         image_path = [x['path'] for ok, x in results if ok]
         for key in item:
-        	if(key=='image' or key=='preview_image' or key=='media_url'):
+        	if(key == 'image'  or key=='preview_image' or key=='media_url' or key=='account_image'):
         		item[key] = 'images/articles/'+image_path[0]
+        return item
+class AccountImagePipeline(ImagesPipeline):
+
+    def get_media_requests(self, item, info):
+    	yield scrapy.Request(item['account_image'].strip())
+
+    def item_completed(self, results, item, info):
+        image_path = [x['path'] for ok, x in results if ok]
+        item['account_image'] = 'images/articles/'+image_path[0]
         return item
 class ArticlePipeline(object):
 
@@ -297,9 +307,11 @@ class ArticlePipeline(object):
 				month = self.datedict[date[0]]
 				dateformatted = "%s-%s-%s %s" % (date[2],month,date[1],date[3])
 				item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
+			elif item['src']=='facebook':
+				item['date'] = re.sub(r'\+[0-9]{4}','',item['date'])
+				item['date'] = datetime.strptime(item['date'] ,  "%Y-%m-%dT%H:%M:%S")
 		except:
 			item['date'] = datetime.now()
-
 		# in case we failed to find any date for the article, save the article with the current datetime
 		if 'date' not in item:
 			item['date'] = datetime.now()
@@ -385,7 +397,9 @@ class MySQLArticlesPipeline(object):
 			f = '%Y-%m-%d %H:%M:%S'
 			item['date'] = item['date'].strftime(f)
 		except:
-			print 'error'
+			if 'date' in item:
+				today = datetime.today()
+				item['date'] = today.strftime(f) #workaround TODO needs to be fixed
 		for key in item:
 			try:
 				item[key] = str(item[key])
@@ -397,10 +411,13 @@ class MySQLArticlesPipeline(object):
 					print key
 
 		if item['src']=='livescore':
+			item['matchDateTime'] = datetime.strptime(item['matchDateTime'],  "%d-%m-%Y %H:%M")
+			f = '%Y-%m-%d %H:%M:%S'
+			item['matchDateTime'] = item['matchDateTime'].strftime(f)
 			if item['localTeamScore']=='?':
-				item['localTeamScore'] = 0
+				item['localTeamScore'] = '0'
 			if item['visitorTeamScore']== '?':
-				item['visitorTeamScore'] = 0
+				item['visitorTeamScore'] = '0'
 
 			self.cur.execute('INSERT INTO livescores(competition,competitionLogo,visitorTeam,visitorTeamLogo,localTeam,localTeamLogo,visitorTeamScore,localTeamScore,matchDateTime) VALUES("'+item['competition']+'","'+item['competitionLogo']+'","'+item['visitorTeam']+'","'+item['visitorTeamLogo']+'","'+item['localTeam']+'","'+item['localTeamLogo']+'",'+item['visitorTeamScore']+','+item['localTeamScore']+',"'+item['matchDateTime']+'")')
 		else:

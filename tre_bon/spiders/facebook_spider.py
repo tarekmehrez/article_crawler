@@ -27,7 +27,10 @@ class FacebookSpider(scrapy.Spider):
 				item['summary'] = ' '
 			item['src'] = 'facebook'
 			item['lang'] = 'en'
-			item['image'] ='https://graph.facebook.com/'+post['id'].split('_')[-1]+'/picture?type=normal&access_token='+self.access_token #post["picture"]
+			if post['type']=='photo':
+				item['image'] ='https://graph.facebook.com/'+post['id'].split('_')[-1]+'/picture?type=normal&access_token='+self.access_token #post["picture"]
+			else:
+				item['image'] = ''
 			item['account_image'] = 'https://graph.facebook.com/'+post['id'].split('_')[0]+'/picture?type=normal&access_token='+self.access_token #post["picture"]
 
 			item['date'] = post["created_time"]
