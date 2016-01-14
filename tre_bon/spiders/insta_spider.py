@@ -1,6 +1,6 @@
 # Author: Tarek
 
-import pickle
+import cPickle
 import scrapy
 import os.path
 
@@ -42,11 +42,12 @@ class InstagramSpider(scrapy.Spider):
 					'we_love_football','footbalita','8factfootball','football.news','footykix','yallakoraofficial','filgoal1','talksport','kooora']
 
 
-		if not os.path.exists('insta_user_ids.pickle'):
+		if not ( os.path.exists('insta_user_ids.pickle') and os.path.exists('insta_user_imgs.pickle')):
 
 			for account in accounts:
 				print 'looking for: ', account
 				user_list = self.api.user_search(account)
+				print user_list
 				if user_list:
 					for user in user_list:
 						if user.username == account:
@@ -54,13 +55,18 @@ class InstagramSpider(scrapy.Spider):
 							self.user_imgs[account] = user.profile_picture
 							print 'found: ', user
 
+			with open('insta_user_ids.pickle', 'wb') as f:
+				cPickle.dump(self.user_ids, f)
 
-				f = open('insta_user_ids.pickle', 'wb')
-				pickle.dump([self.user_ids,self.user_imgs], f)
-				f.close()
+			with open('insta_user_imgs.pickle', 'wb') as f:
+				cPickle.dump(self.user_imgs, f)
+
 		else:
-			f = open('insta_user_ids.pickle', 'rb')
-			self.user_ids,self.user_imgs = pickle.load(f)
+			with open('insta_user_ids.pickle', 'r') as f:
+				self.user_ids = cPickle.load(f)
+
+			with open('insta_user_imgs.pickle', 'r') as f:
+				self.user_imgs = cPickle.load(f)
 
 	def parse(self,response):
 		itemCount  = 1
