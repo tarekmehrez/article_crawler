@@ -72,6 +72,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 	'tre_bon.pipelines.MyImagesPipeline':200,
+	'tre_bon.pipelines.AccountImagePipeline':200,
 	'tre_bon.pipelines.ArticlePipeline': 300,
 	'tre_bon.pipelines.VideoPipeline': 300,
 	'tre_bon.pipelines.DuplicatesPipeline': 400,
