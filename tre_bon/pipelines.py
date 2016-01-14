@@ -36,7 +36,7 @@ class MyImagesPipeline(ImagesPipeline):
     def item_completed(self, results, item, info):
         image_path = [x['path'] for ok, x in results if ok]
         for key in item:
-        	if(key == 'image'  or key=='preview_image' or key=='media_url' or key=='account_image'):
+        	if(key == 'image'  or key=='preview_image' or key=='media_url') and len(image_path)!=0:
         		item[key] = 'images/articles/'+image_path[0]
         return item
 class AccountImagePipeline(ImagesPipeline):
