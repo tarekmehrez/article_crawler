@@ -19,6 +19,7 @@ import sys
 from bs4 import BeautifulSoup
 import requests
 import pickle
+import re
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -297,9 +298,11 @@ class ArticlePipeline(object):
 				month = self.datedict[date[0]]
 				dateformatted = "%s-%s-%s %s" % (date[2],month,date[1],date[3])
 				item['date'] = datetime.strptime(dateformatted,  "%Y-%m-%d %H:%M")
+			elif item['src']=='facebook':
+				item['date'] = re.sub(r'\+[0-9]{4}','',item['date'])
+				item['date'] = datetime.strptime(item['date'] ,  "%Y-%m-%dT%H:%M:%S")
 		except:
 			item['date'] = datetime.now()
-
 		# in case we failed to find any date for the article, save the article with the current datetime
 		if 'date' not in item:
 			item['date'] = datetime.now()
