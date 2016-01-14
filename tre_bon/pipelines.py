@@ -385,7 +385,9 @@ class MySQLArticlesPipeline(object):
 			f = '%Y-%m-%d %H:%M:%S'
 			item['date'] = item['date'].strftime(f)
 		except:
-			print 'error'
+			if 'date' in item:
+				today = datetime.today()
+				item['date'] = today.strftime(f) #workaround TODO needs to be fixed
 		for key in item:
 			try:
 				item[key] = str(item[key])
@@ -397,10 +399,13 @@ class MySQLArticlesPipeline(object):
 					print key
 
 		if item['src']=='livescore':
+			item['matchDateTime'] = datetime.strptime(item['matchDateTime'],  "%d-%m-%Y %H:%M")
+			f = '%Y-%m-%d %H:%M:%S'
+			item['matchDateTime'] = item['matchDateTime'].strftime(f)
 			if item['localTeamScore']=='?':
-				item['localTeamScore'] = 0
+				item['localTeamScore'] = '0'
 			if item['visitorTeamScore']== '?':
-				item['visitorTeamScore'] = 0
+				item['visitorTeamScore'] = '0'
 
 			self.cur.execute('INSERT INTO livescores(competition,competitionLogo,visitorTeam,visitorTeamLogo,localTeam,localTeamLogo,visitorTeamScore,localTeamScore,matchDateTime) VALUES("'+item['competition']+'","'+item['competitionLogo']+'","'+item['visitorTeam']+'","'+item['visitorTeamLogo']+'","'+item['localTeam']+'","'+item['localTeamLogo']+'",'+item['visitorTeamScore']+','+item['localTeamScore']+',"'+item['matchDateTime']+'")')
 		else:
