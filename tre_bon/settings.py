@@ -62,7 +62,7 @@ DOWNLOADER_MIDDLEWARES = {
 #    'tre_bon.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
-Enable or disable extensions
+#Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 # EXTENSIONS = {
 #    'scrapy.telnet.TelnetConsole': None,

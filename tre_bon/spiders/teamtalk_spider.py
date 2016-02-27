@@ -76,7 +76,7 @@ class TeamTalkSpider(scrapy.Spider):
 				item['content'] += cleaned
 		item['tags'] = ' '
 		item['account_image'] = ' '
-		postId  = re.match(r'.*/([0-9]*)', response.url, re.M|re.I)
+		postId  = re.match(r'.*/([0-9a-z\-A-Z]*$)', response.url, re.M|re.I)
 		if postId:
 			item['postId'] = self.name+postId.group(1)
 		else:

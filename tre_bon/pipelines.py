@@ -42,11 +42,13 @@ class MyImagesPipeline(ImagesPipeline):
 class AccountImagePipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
-    	yield scrapy.Request(item['account_image'].strip())
+    	if 'account_image' in item and item['account_image'].strip()!='':
+    		yield scrapy.Request(item['account_image'].strip())
 
     def item_completed(self, results, item, info):
         image_path = [x['path'] for ok, x in results if ok]
-        item['account_image'] = 'images/articles/'+image_path[0]
+        if len(image_path)>0:
+        	item['account_image'] = 'images/articles/'+image_path[0]
         return item
 class ArticlePipeline(object):
 
@@ -358,9 +360,9 @@ class VideoPipeline(object):
 
 		elif 'dailymotion' in item['src']:
 
-			date_arr = item['date'].strip().split("/")
-			date = "%s-%s-%s %s" % (date_arr[2],date_arr[0],date_arr[1],datetime.now().strftime('%H:%M'))
-			item['date'] = datetime.strptime(date,  "%Y-%m-%d %H:%M")
+			date_arr = item['date'].strip().split("+")
+			#date = "%s-%s-%s %s" % (date_arr[2],date_arr[0],date_arr[1],datetime.now().strftime('%H:%M'))
+			item['date'] = datetime.strptime(date_arr[0],  "%Y-%m-%dT%H:%M:%S")
 
 		return item
 

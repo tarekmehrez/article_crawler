@@ -32,14 +32,14 @@ class GreatGoalspider(scrapy.Spider):
 		item['date'] = response.xpath(".//div[contains(@class,'post-update updated')]/text()")[0].extract()
 		if not response.xpath(".//div[contains(@id,'the-content')]/p/a/@href"):
 			return
-		item['image'] = response.xpath(".//div[contains(@id,'the-content')]/p/a/@href")[0].extract()
+		item['image'] =response.xpath(".//div[contains(@id,'the-content')]/p/img/@data-lazy-original")[0].extract()
 		item['tags'] = response.xpath(".//div[contains(@class,'post-tags')]/a/text()").extract()
 		content = response.xpath(".//div[contains(@id,'the-content')]/p/text()").extract()
 		item['content'] = ' '.join(content)
 		item['account_image'] = ' '
-		postId  = re.match(r'.*/(.*)/', response.url, re.M|re.I)
+		postId  = re.match(r'.*\/([0-9\-a-zA-Z]*)\/$', response.url, re.M|re.I)
 		if postId:
-			item['postId'] = self.name+postId.group(1)
+			item['postId'] = 'gr'+postId.group(1)
 		else:
 			item['postId'] = item['title']
 		yield item

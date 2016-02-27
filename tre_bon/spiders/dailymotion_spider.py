@@ -69,7 +69,7 @@ class DailyMotionSpider(scrapy.Spider):
 
 	def parse_article(self, response):
 		item = response.meta['item']
-		item['date'] =  response.xpath(".//li[@class='mrg-btm-xs']/text()")[0].extract()
+		item['date'] =  response.xpath(".//meta[contains(@property,'video:release_date')]/@content")[0].extract()
 
 		data = json.load(urllib2.urlopen("http://www.dailymotion.com/api/oembed?url="+item['url']))
 		item['embed_code'] = data['html']
