@@ -40,7 +40,6 @@ class YoutubeSpider(scrapy.Spider):
 			item['preview_image'] = 'http://'+sel.xpath(".//img/@src")[0].extract().replace("//","")
 			item['src'] = 'youtube'
 			item['itemIndex'] = self.itemCount
-			self.itemCount = self.itemCount+1
 			item['channel'] = ' '
 			if 'ScoutNationHD' in str(response):
 				item['channel']='ScoutNationHD'

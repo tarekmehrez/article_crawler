@@ -25,7 +25,9 @@ class InstagramSpider(scrapy.Spider):
 		self.user_imgs = {}
 
 					# players
-		accounts = ['cristiano','leomessi', 'waynerooney','zidane','iamzlatanibrahimovic', 'toni.kr8s','davidluiz_4',
+		accounts = ['cristiano', 'leomessi', 'waynerooney', 'zidane', 'iamzlatanibrahimovic', 'toni.kr8s', 'davidluiz_4', 'hazardeden_10', 'davidbeckham', 'andreapirlo21thierryhenry', 'luissuarez9', 'garethbale11', 'andresiniesta8', 'neymarjr', 'kingarturo23oficial', 'manuelneuer', 'didierdrogba', 'mosalah22', 'ronaldolima', 'kaka', 'm10_official', 'jamesrodriguez10', 'ikercasillasoficial', 'mb459', 'marcelotwelve', 'alexis_officia1', 'stevengerrard', 'realmadrid', 'fcbarcelona', 'chelseafc', 'arsenal', 'liverpoolfc', 'manchesterunited', 'mcfcofficial', 'juventus', 'officialasroma', 'inter', 'acmilan', 'acffiorentina', 'psg', 'fcbayern', 'bvb09', 'uefachampionsleague', 'instareplays', 'robgunillustration', 'squawkafootball', 'soccermemes', 'futbolsport', 'nikefootball', 'pumafootball', 'adidasfootball', 'instareplays', '6secfootball101greatgoals', '8fact_football', 'premierleague', 'laliga', 'espnfc', 'beinsports', 'bestoffootball', 'golazoweekly', 'worldgoalz', 'futbol_evolution', 'footballtransfersdailywe_love_football', 
+					'footbalita', '8factfootball', 'football.news', 'footykix', 'yallakoraofficial', 'filgoal1', 'talksport', 'kooora', 
+					'cristiano','leomessi', 'waynerooney','zidane','iamzlatanibrahimovic', 'toni.kr8s','davidluiz_4',
 					'hazardeden_10','davidbeckham','andreapirlo21',
 					'thierryhenry','luissuarez9','garethbale11','andresiniesta8','neymarjr','kingarturo23oficial','manuelneuer','didierdrogba','mosalah22',
 					'ronaldolima','kaka','m10_official','jamesrodriguez10','ikercasillasoficial','mb459','marcelotwelve','alexis_officia1','stevengerrard',
@@ -43,7 +45,7 @@ class InstagramSpider(scrapy.Spider):
 
 
 		if not ( os.path.exists('insta_user_ids.pickle') and os.path.exists('insta_user_imgs.pickle')):
-
+			accounts = list(set(accounts))
 			for account in accounts:
 				print 'looking for: ', account
 				user_list = self.api.user_search(account)

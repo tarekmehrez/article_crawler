@@ -17,16 +17,16 @@ class KorabiaSpider(scrapy.Spider):
 			item = ArticleItem()
 			item['type'] = "article"
 
-			relative_url = sel.xpath(".//a/@href")[0].extract()
+			relative_url = sel.xpath(".//div/h5/a/@href")[0].extract()
 			url = response.urljoin(relative_url)
 			item['url'] = url
-			item['title'] = sel.xpath(".//h5/a/text()")[0].extract()
+			item['title'] = sel.xpath(".//div/h5/a/text()")[0].extract()
 
 
-			item['summary'] = sel.xpath(".//p[contains(@class,'date')]/text()")[0].extract()
+			item['summary'] = sel.xpath(".//div/p/text()")[0].extract()
 			item['src'] = 'korabia'
 			item['lang'] = 'ar'
-			item['date'] = sel.xpath(".//p[contains(@class,'info')]/text()")[0].extract()
+			item['date'] = sel.xpath(".//div/p[contains(@class,'info')]/span/text()")[0].extract()
 			item['itemIndex'] = self.itemCount
 			self.itemCount = self.itemCount+1
 			yield scrapy.Request(url, callback=self.parse_article,meta={'item': item})
